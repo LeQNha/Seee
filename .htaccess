@@ -1,0 +1,8 @@
+RewriteEngine ON
+
+# RewriteCond để kiểm tra không phải thư mục
+RewriteCond %{REQUEST_FILENAME}% !-d
+# RewriteCond để kiểm tra không phải tệp
+RewriteCond %{REQUEST_FILENAME}% !-f
+
+RewriteRule ^(.+)$ index.php?url=$1

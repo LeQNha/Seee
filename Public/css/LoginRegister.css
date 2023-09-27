@@ -1,0 +1,84 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+.container{
+    height: 99vh;
+    background: linear-gradient(120deg, black 50%, rgb(112, 121, 121));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-box{
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 370px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-box h1{
+    margin-top: 45px;
+    margin-bottom: 5px;
+}
+.form-box form{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-box form input{
+    width: 270px;
+    height: 4vh;
+    border-radius: 10px;
+    background: rgb(230, 249, 249);
+    font-size: 15px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+}
+/* .form-box form label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+#registerForm input.checkbox{
+    padding: 0px;
+    height: 2vh;
+    width: 15px;
+}
+.loginForm a{
+    margin-top: 20px;
+}
+.form-box form a{
+    color: rgb(109, 102, 102);
+}
+#registerForm label{
+    margin-top: 20px;
+}
+.form-box form button{
+    width: 270px;
+    height: 4vh;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    background: black;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#registerForm button{
+    margin-top: 10px;
+}
+#alertP{
+    height: 16px;
+    color: red;
+}
