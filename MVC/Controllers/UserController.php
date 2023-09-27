@@ -21,7 +21,7 @@
         }
         public function FindUser($sql){
 
-            $user = $this->userModel->FindUser($sql);
+            $user = $this->userModel->DoQuery($sql);
             return $user;
         }
 
@@ -75,7 +75,7 @@
                 }else if(mysqli_num_rows($result) > 0){
                     echo "Tài khoản đã tồn tại";
                 }else{
-                    $this->userModel->addNewUser("INSERT INTO users (username, email, password, avatar) VALUES ('$username', '$email', '$password','userDefaultAvatar.png')");
+                    $this->userModel->DoQuery("INSERT INTO users (username, email, password, avatar) VALUES ('$username', '$email', '$password','userDefaultAvatar.png')");
                 
                     echo "success";
                     $_SESSION['Login']['username'] = $username;

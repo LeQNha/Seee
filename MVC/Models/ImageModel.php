@@ -3,17 +3,8 @@
     {
         const TABLE = "imageupload";
 
-        public function GetAll($sql)
-        {
-           return $this->Query($sql);
-        }
-        public function GetImage($sql)
-        {
-            return $this->Query($sql);
-        }
-        public function AddNewImage($sql)
-        {
-            return $this->Query($sql);
+        public function DoQuery($sql){
+            return $this -> Query($sql);
         }
     }
 ?>

@@ -21,7 +21,11 @@
             }
             return $data;
         }
+        public function Get($table, $conditions)
+        {
+            $sql = "SELECT * FROM $table $conditions ";
 
+        }
         public function Find($sql)
         {
             // $columns = implode(',',array_keys($select));

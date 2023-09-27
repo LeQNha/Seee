@@ -3,6 +3,7 @@ class HeaderController extends BaseController
 {
     private $imageModel;
     private $userModel;
+    
     function __construct()
     {
         $this->LoadModel("ImageModel");
@@ -15,12 +16,23 @@ class HeaderController extends BaseController
     {
         return $this->View('Frontend.HomePage');
     }
-    public function LogOut(){
+    public function GetUserData()
+    {
+        
+    }
+    public function LogOut()
+    {
         unset($_SESSION['Login']);
         header("location: index.php?controller=HomePage");
     }
-    public function UploadImage(){
+    public function UploadImage()
+    {
         $data = ['Page'=>'UploadImage'];
+        $this->View('Layout.MasterLayout', $data);
+    }
+    public function PersonalPage()
+    {
+        $data = ['Page'=>'PersonalPage'];
         $this->View('Layout.MasterLayout', $data);
     }
 }

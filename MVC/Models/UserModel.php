@@ -6,13 +6,8 @@
     {
        return $this->All(self::TABLE, $select);
     }
-
-    public function FindUser($sql)
-    {
-        return $this->Query($sql);
-    }
-    public function AddNewUser($sql){
-        return $this->Query($sql);
+    public function DoQuery($sql){
+        return $this -> Query($sql);
     }
  }
 ?>

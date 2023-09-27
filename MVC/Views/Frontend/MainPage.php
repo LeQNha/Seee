@@ -2,8 +2,7 @@
     <div class="cover-div" id="cover-div"></div>
     <div class="container">
         <?php
-            $query = "SELECT * FROM imgupload";
-            $rows = mysqli_query($conn, $query);
+            $rows = $data['QueryResult'];
             
             foreach($rows as $row){ ?>
                     <div class="paint" onclick="ShowDetails('<?php echo $row['path']; ?>')">

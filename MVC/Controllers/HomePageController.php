@@ -24,7 +24,7 @@
             return $this->View('Users.Register');
         }
         public function MainPage(){
-            $result = $this->imageModel->GetAll("SELECT * FROM imgupload");
+            $result = $this->imageModel->DoQuery("SELECT * FROM imgupload");
             
             $data = [
                 "Page"=>"MainPage",

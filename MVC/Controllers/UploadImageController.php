@@ -39,7 +39,7 @@
                         
                         move_uploaded_file($tmpName, $newDestination);
                         $sql = "INSERT INTO imgupload(title, path, description, username) VALUES('$title','$newImageName','$description','$uploader')";
-                        $this->imageModel->AddNewImage($sql);
+                        $this->imageModel->DoQuery($sql);
                         echo "success";
                         
                     }

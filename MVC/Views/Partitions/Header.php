@@ -1,29 +1,4 @@
-<?php
-    
-    if(isset($_SESSION['Login']['username'])){
-        $username = $_SESSION['Login']['username'];
-    }
-    $conn = mysqli_connect('localhost', 'root', '', 'dacs2');
-    $query = "SELECT * FROM users WHERE username = '$username'";
-        $result = mysqli_query($conn, $query);
 
-        if ($result && $result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-        
-            echo "<script> console.log('lai header'); </script>";
-            // Truy cập vào dữ liệu
-            $email = $row['email'];
-            $username = $row['username'];
-            $password = $row['password'];
-            $firstname = $row['firstname'];
-            $lastname = $row['lastname'];
-            $ocupation = $row['ocupation'];
-            $location = $row['location'];
-            $introduction = $row['introduction'];
-            $avatar = $row['avatar'];
-        }
-
-?>
 <header class="header">
         <div class="top-bar">
             <ul class="nav-bar">
@@ -53,7 +28,7 @@
                 </div>
                 <ul>
                     <a href="EditProfile.php"><li>Cài đặt</li></a>
-                    <a href="index.php?controller=Header&action="><li>Trang cá nhân</li></a>
+                    <a href="index.php?controller=Header&action=PersonalPage"><li>Trang cá nhân</li></a>
                     <hr>
                     <a href="index.php?controller=Header&action=logOut"><li>Đăng xuất</li></a>
                 </ul>
@@ -67,5 +42,5 @@
             <a href="index.php?controller=Header&action=UploadImage">Tạo ảnh</a>
             <a href="#">Bộ sưu tập</a>
         </div>
-    </header>
+</header>
     

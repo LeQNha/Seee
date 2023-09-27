@@ -10,9 +10,6 @@
         public function index(){
             
         }
-        public function GetAll(){
-            
-        }
         public function GetImage(){
             $pid = "s";
 
@@ -31,7 +28,7 @@
                   ON imgupload.username = users.username 
                   WHERE path = '$pid'";
                 
-                $rs = $this->imageModel->getImage($sql);
+                $rs = $this->imageModel->DoQuery($sql);
                 if($rs instanceof mysqli_result){
                     if(mysqli_num_rows($rs) > 0){
                         $row = $rs->fetch_assoc();
