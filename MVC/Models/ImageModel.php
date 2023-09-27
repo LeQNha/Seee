@@ -11,5 +11,9 @@
         {
             return $this->Query($sql);
         }
+        public function AddNewImage($sql)
+        {
+            return $this->Query($sql);
+        }
     }
 ?>

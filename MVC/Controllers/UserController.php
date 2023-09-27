@@ -55,8 +55,6 @@
         }
 
         public function Register(){
-            session_start();
-            
             $email = $_POST["email"];
             $username = $_POST["username"];
             $password = $_POST["password"];

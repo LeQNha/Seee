@@ -24,21 +24,10 @@
         }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Public/css/Header.css">
-    <title>Header</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-</head>
-<body>
 <header class="header">
         <div class="top-bar">
             <ul class="nav-bar">
-                <a href="Home.php"><li><h2>See</h2></li></a>
+                <a href="index.php?controller=HomePage&action=MainPage"><li><h2>Seee</h2></li></a>
                 <li>About</li>
                 <li>Rank</li>
                 <li>Challenge</li>
@@ -64,7 +53,7 @@
                 </div>
                 <ul>
                     <a href="EditProfile.php"><li>Cài đặt</li></a>
-                    <a href="PersonalPage.php"><li>Trang cá nhân</li></a>
+                    <a href="index.php?controller=Header&action="><li>Trang cá nhân</li></a>
                     <hr>
                     <a href="index.php?controller=Header&action=logOut"><li>Đăng xuất</li></a>
                 </ul>
@@ -75,11 +64,8 @@
                 <input type="search" name="" placeholder="Tìm kiếm" autocomplete="off" id="search-box" style="outline: none;">
                 <label for="search-box" class="fas-fa-search"><i class="fa-solid fa-magnifying-glass"></i></label>         
             </form>
-            <a href="UploadT.php">Tạo ảnh</a>
+            <a href="index.php?controller=Header&action=UploadImage">Tạo ảnh</a>
             <a href="#">Bộ sưu tập</a>
         </div>
     </header>
-    <script src="Public/js/Script.js"></script>
-
-</body>
-</html>
+    

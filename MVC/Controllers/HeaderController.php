@@ -19,5 +19,9 @@ class HeaderController extends BaseController
         unset($_SESSION['Login']);
         header("location: index.php?controller=HomePage");
     }
+    public function UploadImage(){
+        $data = ['Page'=>'UploadImage'];
+        $this->View('Layout.MasterLayout', $data);
+    }
 }
 ?>
