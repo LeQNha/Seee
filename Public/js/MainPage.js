@@ -66,7 +66,7 @@
   
   //aslkdfjsladkf
   function ShowPublicUserPage(){
-    window.location.href = "PublicUserPage.php?uploader="+detailUploader.textContent;
+    window.location.href = "index.php?controller=MainPage&action=PublicUserPage&uploader="+detailUploader.textContent;
   }
   
   

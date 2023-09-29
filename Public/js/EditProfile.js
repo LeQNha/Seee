@@ -16,6 +16,7 @@ saveButton.addEventListener('click', function(){
             }else{
                 // alert(xhr.responseText);
                 showAndHide(xhr.responseText);
+                
             }
         }else{
             // alert('Đã xảy ra lỗi! Hãy thử lại sau.');
