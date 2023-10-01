@@ -105,22 +105,5 @@
         
         }
 
-        public function CheckLikeImage()
-        {
-            $pid = "";
-            if(isset($_POST['pid'])){
-                $pid = $_POST['pid'];
-            }
-            $username = $_SESSION['Login']['username'];
-            $sql = "SELECT * FROM liked_images WHERE username = '$username' and path = '$pid'";
-            $result = $this->imageModel->DoQuery($sql);
-
-            if(mysqli_num_rows($result) > 0){
-                echo "liked";
-            }else{
-                echo "not liked";
-            }
-
-        }
     }
 ?>

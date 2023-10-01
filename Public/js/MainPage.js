@@ -32,9 +32,10 @@
 
     var xhr = new XMLHttpRequest();
 
+    var imgId = "";
   function ShowDetails(pid){
 
-    // CheckLikeImage(pid);
+   
 
     xhr.open('POST', 'index.php?controller=MainPage&action=GetImage');
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -49,6 +50,9 @@
       dateUploaded.textContent = receivedData.dateuploaded
       detailUploader.textContent = receivedData.uploader;
       detailUploaderAvatar.src = "./Public/profileimg/"+receivedData.uploaderAvatar;
+
+      imgId = receivedData.path
+      CheckLikeImage(imgId);
     };
   
     xhr.send("pid=" + encodeURIComponent(pid));
@@ -66,26 +70,9 @@
     });
   }
   
-  var likeIcon = document.getElementById('like-icon');
-  var unlikeIcon = document.getElementById('unlike-icon');
-  likeIcon.addEventListener('click', ToggleLike);
-  unlikeIcon.addEventListener('click', ToggleLike);
+  
 
-  function CheckLikeImage(pid){
-    xhr.open('POST', 'index.php?controller=MainPage&action=CheckLikeImage');
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onload = function(){
-      if(xhr.status == 200){
-        if(xhr.responseText.trim() === 'liked'){
-          likeIcon.style.display = "block";
-          unlikeIcon.style.display = "none";
-        }
-      }else{
-        alert('Đã có lỗi xảy ra!');
-      }
-    };
-    xhr.send("pid=" + encodeURIComponent(pid));
-  }
+  
 
   
   

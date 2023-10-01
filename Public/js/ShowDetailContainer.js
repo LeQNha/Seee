@@ -23,11 +23,8 @@ function ShowPublicUserPage(){
       }
       var displayStyle = window.getComputedStyle(likeIcon).display;
       if(displayStyle === "none"){
-        // likeIcon.style.display = "block";
-        // unlikeIcon.style.display = "none";
+      
       }else{
-        // likeIcon.style.display = "none";
-        // unlikeIcon.style.display = "block";
         toggle = "unlike";
       }
       
@@ -48,6 +45,31 @@ function ShowPublicUserPage(){
           alert('Đã có lỗi xảy ra!');
       }
     };
-    xhr.send("toggle=" + encodeURIComponent(toggle));
+
+    xhr.send("toggle=" + encodeURIComponent(toggle) + "&imgId=" + encodeURIComponent(imgId));
     
+  }
+
+  function CheckLikeImage(imgId){
+   
+    xhr.open('POST', 'index.php?controller=ShowDetailContainer&action=CheckLikeImage');
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onload = function(){
+      
+      if(xhr.status === 200){
+        console.log('checked'+imgId);
+        console.log(xhr.responseText);
+        if(xhr.responseText.trim() === 'liked'){
+          likeIcon.style.display = "block";
+          unlikeIcon.style.display = "none";
+        }else{
+          likeIcon.style.display = "none";
+          unlikeIcon.style.display = "block";
+        }
+      }else{
+        alert('Đã có lỗi xảy ra!');
+      }
+      
+    };
+    xhr.send("imgId=" + encodeURIComponent(imgId));
   }
