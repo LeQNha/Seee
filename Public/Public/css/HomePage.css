@@ -1,0 +1,62 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+body{
+    padding-top: 100px;
+}
+header{
+    top: 0px;
+    position: fixed;
+    display: flex;
+    background: white;
+    border-bottom: 1px solid black;
+}
+header .logo{
+    height: 9vh;
+    margin: 15px;
+}
+header ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 800px;
+}
+header ul li{
+    margin: 0px 13px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+}
+.dndk{
+    width: 150px;
+    padding: 10px 0px;
+    border-radius: 30px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+.loginBtn{
+    background-color: black;
+    color: white;
+}
+.registerBtn{
+    background-color: rgb(240, 235, 235);
+    color: black;
+    margin-left: 10px;
+}
+main{
+    height: 80vh;
+    border: 1px solid black;
+}
+main div{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
