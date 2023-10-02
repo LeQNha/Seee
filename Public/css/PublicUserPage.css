@@ -64,6 +64,17 @@ span.email {
     cursor: pointer;
     border : none;
 }
+.follow-btn-status{
+    width: 320px;
+    height: 40px;
+    background-color: rgb(217, 222, 228);
+    border-radius: 20px;
+    color: rgb(80, 78, 103);
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border : none;
+}
 #bt2 {
     margin-top: 10px;
     background-color: rgba(218, 220, 235, 0.792);

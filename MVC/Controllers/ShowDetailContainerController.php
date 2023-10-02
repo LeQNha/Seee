@@ -12,6 +12,53 @@
             $this->imageModel = new ImageModel();
         }
 
+        public function GetImage(){
+            $pid = "s";
+
+            if(isset($_POST['pid'])){
+                $pid = $_POST['pid'];
+                
+                $title="";
+                $imagePath="";
+                $description ="";
+                $dateuploaded = "";
+                $uploader = "";
+                $uploaderAvatar = "";
+
+                $sql = "SELECT *
+                  FROM imgupload INNER JOIN users
+                  ON imgupload.username = users.username 
+                  WHERE path = '$pid'";
+                
+                $rs = $this->imageModel->DoQuery($sql);
+                if($rs instanceof mysqli_result){
+                    if(mysqli_num_rows($rs) > 0){
+                        $row = $rs->fetch_assoc();
+                        
+                            $title = $row['title'];
+                            $imagePath = $row['path'];
+                            $description = $row['description'];
+                            $dateuploaded = $row['dateuploaded'];
+                            $datemonthyear = explode('-', $dateuploaded);
+                            $dateuploaded = $datemonthyear[2]." thg ".$datemonthyear[1].", ".$datemonthyear[0];
+                            $uploader = $row['username'];
+                            $uploaderAvatar = $row['avatar'];
+                    
+                    }
+                }
+                $message = array(
+                    "title"=>$title, 
+                    "path"=>$imagePath, 
+                    "description"=>$description,
+                    "dateuploaded"=>$dateuploaded,
+                    "uploader"=>$uploader,
+                    "uploaderAvatar"=>$uploaderAvatar
+                );
+                echo json_encode($message);
+            }
+            
+        }
+
         function ToggleLike()
         {
             $toggle = 'like';
@@ -37,8 +84,39 @@
             }
         }
 
-        public function CheckLikeImage()
+        public function ToggleFollow()
         {
+            $toggle = 'follow';
+            if(isset($_POST['toggle'])){
+                $toggle = $_POST['toggle'];
+            }
+            $uploaderName = '';
+            if(isset($_POST['uploaderName'])){
+                $uploaderName = $_POST['uploaderName'];
+            }
+
+            $username = $_SESSION['Login']['username'];
+
+
+            if($toggle == 'follow'){
+                $sql = "INSERT INTO follow (followed, follower ) VALUES ('$uploaderName','$username') ";
+                $this->imageModel->DoQuery($sql);
+                echo "follow";
+            }else{
+                $sql = "DELETE FROM follow WHERE followed = '$uploaderName' AND follower = '$username'";
+                $this->imageModel->DoQuery($sql);
+                echo "unfollow";
+            }
+        } 
+
+        public function CheckFollow(){
+            
+        }
+
+        public function CheckLikeAndFollow()
+        {
+            $like = "not liked";
+            $follow = "not following";
             $imgId = "";
             if(isset($_POST['imgId'])){
                 $imgId = $_POST['imgId'];
@@ -48,12 +126,35 @@
             $result = $this->imageModel->DoQuery($sql);
 
             if($result->num_rows > 0){
-                echo "liked";
+                $like = "liked";
             }else{
-                echo "not liked";
+                $like = "not liked";
             }
 
+            $uploaderName = "";
+            if(isset($_POST['uploaderName'])){
+                $uploaderName = $_POST['uploaderName'];
+            }
+            $username = $_SESSION['Login']['username'];
+            $sql = "SELECT * FROM follow WHERE follower = '$username' AND followed = '$uploaderName'";
+            $result = $this->imageModel->DoQuery($sql);
+
+            if($result->num_rows > 0){
+                $follow = "following";
+            }else{
+                $follow = "not following";
+            }
+
+            $message = [
+                "Like"=>$like,
+                "Follow"=>$follow
+            ];
+
+            echo json_encode($message);
+
         }
+
+        
        
     }
 ?>

@@ -49,11 +49,20 @@
 .behavior-list li.close-show-details{
     margin-bottom: 15px;
 }
-.behavior-list li img{
-    display: block;
-    border-radius: 50%;
+.behavior-list .follow-button-avatar-container{
     height: 45px;
     width: 45px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: block;
+    margin: 0px;
+}
+.behavior-list li .follow-button-avatar-container img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    
 }
 .behavior-list li i{
     font-size: 25px;

@@ -1,9 +1,11 @@
 <div class="show-details-container">
             <ul class="behavior-list">
                 <li class=" close-show-details"><i class="fa-solid fa-xmark"></i></li>
-                <li>
-                    <img src="Public/webimg/defaultAvatar.png" alt="">
-                    <span>Follow</span>
+                <li id="behavior-follow-button">
+                    <div class="follow-button-avatar-container">
+                        <img src="Public/webimg/defaultAvatar.png" alt="">
+                    </div>
+                    <span id="follow-status">Follow</span>
                 </li>
                 <li>
                     <i class="fa-regular fa-thumbs-up" id="unlike-icon"></i>
@@ -20,9 +22,9 @@
                     <div class="detail-avatar-container">
                         <a href="#" onclick="ShowPublicUserPage()"><img class="detail-avatar" src="Public/webimg/defaultAvatar.png" alt=""></a>
                     </div>
-                    <div>
+                    <div style="display: flex; align-items: center;">   
                         <a href="#"><span class="detail-uploader">uploader</span></a>
-                        <span>Follow</span>
+                        <!-- <span>Follow</span> -->
                     </div>
                     <p class="detail-date-uploaded">111-111-111</p>
                 </div>
