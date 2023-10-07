@@ -5,7 +5,7 @@
     <ul class="actions">
         <li class="save" id="save">
             <i class="fa-solid fa-floppy-disk save-icon"></i>
-            <span> Lưu</span>
+            <span>Lưu</span>
         </li>
         <!-- <li class="set-back" id="set-back>
             <i class="fa-solid fa-arrow-rotate-left set-back-icon"></i>
@@ -38,24 +38,24 @@
                     <div style="display: flex;">
                         <div>
                             <label for="firstname">Tên</label>
-                            <input type="text" name="firstname" class="firstname" id="firstname" value="<?php echo $firstname; ?>">
+                            <input type="text" name="firstname" class="firstname" id="firstname" value="<?php echo $data['UserData']['Firstname']; ?>">
                         </div>
                         <div style="margin-left: 20px;">
                             <label for="lastname">Họ</label>
-                            <input type="text" name="lastname" class="lastname" id="lastname" value="<?php echo $lastname; ?>">
+                            <input type="text" name="lastname" class="lastname" id="lastname" value="<?php echo $data['UserData']['Lastname']; ?>">
                         </div>
                     </div>
                     <div>
                         <label for="ocupation">Nghề nghiệp</label>
-                        <input type="text" name="ocupation" class="ocupation" id="ocupation" value="<?php echo $ocupation; ?>">
+                        <input type="text" name="ocupation" class="ocupation" id="ocupation" value="<?php echo $data['UserData']['Ocupation']; ?>">
                     </div>
                     <div>
                         <label for="location">Vị trí</label>
-                        <input type="text" name="location", class="location" id="location" value="<?php echo $location; ?>">
+                        <input type="text" name="location", class="location" id="location" value="<?php echo $data['UserData']['Location']; ?>">
                     </div>
                     <div>
                         <label for="introduction">Giới thiệu</label>
-                        <textarea name="introduction" class="introduction" id="introduction"s> <?php echo $introduction; ?></textarea>
+                        <textarea name="introduction" class="introduction" id="introduction"> <?php echo $data['UserData']['Introduction']; ?></textarea>
                     </div>
                    
             </div>
@@ -63,19 +63,19 @@
                 <h3>Quản lí tài khoản</h3>
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" value="<?php echo $email; ?>">
+                    <input type="text" name="email" id="email" value="<?php echo $data['UserData']['Email']; ?>">
                 </div>
                 <div>
                     <label for="username">Tài khoản</label>
-                    <input type="text" name="username" id="username" value="<?php echo $username; ?>">
+                    <input type="text" name="username" id="username" value="<?php echo $data['UserData']['Username']; ?>">
                 </div>
                 <div>
                     <label for="password">Mật khẩu</label>
-                    <input type="password" name="password" id="password" value="<?php echo $password; ?>">
+                    <input type="password" name="password" id="password" value="<?php echo $data['UserData']['Password']; ?>">
                 </div>
                 <div>
                     <label for="confirmpassword">Xác nhận mật khẩu</label>
-                    <input type="password" name="confirmpassword" id="confirmpassword" value="<?php echo $password; ?>">
+                    <input type="password" name="confirmpassword" id="confirmpassword" value="<?php echo $data['UserData']['Password']; ?>">
                 </div>
             </div>
         </form> 

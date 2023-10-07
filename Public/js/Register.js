@@ -6,7 +6,7 @@ function submitRegisterData(){
     xhr.onload = function(){
         console.log(xhr.responseText);
         if(xhr.status === 200){
-            if(xhr.responseText === 'success'){
+            if(xhr.responseText.trim() === 'success'){
                 window.location.href = 'index.php?controller=HomePage&action=MainPage';
             }else{
                 // alert(xhr.responseText);

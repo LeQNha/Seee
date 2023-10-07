@@ -28,7 +28,7 @@
                 </div>
                 <ul>
                     <a href="EditProfile.php"><li>Cài đặt</li></a>
-                    <a href="index.php?controller=Header&action=PersonalPage"><li>Trang cá nhân</li></a>
+                    <a href="index.php?controller=Header&action=PersonalPage&listShowed=liked"><li>Trang cá nhân</li></a>
                     <hr>
                     <a href="index.php?controller=Header&action=logOut"><li>Đăng xuất</li></a>
                 </ul>

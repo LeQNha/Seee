@@ -145,9 +145,15 @@ function ShowPublicUserPage(){
       console.log(xhr.responseText);
         if(xhr.responseText.trim() === "follow"){
           followStatus.textContent = 'Bỏ theo dõi';
+          followButton.style.background = 'rgb(217, 222, 228)';
+          followButton.style.color = 'rgb(80, 78, 103)';
+          followButton.textContent = 'Hủy theo dõi';
         }
         if(xhr.responseText.trim() === 'unfollow'){
           followStatus.textContent = 'Theo dõi';
+          followButton.style.background = 'rgb(0, 115, 255)';
+          followButton.style.color = 'white';
+          followButton.textContent = 'Theo dõi';
         } 
     }else{
         alert('Đã có lỗi xảy ra!');

@@ -20,6 +20,8 @@
                 <textarea name="description" id="description" placeholder="Mô tả" oninput="autoResize()"></textarea>
                 <div class="description-bottom-border bottom-border" id="description-bottom-border"></div>
                 <input type="submit" name="submit" value="Đăng tải" id="submit">
+
+                <input type="text" name="keywords" placeholder="keyword">
             </div>
         </form>
     </div>

@@ -8,6 +8,8 @@
         }
         public function UploadImage()
         {
+            $keywords = $_POST['keywords'];
+
             $title = $_POST["title"];
             $description = $_POST["description"];
             $uploader = $_SESSION['Login']['username'];
@@ -44,6 +46,17 @@
                         
                     }
                 }
+            }
+        }
+
+        public function AddKeyword($kws, $path){
+            $keywords = explode(",",$kws);
+            
+            foreach($keywords as $keyword){
+                $sql = "INSERT INTO image_keywords (keyword,path) VALUES ('$keyword','$path')";
+                $this->imageModel->DoQuery($sql);
+                $sql = "SELECT keyword FROM keywords";
+                $rs = $this->imageModel->DoQuery($sql);
             }
         }
     }

@@ -13,8 +13,8 @@
 }
 .user-avatar{
     position: absolute;
-    top: 13vh;
-    left: 500px;
+    top: 23vh;
+    left: 120px;
     padding: 10px;
     background: white;
     border-radius: 50%;
@@ -50,20 +50,7 @@
 .user-avatar i:hover{
     opacity: 0.8;
 }
-.short-introduction{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 13vh;
-}
-.short-introduction *{
-    margin-bottom: 10px;
-}
-.short-introduction h1{
-    font-size: 40px;
-    color: #343333;
-}
+
 .short-introduction a{
     color: black;
     background: rgb(239, 235, 235);
@@ -75,3 +62,70 @@
 .short-introduction a:hover{
     background: lightgray;
 }
+
+.follow-list{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+/* .swiper-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+} */
+.swiper {
+    width: 80%;
+    height: 210px;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .followed-user{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .followed-user-avatar-container{
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .followed-user-avatar-container img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .followed-user span{
+    color: black;
+    font-weight: bold;  
+  }
+  .follower-number{
+    font-size: 15px;
+    font-weight: lighter;
+  }

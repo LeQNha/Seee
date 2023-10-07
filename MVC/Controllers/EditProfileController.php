@@ -11,15 +11,15 @@
        
                 $username = $_SESSION['Login']['username'];
 
-                $email = $_POST['email'];
-                $newUsername = $_POST['username'];
-                $password = $_POST['password'];
-                $confirmpassword =$_POST['confirmpassword'];
-                $firstname = $_POST['firstname'];
-                $lastname = $_POST['lastname'];
-                $ocupation = $_POST['ocupation'];
-                $location = $_POST['location'];
-                $introduction = $_POST['introduction'];
+                $email = trim($_POST['email']);
+                $newUsername = trim($_POST['username']);
+                $password = trim($_POST['password']);
+                $confirmpassword = trim($_POST['confirmpassword']);
+                $firstname = trim($_POST['firstname']);
+                $lastname = trim($_POST['lastname']);
+                $ocupation = trim($_POST['ocupation']);
+                $location = trim($_POST['location']);
+                $introduction = trim($_POST['introduction']);
                 $avatar = "";
 
                 $sql = "SELECT * FROM users WHERE username = '$username'";
@@ -78,6 +78,7 @@
                             WHERE username = '$username';";
 
                             $_SESSION['Login']['username'] = $newUsername;
+                            $username = $newUsername;
 
                         $result = $this->userModel->DoQuery($sql);
                         echo "success";

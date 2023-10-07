@@ -24,11 +24,12 @@
             return $this->View('Users.Register');
         }
         public function MainPage(){
-            $result = $this->imageModel->DoQuery("SELECT * FROM imgupload");
+            $username = $_SESSION['Login']['username'];
+            $result = $this->imageModel->DoQuery("SELECT * FROM imgupload WHERE username <> '$username'");
             
             $data = [
                 "Page"=>"MainPage",
-                "QueryResult"=>$result
+                "Rows"=>$result
             ];
 
             return $this->View('Layout.MasterLayout', $data);

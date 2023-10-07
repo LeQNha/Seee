@@ -73,6 +73,31 @@
             $this->View('Layout.MasterLayout', $data);
         
         }
+
+        public function ToggleFollow()
+        {
+            $toggle = 'follow';
+            if(isset($_POST['toggle'])){
+                $toggle = $_POST['toggle'];
+            }
+            $publicUser = '';
+            if(isset($_POST['publicUser'])){
+                $publicUser = $_POST['publicUser'];
+            }
+
+            $username = $_SESSION['Login']['username'];
+
+
+            if($toggle == 'follow'){
+                $sql = "INSERT INTO follow (followed, follower ) VALUES ('$publicUser','$username') ";
+                $this->imageModel->DoQuery($sql);
+                echo "follow";
+            }else{
+                $sql = "DELETE FROM follow WHERE followed = '$publicUser' AND follower = '$username'";
+                $this->imageModel->DoQuery($sql);
+                echo "unfollow";
+            }
+        }
        
         // public function CheckFollow()
         // {
