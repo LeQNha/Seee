@@ -42,6 +42,9 @@
                         move_uploaded_file($tmpName, $newDestination);
                         $sql = "INSERT INTO imgupload(title, path, description, username) VALUES('$title','$newImageName','$description','$uploader')";
                         $this->imageModel->DoQuery($sql);
+
+                        $this->AddKeyword($keywords, $newImageName);
+
                         echo "success";
                         
                     }
@@ -53,10 +56,18 @@
             $keywords = explode(",",$kws);
             
             foreach($keywords as $keyword){
+                $keyword = trim($keyword);
+                $sql = "SELECT keyword FROM keywords WHERE keyword = '$keyword'";
+                $rs = $this->imageModel->DoQuery($sql);
+                if(mysqli_num_rows($rs) > 0){
+                    
+                }else{
+                    $sql = "INSERT INTO keywords (keyword) VALUES ('$keyword')";
+                    $this->imageModel->DoQuery($sql);
+                }
+
                 $sql = "INSERT INTO image_keywords (keyword,path) VALUES ('$keyword','$path')";
                 $this->imageModel->DoQuery($sql);
-                $sql = "SELECT keyword FROM keywords";
-                $rs = $this->imageModel->DoQuery($sql);
             }
         }
     }

@@ -75,5 +75,9 @@ class HeaderController extends BaseController
                 ];
         $this->View('Layout.MasterLayout', $data);
     }
+
+    public function SearchImages(){
+
+    }
 }
 ?>

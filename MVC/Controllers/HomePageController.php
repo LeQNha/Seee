@@ -24,9 +24,18 @@
             return $this->View('Users.Register');
         }
         public function MainPage(){
+
+            $result = '';
             $username = $_SESSION['Login']['username'];
-            $result = $this->imageModel->DoQuery("SELECT * FROM imgupload WHERE username <> '$username'");
-            
+            $q = "";
+            if(isset($_GET['q'])){
+                $q = $_GET['q'];
+                $result = $this->imageModel->DoQuery("SELECT * FROM imgupload INNER JOIN image_keywords  
+                                                      ON imgupload.path = image_keywords.path 
+                                                      WHERE username <> '$username' AND keyword LIKE '%$q%'");
+            }else{
+                $result = $this->imageModel->DoQuery("SELECT * FROM imgupload WHERE username <> '$username'");
+            }
             $data = [
                 "Page"=>"MainPage",
                 "Rows"=>$result

@@ -1,4 +1,6 @@
 
+  searchIcon = document.getElementById('search-icon');
+  searchBox = document.getElementById('search-box');
   //open submenu by clicking on avatar
   window.onload = function() {
     var submenu = document.getElementById("submenu");
@@ -30,3 +32,17 @@
   
     }
   });
+
+  searchIcon.addEventListener('click',SearchImages);
+  searchBox.addEventListener('keypress',SearchImages);
+  function SearchImages(event){
+    if (event.keyCode === 13 || event.type === "click") {
+      event.preventDefault(); // Ngăn chặn hành động mặc định khi nhấn enter (thường là refresh trang)
+
+      // Thực hiện tác vụ tìm kiếm ở đây
+      var searchTerm = document.getElementById("search-box").value;
+      // Ví dụ: chuyển đến trang kết quả tìm kiếm
+      window.location.href = "index.php?controller=HomePage&action=MainPage&q=" + encodeURIComponent(searchTerm);
+  }
+  }
+

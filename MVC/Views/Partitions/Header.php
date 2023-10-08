@@ -35,9 +35,9 @@
             </div>   
         </div>
         <div class="second-bar">
-            <form action="" class="search-form">
-                <input type="search" name="" placeholder="Tìm kiếm" autocomplete="off" id="search-box" style="outline: none;">
-                <label for="search-box" class="fas-fa-search"><i class="fa-solid fa-magnifying-glass"></i></label>         
+            <form action="#" class="search-form">
+                <input type="search" name="searchBox" placeholder="Tìm kiếm" autocomplete="off" id="search-box" style="outline: none;">
+                <label for="search-box" class="fas-fa-search" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></label>        
             </form>
             <a href="index.php?controller=Header&action=UploadImage">Tạo ảnh</a>
             <a href="#">Bộ sưu tập</a>
