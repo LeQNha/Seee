@@ -14,7 +14,7 @@
             </div>
             <div id="button">
                 <button id="bt1" <?php if($data['FollowButtonContent'] == 'Hủy theo dõi'){ echo 'style="background-color: rgb(217, 222, 228); color: rgb(80, 78, 103);"'; } ?> ><?php echo $data['FollowButtonContent'] ?></button>
-                <!-- <button id="bt2">Message</button> -->
+                <button id="bt2">Message</button>
             </div>
             <div id="statistics">
                 <div class="line">

@@ -1,4 +1,7 @@
 
+body{
+    background: rgb(247, 245, 245);
+}
 .alert-message{
     position: fixed;
     top: 100vh;

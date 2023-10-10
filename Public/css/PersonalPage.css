@@ -5,16 +5,16 @@
 .banner{
     background: linear-gradient(to top, rgb(133, 123, 123), white);
     height: 30vh;
-    width: 80%;
-    margin-left: 10%;
+    width: 93%;
+    margin-left: 50px;
     border-radius: 0px 0px 20px 20px;
     position: relative;
     cursor: pointer;
 }
 .user-avatar{
     position: absolute;
-    top: 23vh;
-    left: 120px;
+    top: 21vh;
+    left: 70px;
     padding: 10px;
     background: white;
     border-radius: 50%;
@@ -50,7 +50,11 @@
 .user-avatar i:hover{
     opacity: 0.8;
 }
-
+.short-introduction{
+  margin-left: 380px;
+  position: relative;
+  margin-bottom: 70px;
+}
 .short-introduction a{
     color: black;
     background: rgb(239, 235, 235);
@@ -58,6 +62,9 @@
     border-radius: 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+    position: absolute;
+    top: 15px;
+    left: 830px;
 }
 .short-introduction a:hover{
     background: lightgray;
@@ -68,6 +75,10 @@
     display: flex;
     justify-content: center;
 }
+.showed-list-button{
+  border-bottom: 3px solid black;
+  background: linear-gradient(to top, rgb(248, 246, 246), white);
+}
 /* .swiper-wrapper{
     display: flex;
     flex-direction: row;
@@ -77,6 +88,7 @@
 .swiper {
     width: 80%;
     height: 210px;
+    margin-top: 30px;
   }
 
   .swiper-slide {
@@ -128,4 +140,18 @@
   .follower-number{
     font-size: 15px;
     font-weight: lighter;
+  }
+
+  .liked-created-list{
+    margin-top: 30px;
+  }
+  .liked-created-list ul{
+    margin-left: 50px;
+  }
+  .liked-created-list ul li{
+    color: black;
+    font-size: 20px;
+    opacity: 0.9;
+    display: inline-block;
+    padding: 10px;
   }

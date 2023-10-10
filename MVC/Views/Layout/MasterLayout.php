@@ -7,6 +7,7 @@
     <title>Seee</title>
     <link rel="stylesheet" href="Public/css/MasterLayout.css">
     <link rel="stylesheet" href="Public/css/Header.css">
+    <link rel="stylesheet" href="Public/css/Footer.css">
     <link rel="stylesheet" href="Public/css/ScrollUp.css">
     <link rel="stylesheet" href="Public/css/ShowDetailContainer.css">
     <link rel="stylesheet" href="Public/css/<?php echo $data['Page']; ?>.css  ">
@@ -18,6 +19,7 @@
         require_once "./MVC/Views/Partitions/Header.php";
         require_once './MVC/Views/Frontend/'.$data["Page"].'.php';
         require_once './MVC/Views/Partitions/ScrollUp.php';
+        require_once './MVC/Views/Partitions/Footer.php';
     ?>
 
         <script src="Public/js/Header.js"></script>

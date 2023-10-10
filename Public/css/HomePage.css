@@ -1,62 +1,217 @@
-*{
+* {
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
     padding: 0;
     margin: 0;
-}
-body{
+  }
+  body {
     padding-top: 100px;
-}
-header{
+  }
+  header {
     top: 0px;
     position: fixed;
     display: flex;
     background: white;
-    border-bottom: 1px solid black;
-}
-header .logo{
+  }
+  header .logo {
     height: 9vh;
     margin: 15px;
-}
-header ul{
+  }
+  header ul {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 800px;
-}
-header ul li{
+  }
+  header ul li {
     margin: 0px 13px;
     font-size: 18px;
     cursor: pointer;
     text-align: center;
-}
-.dndk{
+  }
+  .dndk {
     width: 150px;
     padding: 10px 0px;
     border-radius: 30px;
     font-weight: bold;
     margin-left: 15px;
-}
-.loginBtn{
+  }
+  .loginBtn {
     background-color: black;
     color: white;
-}
-.registerBtn{
+  }
+  .registerBtn {
     background-color: rgb(240, 235, 235);
     color: black;
     margin-left: 10px;
-}
-main{
+  }
+  main {
     height: 80vh;
-    border: 1px solid black;
-}
-main div{
-    height: 100%;
-    width: 100%;
+    /* background: url(http://dl10.glitter-graphics.net/pub/729/729480ajm0oio0we.gif); */
+  }
+  .main_homepage {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 105px;
+  }
+  .main1 {
+    z-index: 1;
+    margin-left: 70px;
+    gap: 20px;
+    height: 300px;
+    width: 945px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-}
+  }
+  .main2 {
+    z-index: 1;
+    width: 1134px;
+    height: 345px;
+    position: relative;
+    margin-right: 50px;
+  }
+  .image_home,
+  .image_home1,
+  .image_home2,
+  .image_home3 {
+    border-radius: 20px;
+    position: absolute;
+    width: 200px;
+    height: 310px;
+    overflow: hidden;
+    object-position: center;
+    object-fit: cover;
+  }
+  .image_home {
+    right: 42px;
+    border: 1px solid black;
+  }
+  .image_home1 {
+    right: 516px;
+    top: 35px;
+  }
+  .image_home2 {
+    right: 358px;
+  }
+  .image_home3 {
+    right: 200px;
+    top: 35px;
+  }
+  .cloud,
+  .cloud1,
+  .cloud4,
+  .cloud6,
+  .cloud7 {
+    z-index: 0;
+    width: 100px;
+    height: 100px;
+    background: url(https://www.emojiall.com/en/svg-to-png/emojitwo/640/2601.png)
+      center no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 0;
+  }
+  .cloud2,
+  .cloud3,
+  .cloud5,
+  .cloud8,
+  .cloud9 {
+    z-index: 0;
+    width: 100px;
+    height: 100px;
+    background: url(https://www.emojiall.com/en/svg-to-png/emojitwo/640/2601.png)
+      center no-repeat;
+    background-size: cover;
+    position: absolute;
+    right: 0;
+  }
+  .cloud {
+    animation: cloudMove 10s linear infinite;
+    top: 12%;
+  }
+  .cloud1 {
+    top: 30%;
+    animation: cloudMove 15s linear infinite;
+  }
+  .cloud4 {
+    top: 75%;
+    animation: cloudMove 5s linear infinite;
+  }
+  .cloud2 {
+    top: 45%;
+    animation: cloudMove1 12s linear infinite;
+  }
+  .cloud3 {
+    top: 60%;
+    animation: cloudMove1 8s linear infinite;
+  }
+  .cloud5 {
+    top: 85%;
+    animation: cloudMove1 7s linear infinite;
+  }
+  .cloud6 {
+    top: 55%;
+    animation: cloudMove 20s linear infinite;
+  }
+  .cloud7 {
+    top: 23%;
+    animation: cloudMove 18s linear infinite;
+  }
+  .cloud8 {
+    top: 50%;
+    animation: cloudMove1 6s linear infinite;
+  }
+  .cloud9 {
+    top: 40%;
+    animation: cloudMove1 14s linear infinite;
+  }
+  
+  @keyframes cloudMove {
+    0% {
+      left: 0; /* Đưa đám mây ra khỏi màn hình bên trái */
+    }
+    100% {
+      left: 90%; /* Di chuyển đám mây ra khỏi màn hình bên phải */
+    }
+  }
+  @keyframes cloudMove1 {
+    0% {
+      right: 0; /* Đưa đám mây ra khỏi màn hình bên trái */
+    }
+    100% {
+      right: 100%; /* Di chuyển đám mây ra khỏi màn hình bên phải */
+    }
+  }
+  .open {
+    margin-top: 50px;
+  }
+  button {
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    height: 50px;
+    width: 150px;
+    background: rgb(87, 169, 240);
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+  }
+  p {
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 30px;
+    color: rgb(19 118 203);
+  }
+  h1 {
+    font-size: 50px;
+    color: rgb(70 109 142);
+  }
+  h2 {
+    font-size: 40px;
+    color: rgb(70 109 142);
+  }

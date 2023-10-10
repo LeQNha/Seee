@@ -1,6 +1,7 @@
 
     <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <!-- <link rel="stylesheet" href="./Public/css/ImagesContainer.css"> -->
     <div class="banner">
         <div class="user-avatar">
             <div class="user-avatar-img-container">
@@ -12,8 +13,8 @@
     </div>
     <div class="short-introduction">
         <h1 class="username"><?php echo $_SESSION['Login']['username'] ?></h1>
-        <p class="user-job" style="color: grey;">st</p>
-        <p class="number-follower">100 người theo dõi</p>
+        <!-- <p class="user-job" style="color: grey;">st</p> -->
+        <p class="number-follower"><?php echo $data['FollowerNumber'] ?> người theo dõi</p>
         <a href="index?controller=PersonalPage&action=EditProfile">Chỉnh sửa hồ sơ cá nhân</a>
     </div>
 
@@ -66,16 +67,19 @@
 
     <div class="liked-created-list">
         <ul>
-            <a href="index.php?controller=Header&action=PersonalPage&listShowed=created"><li>Đã tạo</li></a>
-            <a href="index.php?controller=Header&action=PersonalPage&listShowed=liked"><li>Yêu thích</li></a>
+            <li><i class="fa-solid fa-layer-group"></i></li>
+            <a href="index.php?controller=Header&action=PersonalPage&listShowed=liked"><li class="show-liked-list">Yêu thích</li></a>
+            <a href="index.php?controller=Header&action=PersonalPage&listShowed=created"><li class="show-created-list">Đã tạo</li></a>
+            <!-- <li onclick="GetShowList('liked')" class="showed-list-button show-liked-list">Yêu thích</li>
+            <li onclick="GetShowList('created')" class="showed-list-button show-created-list">Đã tạo</li> -->
+            
         </ul>
         <div id="liked-created-images">
-            
+            <div id="show-list-text-content" hidden><?php echo $data['ListShowed'] ?></div>
             <?php 
                 include "./MVC/Views/Partitions/ImagesContainer.php"; 
             ?>
         </div>
-        <div></div>
     </div>
     
     <?php include "./MVC/Views/Partitions/ShowDetailContainer.php"; ?>

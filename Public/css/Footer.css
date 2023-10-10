@@ -1,0 +1,73 @@
+.footer {
+    background-color: rgb(17, 240, 140) ;
+    padding-bottom: 40px;
+    margin-top: 40px;
+  }
+  .footer-wrapper {
+    padding: 30px 0px 48px;
+    margin: 0px auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 16px;
+    justify-content: space-between;
+  }
+  .col {
+   display: flex;
+   width: 260px; 
+   /* background-color: yellowgreen; */
+   flex-direction: column;
+   /* align-items: center; */
+   gap : 17px;
+   line-height: 1.5;
+  }
+  .colmain {
+    width: 600px;
+    text-align: center;
+  }
+  .title {
+    font-size: 25px;
+  }
+  .support {
+    margin-left: 2px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .title, .support {
+    color: rgb(0, 0, 0);
+  }
+  .title_colmain {
+    text-align: center;
+    font-family: "Pinterest Sans", Helvetica, Arial, sans-serif;
+  }
+  .license {
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 20px;
+    float: right;
+  }
+  .image_logo {
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    object-position: center;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .icon {
+    margin-left: 20px;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    object-position: center;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .common {
+    display: flex;
+    align-items: center;
+  }
+  p {
+    height: 30px;
+  }

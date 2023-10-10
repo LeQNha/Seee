@@ -6,6 +6,8 @@
     list-style: none;
     outline: none; border: none;
     box-sizing: border-box;
+    scroll-behavior: smooth;
+    
 }
 body{
     font-family: "Nunito",sans-serif;

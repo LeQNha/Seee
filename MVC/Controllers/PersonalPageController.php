@@ -57,5 +57,48 @@
             ];
             $this->View('Layout.MasterLayout', $data);
         }
+
+        public function GetShowedList(){
+            $username = $_SESSION['Login']['username'];
+
+            $listShowed = "liked";
+            if(isset($_GET['listShowed'])){
+                $listShowed = $_GET['listShowed'];
+            }
+
+            //hiển thị các ảnh thích/ đã tạo
+            $sql = "SELECT * FROM imgupload i INNER JOIN liked_images l
+                    ON i.path = l.path WHERE l.username = '$username';         
+                    ";
+            $listShowed = "liked";
+            if(isset($_GET['listShowed'])){
+                $listShowed = $_GET['listShowed'];
+            }
+            if($listShowed == 'created'){
+                $sql = "SELECT * FROM imgupload 
+                        WHERE username = '$username';         
+                        ";
+            }
+            $result = $this->imageModel->DoQuery($sql);
+
+            $imagePath = '';;
+            $imageTitle = '';
+            $images = [];
+            if($result->num_rows > 0){
+                foreach($result as $row){
+                    $imagePath = $row['path'];
+                    $imageTitle = $row['title'];
+                    array_push($images, ['path'=>$imagePath,'title'=>$imageTitle] );
+                }
+
+                echo json_encode($images);
+            }else{
+                if($listShowed == 'liked'){
+                    echo 'Chưa yêu thích ảnh nào';
+                }else if($listShowed == 'created'){
+                    echo 'Chưa tạo ảnh nào';
+                }
+            }
+        }
     }
 ?>

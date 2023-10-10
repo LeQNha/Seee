@@ -33,6 +33,7 @@ class HeaderController extends BaseController
     public function PersonalPage()
     {
         $username = $_SESSION['Login']['username'];
+
         //hiển thị các ảnh thích/ đã tạo
         $sql = "SELECT * FROM imgupload i INNER JOIN liked_images l
                 ON i.path = l.path WHERE l.username = '$username';         
@@ -47,6 +48,7 @@ class HeaderController extends BaseController
                     ";
         }
         $result_1 = $this->imageModel->DoQuery($sql);
+        
         //Show follow
         $sql = "SELECT followed, avatar FROM follow f INNER JOIN users u ON f.followed = u.username WHERE follower = '$username'";
         $result_2 = $this->userModel->DoQuery($sql);
@@ -66,10 +68,15 @@ class HeaderController extends BaseController
             }
         }
         
+        //số người theo dõi
+        $sql = "SELECT follower FROM follow WHERE followed = '$username'";
+        $followerNumber = mysqli_num_rows($this->userModel->DoQuery($sql));
+        
 
         $data = [
                 'Page'=>'PersonalPage',
                 'Rows'=>$result_1,
+                'FollowerNumber'=>$followerNumber,
                 'ListShowed'=>$listShowed,
                 'FollowList'=>$followList
                 ];

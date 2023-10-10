@@ -19,7 +19,7 @@
             if(isset($_GET['uploader'])){
             $uploader = $_GET['uploader'];
 
-            $sql = "SELECT * FROM users INNER JOIN imgupload ON users.username = imgupload.username WHERE users.username = '$uploader'";
+            $sql = "SELECT * FROM users WHERE username = '$uploader'";
             $result = $this->imageModel->DoQuery($sql);
 
             $sql = "SELECT * FROM imgupload WHERE username = '$uploader'";
