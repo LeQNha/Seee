@@ -73,57 +73,31 @@
 .follow-list{
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-basis: calc(100% / 6);
+    /* flex-direction: row; */
 }
 .showed-list-button{
   border-bottom: 3px solid black;
   background: linear-gradient(to top, rgb(248, 246, 246), white);
 }
-/* .swiper-wrapper{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-} */
-.swiper {
-    width: 80%;
-    height: 210px;
-    margin-top: 30px;
-  }
-
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .swiper {
-    margin-left: auto;
-    margin-right: auto;
-  }
 
   .followed-user{
-    height: 100%;
-    width: 100%;
+    /* height: 100%; */
+    /* width: 100%; */
+    margin-top: 30px;
+    width: calc(16.67% - 10px); /* Sử dụng calc để tính kích thước cố định cho mỗi phần tử */
+    text-align: center;
+    font-size: 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
   .followed-user-avatar-container{
-    height: 110px;
-    width: 110px;
+    height: 120px;
+    width: 120px;
     border-radius: 50%;
     overflow: hidden;
   }
@@ -143,10 +117,13 @@
   }
 
   .liked-created-list{
-    margin-top: 30px;
+    margin-top: 120px;
   }
   .liked-created-list ul{
-    margin-left: 50px;
+    margin-left: 4%;
+    width: 92%;
+    border-bottom: 1px solid rgb(212, 202, 202);
+
   }
   .liked-created-list ul li{
     color: black;

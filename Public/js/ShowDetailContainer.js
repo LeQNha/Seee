@@ -21,12 +21,26 @@ var detailUploaderAvatar = document.querySelector('.detail-avatar');
 var imgId = "";
 function ShowDetails(pid){
 
+  //ngăn trang web cuộn
+  document.body.style.overflow = "hidden";
+
+  //close show details
+  var closeShowDetailsButton = document.querySelector('.close-show-details');
+  closeShowDetailsButton.addEventListener('click',function(){
+
+    var showDetailsContainer = document.querySelector('.show-details-container');
+    // showDetailsContainer.style.display = "none";
+    showDetailsContainer.classList.remove("show-details-container-show-up");
+    document.body.style.overflow = "auto";
+  });
+
   xhr.open('POST', 'index.php?controller=ShowDetailContainer&action=GetImage');
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onload = function() {
     console.log(xhr.responseText);
     var receivedData = JSON.parse(xhr.responseText);
-    showDetailsContainer.style.display = "block";
+    // showDetailsContainer.style.display = "block";
+    showDetailsContainer.classList.add("show-details-container-show-up");
     // imgDetailsContainer.innerHTML = receivedData.title;
     detailTile.textContent = receivedData.title;
     detailImg.src = "./Public/img/"+receivedData.path;
@@ -43,17 +57,7 @@ function ShowDetails(pid){
 
   xhr.send("pid=" + encodeURIComponent(pid));
 
-  //ngăn trang web cuộn
-  document.body.style.overflow = "hidden";
-
-  //close show details
-  var closeShowDetailsButton = document.querySelector('.close-show-details');
-  closeShowDetailsButton.addEventListener('click',function(){
-
-    var showDetailsContainer = document.querySelector('.show-details-container');
-    showDetailsContainer.style.display = "none";
-    document.body.style.overflow = "auto";
-  });
+  
 }
 
 var followStatus = document.getElementById('follow-status');

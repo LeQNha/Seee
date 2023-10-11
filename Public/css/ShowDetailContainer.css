@@ -1,14 +1,23 @@
 .show-details-container{
     position: fixed;
     background: rgba(0, 0, 0, 0.859);
-    z-index: 20;
+    z-index: 0;
     top: 0px;
     height: 100vh;
     width: 100%;
     display: none;
+    opacity: 0.5;
 
+    transition: opacity 0.5s;
     overflow-y: auto;
     white-space: normal;
+}
+
+.show-details-container-show-up{
+    display: block;
+    opacity: 1;
+    z-index: 20;
+    transition: opacity 0.5s;
 }
 .show-details{
     position: absolute;

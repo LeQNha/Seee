@@ -1,15 +1,30 @@
 var showLikedListButton = document.querySelector('.show-liked-list');
 var showCreatedListButton = document.querySelector('.show-created-list');
+var showFollowedListButton = document.querySelector('.show-followed-list');
 window.onload = function(){
         showedList = document.getElementById('show-list-text-content').textContent;
         if(showedList == 'liked'){
             showLikedListButton.classList.add('showed-list-button');
+        }else if(showedList == 'created'){
+            showCreatedListButton.classList.add('showed-list-button');
         }else{
-            showCreatedListButton.classList.add('showed-list-button')
+            showFollowedListButton.classList.add('showed-list-button');
         }
 }
 
-// var xhr = new XMLHttpRequest();
+    // var xhr = new XMLHttpRequest();
+    // function ShowList(listShowed){
+    //     console.log('click ' + listShowed);
+    //     xhr.open('GET',"index.php?controller=PersonalPage&action=GetShowedList&listShowed=" + encodeURIComponent(listShowed));
+    //     xhr.onload = function(){
+    //         if(xhr.status === 200){
+                
+                    
+    //         }else{}
+    //     };
+    //     xhr.send();
+    // }
+
 // var showedDiv = document.getElementById('liked-created-images');
 
 // function GetShowList(listShowed){
