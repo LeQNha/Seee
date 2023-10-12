@@ -43,11 +43,13 @@
                 // echo json_encode($response);
                 echo "Không được để trống!";
             }else{
-                $sql = "SELECT username, password FROM users WHERE username='$username' AND password='$password'";
+                $sql = "SELECT username, password, email FROM users WHERE username='$username' AND password='$password'";
                 $result = $this->FindUser($sql);
                 if(mysqli_num_rows($result) == 1){
                     echo "success";
                     $_SESSION['Login']['username'] = $username;
+                    $row = $result->fetch_assoc();
+                    $_SESSION['email'] = $row['email'];
                 }else{
                     echo "Sai tài khoản hoặc mật khẩu!";
                 }
@@ -79,7 +81,7 @@
                 
                     echo "success";
                     $_SESSION['Login']['username'] = $username;
-
+                    $_SESSION['email'] = $email;
                 }
             }
             

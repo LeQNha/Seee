@@ -7,7 +7,8 @@
     column-gap: 30px;
     height: auto;
     margin: 30px auto;
-
+    z-index: 3;
+    position: relative;
 }
 
 .paint{

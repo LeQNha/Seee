@@ -14,12 +14,12 @@
             </div>
             <div id="button">
                 <button id="bt1" <?php if($data['FollowButtonContent'] == 'Hủy theo dõi'){ echo 'style="background-color: rgb(217, 222, 228); color: rgb(80, 78, 103);"'; } ?> ><?php echo $data['FollowButtonContent'] ?></button>
-                <button id="bt2">Message</button>
+                <button id="bt2">Nhắn tin</button>
             </div>
             <div id="statistics">
                 <div class="line">
                     <div class="name">
-                        <h3>Project Views</h3>
+                        <h3>Ảnh đã tạo</h3>
                     </div>
                     <div class="number">
                         <p>539,381</p>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="line">
                     <div class="name">
-                        <h3>Appreciations</h3>
+                        <h3>Yêu thích</h3>
                     </div>
                     <div class="number">
                         <p>32,150</p>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="line">
                     <div class="name">
-                        <h3>Followers</h3>
+                        <h3>Người theo dõi</h3>
                     </div>
                     <div class="number">
                         <p>11,163</p>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="line">
                     <div class="name">
-                        <h3>Following</h3>
+                        <h3>Đang theo dõi</h3>
                     </div>
                     <div class="number">
                         <p>338</p>

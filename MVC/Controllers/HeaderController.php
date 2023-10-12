@@ -39,6 +39,8 @@ class HeaderController extends BaseController
                 ON i.path = l.path WHERE l.username = '$username';         
                 ";
         $listShowed = "liked";
+        $result_1 = $this->imageModel->DoQuery($sql);
+        $likedImageNumber = $result_1->num_rows;
         if(isset($_GET['listShowed'])){
             $listShowed = $_GET['listShowed'];
         }
@@ -48,6 +50,10 @@ class HeaderController extends BaseController
                     ";
         }
         $result_1 = $this->imageModel->DoQuery($sql);
+        $createdImageNumber = $result_1->num_rows;
+        //số ảnh đã tạo/thích
+        
+        
         
         //Show follow
         $sql = "SELECT followed, avatar FROM follow f INNER JOIN users u ON f.followed = u.username WHERE follower = '$username'";
@@ -72,11 +78,18 @@ class HeaderController extends BaseController
         $sql = "SELECT follower FROM follow WHERE followed = '$username'";
         $followerNumber = mysqli_num_rows($this->userModel->DoQuery($sql));
         
+        //số người đang theo dõi
+        $sql = "SELECT followed FROM follow WHERE follower = '$username'";
+        $followingNumber = mysqli_num_rows($this->userModel->DoQuery($sql));
 
         $data = [
                 'Page'=>'PersonalPage',
                 'Rows'=>$result_1,
-                'FollowerNumber'=>$followerNumber,
+                'BriefInformation'=>[
+                    'FollowerNumber'=>$followerNumber,
+                    'FollowingNumber'=>$followingNumber,
+                    'LikedImageNumber'=>$likedImageNumber
+                ],
                 'ListShowed'=>$listShowed,
                 'FollowList'=>$followList
                 ];

@@ -21,6 +21,7 @@ body{
 .alert-message p{
     background: black;
     padding: 15px;
+    height: 48.4px;
 }
 .actions{
     position: fixed;

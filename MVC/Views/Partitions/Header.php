@@ -1,13 +1,24 @@
 
 <header class="header">
-        <div class="top-bar">
+        <!-- <div class="top-bar">
             <ul class="nav-bar">
                 <a href="index.php?controller=HomePage&action=MainPage"><li><h2>Seee</h2></li></a>
                 <li>About</li>
                 <li>Rank</li>
                 <li>Challenge</li>
                 <li>Event</li>
-            </ul>
+            </ul>  
+        </div> -->
+        <div class="second-bar">
+            <a href="index.php?controller=HomePage&action=MainPage" id="logo"><li><h2>Seee</h2></li></a>
+            <form action="#" class="search-form">
+                <input type="search" name="searchBox" placeholder="Tìm kiếm" autocomplete="off" id="search-box" style="outline: none;">
+                <label for="search-box" class="fas-fa-search" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></label>        
+            </form>
+            <div class="btn-container">
+                <a href="index.php?controller=Header&action=UploadImage" class="btn btn-createImg">Tạo ảnh</a>
+                <a href="index.php?controller=Header&action=PersonalPage&listShowed=liked" class="btn btn-Info">Trang cá nhân</a>
+            </div>
             <ul class="account">
                     
                     <li><i class="fa-solid fa-bell"></i></li>
@@ -32,15 +43,8 @@
                     <hr>
                     <a href="index.php?controller=Header&action=logOut"><li>Đăng xuất</li></a>
                 </ul>
-            </div>   
+            </div> 
         </div>
-        <div class="second-bar">
-            <form action="#" class="search-form">
-                <input type="search" name="searchBox" placeholder="Tìm kiếm" autocomplete="off" id="search-box" style="outline: none;">
-                <label for="search-box" class="fas-fa-search" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></label>        
-            </form>
-            <a href="index.php?controller=Header&action=UploadImage">Tạo ảnh</a>
-            <a href="#">Bộ sưu tập</a>
-        </div>
+            
 </header>
     

@@ -14,8 +14,10 @@
     </div>
     <div class="short-introduction">
         <h1 class="username"><?php echo $_SESSION['Login']['username'] ?></h1>
+        <h3><?php echo $_SESSION['email'] ?></h3>
         <!-- <p class="user-job" style="color: grey;">st</p> -->
-        <p class="number-follower"><?php echo $data['FollowerNumber'] ?> người theo dõi</p>
+        <p class="number-follower"><?php echo $data['BriefInformation']['FollowerNumber']; ?> người theo dõi - <?php echo $data['BriefInformation']['FollowingNumber']; ?> đang theo dõi</p>
+        <p><?php echo $data['BriefInformation']['LikedImageNumber']; ?> ảnh đã tải lên</p>
         <a href="index?controller=PersonalPage&action=EditProfile">Chỉnh sửa hồ sơ cá nhân</a>
     </div>
 

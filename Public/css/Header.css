@@ -22,14 +22,15 @@ header{
     display: inline-block;
     padding: 17px;
 }
-.top-bar .account{
+.account{
     display: flex;
     justify-content: center;
     align-items: center;
     float: right;
     margin-right: 20px;
+    margin-left: 20px;
 }
-.top-bar .account li{
+.account li{
     margin-left: 14px;
 }
 .account li.user-avatar-container{
@@ -100,7 +101,7 @@ header{
 }
 .second-bar{
     display: flex;
-    /* justify-content: space-around; */
+    justify-content: space-around;
     width: 100%;
     align-items: center;
     padding-top: 20px;
@@ -110,22 +111,25 @@ header{
     background: rgba(255, 255, 255, 0);
     outline: none;
 }
+/* #logo{
+    margin-left: 50px;
+} */
 .search-form{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 950px;
-    height: 50px;
+    width: 750px;
+    height: 40px;
     border: 1px solid black;
     border-radius: 15px;
 
     background: rgb(249, 246, 246);
-    margin-right: 50px;
-    margin-left: 70px;
+    /* margin-right: 50px;
+    margin-left: 70px; */
 }
 .search-form input{
-    width: 880px;
-    height: 25px;
+    width: 680px;
+    height: 15px;
     background: rgb(249, 246, 246);
     font-size: 20px;
 }
@@ -133,15 +137,25 @@ header{
     cursor: pointer;
     font-size: 20px;
 }
-.second-bar a{
+.btn-container{
+    display: flex;
+}
+.btn{
     color: white;
     font-size: 20px;
     background: rgb(52, 51, 51);
     height: 35px;
-    width: 120px;
     margin-left: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 15px;
+}
+.btn-createImg{
+
+    width: 120px;
+}
+.btn-Info{
+    width: fit-content;
+    padding: 0 10px;
 }

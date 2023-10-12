@@ -55,6 +55,17 @@
   position: relative;
   margin-bottom: 70px;
 }
+.short-introduction h1{
+  font-size: 40px;
+  opacity: 0.8;
+}
+.short-introduction h3{
+  position: absolute;
+  font-size: 22px;
+  font-weight: lighter;
+  left: 300px;
+  top: 10px
+}
 .short-introduction a{
     color: black;
     background: rgb(239, 235, 235);

@@ -33,7 +33,8 @@
                 $result = $this->imageModel->DoQuery("SELECT * FROM imgupload INNER JOIN image_keywords  
                                                       ON imgupload.path = image_keywords.path 
                                                       WHERE username <> '$username' AND (keyword LIKE '%$q%' OR title LIKE '%$q%') 
-                                                      GROUP BY imgupload.path");
+                                                      GROUP BY imgupload.path 
+                                                      ORDER BY RAND()");
                                                       
             }else{
                 $result = $this->imageModel->DoQuery("SELECT * FROM imgupload WHERE username <> '$username'");
