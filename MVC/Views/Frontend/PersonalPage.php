@@ -1,5 +1,4 @@
 
-<link rel="stylesheet" href="./Public/css/ImagesContainer.css">
     <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <!-- <link rel="stylesheet" href="./Public/css/ImagesContainer.css"> -->
@@ -41,20 +40,9 @@
             <?php 
                 if($data['ListShowed'] != 'followed'){ ?>
 
-                    <div class="container">
                         <?php
-                            $rows = $data['Rows'];
-                            
-                            foreach($rows as $row){ ?>
-                                    <div class="paint" onclick="ShowDetails('<?php echo $row['path']; ?>')">
-                                        <p class="image-name"><?php echo $row['path'] ?></p>
-                                        <img src="Public/img/<?php echo $row["path"] ?> " width="350px" alt="" loading="lazy">
-                                        <!-- <h3> <?php echo $row["title"]; ?> </h3> -->
-                                        
-                                    </div>
-                            <?php }
+                            include './MVC/Views/Partitions/ImagesContainer.php'
                         ?>
-                    </div>
 
                <?php }else{ 
                     if(count($data['FollowList']) > 0){?> 

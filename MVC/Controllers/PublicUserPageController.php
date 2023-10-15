@@ -22,8 +22,12 @@
             $sql = "SELECT * FROM users WHERE username = '$uploader'";
             $result = $this->imageModel->DoQuery($sql);
 
-            $sql = "SELECT * FROM imgupload WHERE username = '$uploader'";
+            $sql = "SELECT * FROM imgupload i INNER JOIN users u  
+                    ON i.username = u.username 
+                    WHERE i.username = '$uploader'";
             $rows = $this->imageModel->DoQuery($sql);
+
+            $imageUploadNumber = $rows->num_rows;
 
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
@@ -53,6 +57,15 @@
                 $followButtonContent = "Theo dõi";
             }
 
+            $sql = "SELECT path FROM liked_images WHERE username = '$username'";
+            $likedImageNumber = $this->imageModel->DoQuery($sql)->num_rows;
+
+            $sql = "SELECT followed FROM follow WHERE follower = '$username'";
+            $followingNumber = $this->imageModel->DoQuery($sql)->num_rows;
+
+            $sql = "SELECT follower FROM follow WHERE followed = '$username'";
+            $followerNumber = $this->imageModel->DoQuery($sql)->num_rows;
+
             $data = [
                 "Page"=>"PublicUserPage",
                 "UploaderData"=>[
@@ -63,7 +76,11 @@
                     "uploaderOcupation"=>$uploaderOcupation,
                     "uploaderLocation"=>$uploaderLocation,
                     "uploaderIntroduction"=>$uploaderIntroduction,
-                    "uploaderAvatar"=>$uploaderAvatar
+                    "uploaderAvatar"=>$uploaderAvatar,
+                    "ImageUploadNumber"=>$imageUploadNumber,
+                    "LikedImageNumber"=>$likedImageNumber,
+                    "FollowerNumber"=>$followerNumber,
+                    "FollowingNumber"=>$followingNumber
                 ],
                 "FollowButtonContent"=>$followButtonContent,
                 "Rows"=>$rows

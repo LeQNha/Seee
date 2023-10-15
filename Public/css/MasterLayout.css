@@ -13,3 +13,6 @@ body{
     font-family: "Nunito",sans-serif;
     padding-top: 95px;
 }
+body > :not(.show-details-container):not(header) {
+    z-index: 1;
+}

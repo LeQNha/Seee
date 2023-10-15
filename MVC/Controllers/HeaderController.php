@@ -36,7 +36,10 @@ class HeaderController extends BaseController
 
         //hiển thị các ảnh thích/ đã tạo
         $sql = "SELECT * FROM imgupload i INNER JOIN liked_images l
-                ON i.path = l.path WHERE l.username = '$username';         
+                ON i.path = l.path
+                INNER JOIN users u
+                ON i.username = u.username
+                 WHERE l.username = '$username';         
                 ";
         $listShowed = "liked";
         $result_1 = $this->imageModel->DoQuery($sql);

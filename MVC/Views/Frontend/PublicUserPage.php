@@ -22,7 +22,7 @@
                         <h3>Ảnh đã tạo</h3>
                     </div>
                     <div class="number">
-                        <p>539,381</p>
+                        <p><?php echo $data['UploaderData']['ImageUploadNumber']; ?></p>
                     </div>
                     
                 </div>
@@ -31,7 +31,7 @@
                         <h3>Yêu thích</h3>
                     </div>
                     <div class="number">
-                        <p>32,150</p>
+                        <p><?php echo $data['UploaderData']['LikedImageNumber']; ?></p>
                     </div>
                     
                 </div>
@@ -40,7 +40,7 @@
                         <h3>Người theo dõi</h3>
                     </div>
                     <div class="number">
-                        <p>11,163</p>
+                        <p><?php echo $data['UploaderData']['FollowerNumber']; ?></p>
                     </div>
                     
                 </div>
@@ -49,7 +49,7 @@
                         <h3>Đang theo dõi</h3>
                     </div>
                     <div class="number">
-                        <p>338</p>
+                        <p><?php echo $data['UploaderData']['FollowingNumber']; ?></p>
                     </div>
                     
                 </div>
@@ -59,17 +59,37 @@
             </div>
         </div>
         <div id="aside2">
-            <div class="container">
-                <?php
-                    foreach($data['Rows'] as $row){ ?>
-                        <div class="paint" onclick="ShowDetails('<?php echo $row['path']; ?>')">
-                            <p class="image-name"><?php echo $row['path'] ?></p>
-                            <img src="./Public/img/<?php echo $row["path"] ?> " width="350px" alt="">
-                            <!-- <h3> <?php echo $row["title"]; ?> </h3> -->
-                        </div>
-                <?php }
-                ?>
-            </div>
+                <div class="container">
+                    <?php
+                        $rows = $data['Rows'];
+                        if($rows->num_rows != 0){
+                            foreach($rows as $row){ ?>
+                                    <div class="paint" onclick="ShowDetails('<?php echo $row['path']; ?>')">
+                                        <p class="image-name"><?php echo $row['path'] ?></p>
+                                        <img class="main-image" src="Public/img/<?php echo $row["path"] ?> " width="350px" alt="" loading="lazy">
+                                        <!-- <div class="image-uploader">
+                                            <div class="image-uploader-avatar-container">
+                                                <img src="./Public/profileimg/<?php echo $row['avatar'] ?>" alt="">
+                                            </div>
+                                            <span class="uploader-username"> <?php echo $row['username']; ?></span>
+                                        </div> -->
+                                        <h4 class="image-title"> <?php echo $row["title"]; ?> </h4>
+
+                                            <?php
+                                                $path = $row['path'];
+                                                $sqll = "SELECT path FROM liked_images WHERE path = '$path'";
+                                                $likeNumber = mysqli_num_rows(mysqli_query($conn, $sqll));
+                                                $likeNumberFomatted = number_format($likeNumber,0,'',' ');
+                                            ?>
+                                        <i class="fa-solid fa-thumbs-up like-number"><span> <?php if($likeNumber<100000){ echo ' '.$likeNumberFomatted; }else{ echo ' 100 000+'; } ?></span></i>
+                                    </div>
+                            <?php } 
+                        }else{
+                            echo '<h2 style="opacity: 0.7;">Không tìm thấy kết quả</h2>';
+                        }
+
+                    ?>
+                </div>
         </div>
     </div>
     <?php include "./MVC/Views/Partitions/ShowDetailContainer.php" ?>

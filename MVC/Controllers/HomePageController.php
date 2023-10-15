@@ -37,7 +37,9 @@
                                                       ORDER BY RAND()");
                                                       
             }else{
-                $result = $this->imageModel->DoQuery("SELECT * FROM imgupload WHERE username <> '$username'");
+                $result = $this->imageModel->DoQuery("SELECT * FROM imgupload i INNER JOIN users u  
+                                                      ON i.username = u.username
+                                                      WHERE i.username <> '$username' ORDER BY RAND();");
             }
             $data = [
                 "Page"=>"MainPage",

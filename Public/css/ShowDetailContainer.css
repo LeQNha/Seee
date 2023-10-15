@@ -1,23 +1,27 @@
 .show-details-container{
+    
     position: fixed;
     background: rgba(0, 0, 0, 0.859);
     z-index: 0;
     top: 0px;
     height: 100vh;
     width: 100%;
-    /* display: none; */
     opacity: 0;
 
     /* transition: opacity 0.1s ease; */
-    overflow-y: auto;
+    overflow-y: none;
     white-space: normal;
+    transform: scale(0.8);
+    display: none;
 }
 
 .show-details-container-show-up{
-    /* display: block; */
     opacity: 1;
     z-index: 20;
-    transition: opacity 0.2s ease;
+    transition: all 0.3s ease;
+    /* display: block; */
+    overflow-y: auto;
+    transform: scale(1);
 }
 .show-details{
     position: absolute;

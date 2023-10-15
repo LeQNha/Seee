@@ -19,7 +19,9 @@
         require_once "./MVC/Views/Partitions/Header.php";
         require_once './MVC/Views/Frontend/'.$data["Page"].'.php';
         require_once './MVC/Views/Partitions/ScrollUp.php';
-        require_once './MVC/Views/Partitions/Footer.php';
+        if($data["Page"] != 'MainPage'){
+            require_once './MVC/Views/Partitions/Footer.php';
+        }
     ?>
 
         <script src="Public/js/Header.js"></script>

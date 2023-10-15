@@ -29,8 +29,12 @@ function ShowDetails(pid){
   closeShowDetailsButton.addEventListener('click',function(){
 
     var showDetailsContainer = document.querySelector('.show-details-container');
-    // showDetailsContainer.style.display = "none";
-    showDetailsContainer.classList.remove("show-details-container-show-up");
+    showDetailsContainer.style.display = "none";
+    showDetailsContainer.classList.add("show-details-container-show-up");
+    setTimeout(function () {
+      showDetailsContainer.classList.remove("show-details-container-show-up");
+    }, 20); // Thời gian đếm ngược (đơn vị: mili giây)
+    
     document.body.style.overflow = "auto";
   });
 
@@ -39,8 +43,11 @@ function ShowDetails(pid){
   xhr.onload = function() {
     console.log(xhr.responseText);
     var receivedData = JSON.parse(xhr.responseText);
-    // showDetailsContainer.style.display = "block";
-    showDetailsContainer.classList.add("show-details-container-show-up");
+    showDetailsContainer.style.display = "block";
+    setTimeout(function () {
+      showDetailsContainer.classList.add("show-details-container-show-up");
+    }, 20); // Thời gian đếm ngược (đơn vị: mili giây)
+    
     // imgDetailsContainer.innerHTML = receivedData.title;
     detailTile.textContent = receivedData.title;
     detailImg.src = "./Public/img/"+receivedData.path;
