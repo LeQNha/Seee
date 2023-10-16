@@ -93,6 +93,9 @@
   border-bottom: 3px solid black;
   background: linear-gradient(to top, rgb(248, 246, 246), white);
 }
+.show-list-btn{
+  cursor: pointer;
+}
 
   .followed-user{
     /* height: 100%; */

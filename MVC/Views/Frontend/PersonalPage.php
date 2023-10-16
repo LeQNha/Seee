@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="./Public/css/ImagesContainer.css">
     <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <!-- <link rel="stylesheet" href="./Public/css/ImagesContainer.css"> -->
@@ -24,25 +24,26 @@
     <div class="liked-created-list">
         <ul>
             <li><i class="fa-solid fa-layer-group"></i></li>
-            <a href="index.php?controller=Header&action=PersonalPage&listShowed=liked"><li class="show-liked-list">Yêu thích</li></a>
+            <!-- <a href="index.php?controller=Header&action=PersonalPage&listShowed=liked"><li class="show-liked-list">Yêu thích</li></a>
             <a href="index.php?controller=Header&action=PersonalPage&listShowed=created"><li class="show-created-list">Đã tạo</li></a>
-            <a href="index.php?controller=Header&action=PersonalPage&listShowed=followed"><li class="show-followed-list">Theo dõi</li></a>
+            <a href="index.php?controller=Header&action=PersonalPage&listShowed=followed"><li class="show-followed-list">Theo dõi</li></a> -->
             <!-- <li onclick="GetShowList('liked')" class="showed-list-button show-liked-list">Yêu thích</li>
             <li onclick="GetShowList('created')" class="showed-list-button show-created-list">Đã tạo</li> -->
 
-            <!-- <li class="show-liked-list" onclick="ShowList('liked')">Yêu thích</li>
-            <li class="show-created-list" onclick="ShowList('created')">Đã tạo</li>
-            <li class="show-followed-list" onclick="ShowList('followed')">Theo dõi</li> -->
+            <li class="show-liked-list show-list-btn" onclick="ShowList('liked')">Yêu thích</li>
+            <li class="show-created-list show-list-btn" onclick="ShowList('created')">Đã tạo</li>
+            <li class="show-followed-list show-list-btn" onclick="ShowList('following')">Theo dõi</li>
             
         </ul>
         <div id="liked-created-images">
             <div id="show-list-text-content" hidden><?php echo $data['ListShowed'] ?></div>
             <?php 
                 if($data['ListShowed'] != 'followed'){ ?>
-
+                    <div class="container">
                         <?php
-                            include './MVC/Views/Partitions/ImagesContainer.php'
+                            include './MVC/Views/Partitions/Paint.php'
                         ?>
+                    </div>
 
                <?php }else{ 
                     if(count($data['FollowList']) > 0){?> 

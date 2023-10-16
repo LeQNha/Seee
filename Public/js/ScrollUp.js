@@ -10,7 +10,7 @@ window.addEventListener("scroll", function () {
   
     //header chuyển về lại white
     if(scroll >50){
-      document.querySelector('.top-bar').style.background = "white";
+      // document.querySelector('.top-bar').style.background = "white";
       document.querySelector('.second-bar').style.background = "white";
     }
   });
