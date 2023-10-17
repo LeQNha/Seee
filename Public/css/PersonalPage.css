@@ -96,6 +96,11 @@
 .show-list-btn{
   cursor: pointer;
 }
+.show-list-btn:hover{
+  background: linear-gradient(to top, rgb(248, 246, 246), white);
+  border-bottom: 3px solid rgb(113, 111, 111);
+  transition: all ease 0.1s;
+}
 
   .followed-user{
     /* height: 100%; */
@@ -137,7 +142,7 @@
   .liked-created-list ul{
     margin-left: 4%;
     width: 92%;
-    border-bottom: 1px solid rgb(212, 202, 202);
+    /* border-bottom: 1px solid rgb(212, 202, 202); */
 
   }
   .liked-created-list ul li{

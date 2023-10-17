@@ -74,8 +74,8 @@
                     WHERE l.username = '$username';         
                     ";
             $listShowed = "liked";
-            if(isset($_POST['listShowed'])){
-                $listShowed = $_POST['listShowed'];
+            if(isset($_GET['listShowed'])){
+                $listShowed = $_GET['listShowed'];
             }
             if($listShowed == 'created'){
                 $sql = "SELECT * FROM imgupload 

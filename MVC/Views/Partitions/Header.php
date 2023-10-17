@@ -12,7 +12,7 @@
         <div class="second-bar">
             <a href="index.php?controller=HomePage&action=MainPage" id="logo"><li><h2>Seee</h2></li></a>
             <form action="#" class="search-form">
-                <input type="search" name="searchBox" placeholder="Tìm kiếm" autocomplete="off" id="search-box" style="outline: none;">
+                <input type="search" name="searchBox" placeholder="Tìm kiếm" autocomplete="off" id="search-box" style="outline: none;" value="<?php if(isset($data['SearchQuery'])){ echo $data['SearchQuery'];} ?>">
                 <label for="search-box" class="fas-fa-search" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></label>        
             </form>
             <div class="btn-container">

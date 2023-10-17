@@ -43,6 +43,7 @@
             }
             $data = [
                 "Page"=>"MainPage",
+                "SearchQuery"=>$q,
                 "Rows"=>$result
             ];
 
