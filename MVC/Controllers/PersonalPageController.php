@@ -90,13 +90,13 @@
             if($result->num_rows > 0){
                 
                 
-                    if($listShowed == 'liked' || $listShowed == 'created'){
+                    if($listShowed == 'liked'){
                         //IN DANH SACH ANH DA LIKE
 
                         echo '<link rel="stylesheet" href="./Public/css/Paint.css">';
                         foreach($result as $row){
 
-                            echo '<div class="paint" onclick="ShowDetails(\''. $row['path'] . '\')">'; 
+                            echo '<div class="paint" id="'.$row['path'].'" onclick="ShowDetails(\''. $row['path'] . '\')">'; 
                             echo '<img class="main-image" src="Public/img/'.$row["path"].'" width="350px" alt="" loading="lazy"> ';
                             echo '<div class="image-uploader"> ';
                             echo '<div class="image-uploader-avatar-container"> ';
@@ -117,11 +117,34 @@
                                 $likeNumber = '100 000+';
                             }
                             
-                            echo '<i class="fa-solid fa-thumbs-up like-number"><span>'.$likeNumber.'</span></i>';
+                            echo '<i class="fa-solid fa-thumbs-up like-number"><span>'.' '.$likeNumber.'</span></i>';
                             echo '</div>';
                         }
                 
-                    }else{
+                    }else if($listShowed == 'created'){
+                        
+                        echo '<link rel="stylesheet" href="./Public/css/Paint_Created.css">';
+                        foreach($result as $row){
+
+                            echo '<div class="paint" id="'.$row['path'].'" onclick="ShowDetails_Created(\''. $row['path'] . '\')">'; 
+                            echo '<img class="main-image" src="Public/img/'.$row["path"].'" width="350px" alt="" loading="lazy"> ';
+                            echo '<h4 class="image-title">'.$row['title'].'</h4>';
+
+                            $path = $row['path'];
+                            $sqll = "SELECT path FROM liked_images WHERE path = '$path'";
+                            $likeNumber = mysqli_num_rows($this->imageModel->DoQuery($sqll));
+                            $likeNumberFomatted = number_format($likeNumber,0,'',' ');
+
+                            if($likeNumber<100000){
+                                $likeNumber = $likeNumberFomatted;
+                            }else{
+                                $likeNumber = '100 000+';
+                            }
+                            
+                            echo '<i class="fa-solid fa-thumbs-up like-number"><span>'.' '.$likeNumber.'</span></i>';
+                            echo '</div>';
+                        
+                    }}else{
                         //IN DANH SACH FOLLOW
 
                         foreach($result as $following){
@@ -143,24 +166,8 @@
                     }
             }
 
-            // $imagePath = '';;
-            // $imageTitle = '';
-            // $images = [];
-            // if($result->num_rows > 0){
-            //     foreach($result as $row){
-            //         $imagePath = $row['path'];
-            //         $imageTitle = $row['title'];
-            //         array_push($images, ['path'=>$imagePath,'title'=>$imageTitle] );
-            //     }
-
-            //     echo json_encode($images);
-            // }else{
-            //     if($listShowed == 'liked'){
-            //         echo 'Chưa yêu thích ảnh nào';
-            //     }else if($listShowed == 'created'){
-            //         echo 'Chưa tạo ảnh nào';
-            //     }
-            // }
         }
+
+        
     }
 ?>

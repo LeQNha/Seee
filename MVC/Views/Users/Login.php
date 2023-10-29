@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LoginT</title>
-    <link rel="stylesheet" href="Public/css/LoginRegister.css">
+    <link rel="stylesheet" href="./Public/css/LoginRegister.css">
 
 </head>
 <body>
@@ -21,6 +21,7 @@
                 <button type="submit" name="submit" onclick="submitLoginData()">Đăng nhập</button>
                             
                 <p class="not-have-account">Chưa có tài khoản? <a href="index?controller=HomePage&action=Register" class="switch" id="switch-to-sign-up">Đăng ký</a></p>
+                <!-- <p class="not-have-account">Chưa có tài khoản? <a href="/HomePage/Register" class="switch" id="switch-to-sign-up">Đăng ký</a></p> -->
             </form>
         </div>
     </div>

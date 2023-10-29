@@ -154,7 +154,9 @@
 
         }
 
-        
-       
+        public function RemoveImage(){
+            
+        }
+
     }
 ?>

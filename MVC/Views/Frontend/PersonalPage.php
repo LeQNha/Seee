@@ -1,3 +1,16 @@
+<!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script> -->
+
+
 <link rel="stylesheet" href="./Public/css/ImagesContainer.css">
     <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
@@ -16,7 +29,7 @@
         <h3><?php echo $_SESSION['email'] ?></h3>
         <!-- <p class="user-job" style="color: grey;">st</p> -->
         <p class="number-follower"><?php echo $data['BriefInformation']['FollowerNumber']; ?> người theo dõi - <?php echo $data['BriefInformation']['FollowingNumber']; ?> đang theo dõi</p>
-        <p><?php echo $data['BriefInformation']['LikedImageNumber']; ?> ảnh đã tải lên</p>
+        <span><span id="uploaded-image-number"><?php echo $data['BriefInformation']['UploadedImageNumber']; ?></span> ảnh đã tải lên</span>
         <a href="index?controller=PersonalPage&action=EditProfile">Chỉnh sửa hồ sơ cá nhân</a>
     </div>
 
@@ -31,20 +44,26 @@
             <li onclick="GetShowList('created')" class="showed-list-button show-created-list">Đã tạo</li> -->
 
             <li class="show-liked-list show-list-btn" onclick="ShowList('liked')">Yêu thích</li>
-            <li class="show-created-list show-list-btn" onclick="ShowList('created')">Đã tạo</li>
+            <li class="show-created-list show-list-btn" onclick="ShowList('created')">Đã tải lên</li>
             <li class="show-followed-list show-list-btn" onclick="ShowList('following')">Theo dõi</li>
             
         </ul>
         <div id="liked-created-images">
             <div id="show-list-text-content" hidden><?php echo $data['ListShowed'] ?></div>
             <?php 
-                if($data['ListShowed'] != 'followed'){ ?>
+                if($data['ListShowed'] == 'liked'){ ?>
                     <div class="container">
                         <?php
                             include './MVC/Views/Partitions/Paint.php'
                         ?>
                     </div>
 
+               <?php }else if($data['ListShowed'] == 'created'){ ?>
+                <div class="container">
+                        <?php
+                            include './MVC/Views/Partitions/Paint_Created.php';
+                        ?>
+                    </div>
                <?php }else{ 
                     if(count($data['FollowList']) > 0){?> 
                         <div class="follow-list">
@@ -70,5 +89,27 @@
                 ?>
         </div>
     </div>
+
+    <div id="confirm-remove-image-modal-overlay">
+        <div id="modal-show">
+            <div id="confirm-remove-image-modal">
+                <div id="confirm-remove-image-modal-header">
+                    <h2>Xóa ảnh</h2>
+                    <span class="close-confirm-remove-image-modal">&times;</span>
+                </div>
+                <div id="confirm-remove-image-modal-body">
+                    <p>Xóa ảnh khỏi bộ sưu tập của bạn</p>
+                </div>
+                
+                <div id="confirm-remove-image-modal-footer">
+                    <button id="remove-image-cancel-button" class="close-confirm-remove-image-modal">Hủy</button>
+                    <button id="remove-image-confirm-button">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <?php include "./MVC/Views/Partitions/ShowDetailContainer.php"; ?>
+    <?php include "./MVC/Views/Partitions/ShowDetailContainer_Created.php"; ?>
+    
+    

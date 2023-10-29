@@ -1,7 +1,6 @@
 var saveButton = document.getElementById('save');
 
 saveButton.addEventListener('click', function(){
-    console.log('click');
     showAndHide();
     var xhr = new XMLHttpRequest();
     formData = new FormData(document.getElementById('edit-profile-form'));

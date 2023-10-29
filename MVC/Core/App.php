@@ -1,4 +1,4 @@
-    <?php
+<?php
         class App{
                 protected $controller = "HomePageController";
                 protected $action = "index";

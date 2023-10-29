@@ -1,17 +1,17 @@
-<link rel="stylesheet" href="./Public/css/Paint.css">
+<link rel="stylesheet" href="./Public/css/Paint_Created.css">
 <?php
             $rows = $data['Rows'];
             if($rows->num_rows != 0){
                 foreach($rows as $row){ ?>
-                        <div class="paint" id="<?php echo $row['path']; ?>" onclick="ShowDetails('<?php echo $row['path']; ?>')">
+                        <div class="paint" id="<?php echo $row['path']; ?>" onclick="ShowDetails_Created('<?php echo $row['path']; ?>')">
                             <!-- <p class="image-name"><?php echo $row['path'] ?></p> -->
                             <img class="main-image" src="Public/img/<?php echo $row["path"] ?> " width="350px" alt="" loading="lazy">
-                            <div class="image-uploader">
+                            <!-- <div class="image-uploader">
                                 <div class="image-uploader-avatar-container">
                                     <img src="./Public/profileimg/<?php echo $row['avatar'] ?>" alt="">
                                 </div>
                                 <span class="uploader-username"> <?php echo $row['username']; ?></span>
-                            </div>
+                            </div> -->
                             <h4 class="image-title"> <?php echo $row["title"]; ?> </h4>
 
                                 <?php
@@ -21,7 +21,6 @@
                                     $likeNumberFomatted = number_format($likeNumber,0,'',' ');
                                 ?>
                             <i class="fa-solid fa-thumbs-up like-number"><span> <?php if($likeNumber<100000){ echo ' '.$likeNumberFomatted; }else{ echo ' 100 000+'; } ?></span></i>
-                            <!-- <i class="fa-regular fa-eye"><span> 135</span></i> -->
                         </div>
                 <?php } 
             }else{

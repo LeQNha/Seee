@@ -15,9 +15,9 @@
                 <input type="search" name="searchBox" placeholder="Tìm kiếm" autocomplete="off" id="search-box" style="outline: none;" value="<?php if(isset($data['SearchQuery'])){ echo $data['SearchQuery'];} ?>">
                 <label for="search-box" class="fas-fa-search" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></label>        
             </form>
-            <div class="btn-container">
-                <a href="index.php?controller=Header&action=UploadImage" class="btn btn-createImg">Tạo ảnh</a>
-                <a href="index.php?controller=Header&action=PersonalPage&listShowed=liked" class="btn btn-Info">Trang cá nhân</a>
+            <div class="button-container">
+                <a href="index.php?controller=Header&action=UploadImage" class="button button-createImg">Tạo ảnh</a>
+                <a href="index.php?controller=Header&action=PersonalPage&listShowed=liked" class="button button-Info">Trang cá nhân</a>
             </div>
             <ul class="account">
                     

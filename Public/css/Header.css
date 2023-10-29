@@ -140,10 +140,10 @@ header{
     cursor: pointer;
     font-size: 20px;
 }
-.btn-container{
+.button-container{
     display: flex;
 }
-.btn{
+.button{
     color: white;
     font-size: 20px;
     background: rgb(52, 51, 51);
@@ -154,11 +154,11 @@ header{
     align-items: center;
     border-radius: 15px;
 }
-.btn-createImg{
+.button-createImg{
 
     width: 120px;
 }
-.btn-Info{
+.button-Info{
     width: fit-content;
     padding: 0 10px;
 }

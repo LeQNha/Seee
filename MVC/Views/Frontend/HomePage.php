@@ -15,6 +15,8 @@
             <li>Liên lạc</li>
             <a class="dndk loginBtn" href="index.php?controller=HomePage&action=Login"><li >Đăng nhập</li></a>
             <a class="dndk registerBtn" href="index.php?controller=HomePage&action=Register"><li>Đăng kí</li></a>
+            <!-- <a class="dndk loginBtn" href="/HomePage/Login"><li >Đăng nhập</li></a>
+            <a class="dndk registerBtn" href="index.php?controller=HomePage&action=Register"><li>Đăng kí</li></a> -->
         </ul>
     </header>
     <main>

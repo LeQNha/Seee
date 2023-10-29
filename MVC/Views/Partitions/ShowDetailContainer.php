@@ -16,6 +16,10 @@
                     <i class="fa-regular fa-heart" id="save-button"></i>
                     <span>Lưu</span>
                 </li>
+                <li>
+                    <i class="fa-solid fa-share" id="share-icon"></i>
+                    <span>Chia sẻ</span>
+                </li>
             </ul>
         <div class="show-details">
                 <div class="uploader">

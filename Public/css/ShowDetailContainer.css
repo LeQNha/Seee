@@ -86,11 +86,22 @@
     padding: 10px 10px;
     border-radius: 50%;
 }
+.behavior-list li:hover{
+    transform: scale(1.1);
+    transition: all ease 0.2s;
+}
 .behavior-list li i.fa-xmark{
     padding: 11px 14px;
-    background: rgb(69, 65, 65);
+    background: transparent;
     color: white;
+    transform: scale(1.2);
+    margin-left: 25px;
+    margin-bottom: 25px;
+    /* border-radius: 0%; */
 }
+/* .behavior-list li i.fa-xmark:hover{
+    background: rgb(153, 142, 142);
+} */
 .behavior-list li i.fa-thumbs-up{
     color: blue;
 }
@@ -100,6 +111,7 @@
 #like-icon{
     display: none;
 }
+
 .behavior-list li i.fa-heart{
     color: red;
 }

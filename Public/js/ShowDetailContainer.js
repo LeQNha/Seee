@@ -20,7 +20,6 @@ var detailUploaderAvatar = document.querySelector('.detail-avatar');
 
 var imgId = "";
 function ShowDetails(pid){
-
   //ngăn trang web cuộn
   document.body.style.overflow = "hidden";
 
@@ -33,7 +32,7 @@ function ShowDetails(pid){
     showDetailsContainer.classList.add("show-details-container-show-up");
     setTimeout(function () {
       showDetailsContainer.classList.remove("show-details-container-show-up");
-    }, 20); // Thời gian đếm ngược (đơn vị: mili giây)
+    }, 1); // Thời gian đếm ngược (đơn vị: mili giây)
     
     document.body.style.overflow = "auto";
   });

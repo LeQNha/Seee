@@ -52,9 +52,15 @@ class HeaderController extends BaseController
                     WHERE username = '$username';         
                     ";
         }
+        // if($listShowed == 'following'){
+        //     $sql = "SELECT followed, avatar FROM follow f INNER JOIN users u ON f.followed = u.username WHERE follower = '$username'";
+        // }
+            
         $result_1 = $this->imageModel->DoQuery($sql);
-        $createdImageNumber = $result_1->num_rows;
+        $uploadedImageNumber = $result_1->num_rows;
         //số ảnh đã tạo/thích
+        $result_2 = $this->imageModel->DoQuery("SELECT * FROM imgupload WHERE username = '$username';");
+        $uploadedImageNumber = $result_2->num_rows;
         
         
         
@@ -91,7 +97,8 @@ class HeaderController extends BaseController
                 'BriefInformation'=>[
                     'FollowerNumber'=>$followerNumber,
                     'FollowingNumber'=>$followingNumber,
-                    'LikedImageNumber'=>$likedImageNumber
+                    'LikedImageNumber'=>$likedImageNumber,
+                    'UploadedImageNumber'=>$uploadedImageNumber
                 ],
                 'ListShowed'=>$listShowed,
                 'FollowList'=>$followList
@@ -100,7 +107,7 @@ class HeaderController extends BaseController
     }
 
     public function SearchImages(){
-
+        
     }
 }
 ?>
