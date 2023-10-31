@@ -2,6 +2,13 @@
 /* body{
     padding-top: 155px;
 }    */
+div > a {
+  text-decoration: none;
+}
+ul > a{
+  text-decoration: none;
+}
+
 .banner{
     background: linear-gradient(to top, rgb(133, 123, 123), white);
     height: 30vh;
@@ -233,3 +240,7 @@
   color: rgb(70, 65, 65);
 }
 
+
+ul{
+  padding: 0px;
+}

@@ -7,6 +7,11 @@
             return $this -> Query($sql);
         }
 
+        public function GetAllImage(){
+            $sql = "SELECT * FROM imgupload";
+            return $this -> Query($sql);
+        }
+
         public function RemoveImage($pid = ''){
             $sql = "DELETE FROM imgupload WHERE path = '$pid'";
             $this->Query($sql);

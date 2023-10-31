@@ -17,3 +17,9 @@ body{
 body > :not(.show-details-container):not(header) {
     z-index: 1;
 }
+div > ul{
+    padding: 0px;
+} 
+a {
+    text-decoration:none;
+  }
