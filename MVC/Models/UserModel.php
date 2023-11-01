@@ -10,6 +10,12 @@
       $sql = "SELECT * FROM users";
       return $this->Query($sql);
     }
+
+    public function DeleteUser($uname = ''){
+      $sql = "DELETE FROM users WHERE username = '$uname'";
+      $this->Query($sql);
+    }
+
     public function DoQuery($sql){
         return $this -> Query($sql);
     }

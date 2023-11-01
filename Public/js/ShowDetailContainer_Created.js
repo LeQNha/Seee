@@ -121,7 +121,7 @@ if(confirmRemoveImageModal){
  imagesContainer = document.querySelector('.container');
 function ConfirmRemoveImage(pid){
   pid = imgId;
-  xhr.open('POST', 'index.php?controller=ShowDetailContainer_Created&action=RemoveImage');
+  xhr.open('POST', 'index.php?controller=ShowDetailContainer_Created&action=DeleteImage');
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onload = function() {
     if(xhr.responseText.trim(0) == 'remove success'){

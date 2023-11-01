@@ -12,7 +12,7 @@
             return $this -> Query($sql);
         }
 
-        public function RemoveImage($pid = ''){
+        public function DeleteImage($pid = ''){
             $sql = "DELETE FROM imgupload WHERE path = '$pid'";
             $this->Query($sql);
             
@@ -28,6 +28,24 @@
                 }
             } else {
                 // echo "File không tồn tại.";
+            }
+        }
+
+        public function DeleteAllImages(){
+            $sql = "DELETE FROM imgupload";
+            $this->Query($sql);
+
+            //XÓA ALL ẢNH KHỎI FOLDER
+            $folderPath = './Public/img'; // Đường dẫn tới thư mục
+
+            // Lấy danh sách tất cả các tệp tin trong thư mục
+            $fileList = glob($folderPath . '*');
+
+            // Xóa từng tệp tin một
+            foreach ($fileList as $filePath) {
+                if (is_file($filePath)) {
+                    unlink($filePath); // Xóa tệp tin
+                }
             }
         }
 

@@ -99,6 +99,7 @@ ul > a{
 .showed-list-button{
   border-bottom: 3px solid black;
   background: linear-gradient(to top, rgb(248, 246, 246), white);
+  transition: all ease 0.2s;
 }
 .show-list-btn{
   cursor: pointer;

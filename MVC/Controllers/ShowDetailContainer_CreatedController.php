@@ -9,11 +9,11 @@
 
         }
 
-        function RemoveImage(){
+        function DeleteImage(){
             if(isset($_POST['pid'])){
                 $pid = $_POST['pid'];
 
-                $this->imageModel->RemoveImage($pid);
+                $this->imageModel->DeleteImage($pid);
 
                 echo 'remove success';
             }

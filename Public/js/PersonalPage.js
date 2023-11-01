@@ -19,6 +19,7 @@ window.onload = function(){
 
         console.log('click ' + listShowed);
         xhr.open('GET',"index.php?controller=PersonalPage&action=GetShowedList&listShowed="+listShowed);
+        // xhr.open('GET',"index.php?controller=AdminPage&action=SwitchManagement");
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onload = function(){
             if(xhr.status === 200){

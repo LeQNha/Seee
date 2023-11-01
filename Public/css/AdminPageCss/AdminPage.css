@@ -10,6 +10,9 @@
     box-sizing: border-box;
     font-family: "Nunito",sans-serif;
   }
+  div > ul{
+    padding-left: 0px;
+  }
   body {
     font-family: "Nunito",sans-serif;
     background-color: rgb(231, 231, 231);
@@ -126,6 +129,7 @@
     overflow-x: auto;
     overflow-y: auto;
     height: 81vh;
+    position: relative;
   }
   
   #container {
@@ -163,6 +167,12 @@
     color: black;
     width: 100%;
   }
+  .more_nav-clicked{
+    background: whitesmoke;
+    transform: scale(1.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: all ease 0.3s;
+  }
   .bx {
     width: 20%;
     text-align: center;
@@ -173,6 +183,24 @@
     /* color: rgb(77, 77, 243); */
     color: black;
     width: 80%;
+  }
+
+  .dropdown{
+    position: absolute;
+  }
+  .add-delete-buttons{
+    position: absolute;
+    left: 850px;
+  }
+  .add-delete-buttons button{
+    margin-left: 5px;
+    padding: 5px 20px;
+    border-radius: 5px;
+    /* cursor: pointer; */
+  }
+  .add-button{
+    background: yellowgreen;
+    color: white;
   }
   
   

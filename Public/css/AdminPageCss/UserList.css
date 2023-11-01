@@ -4,16 +4,14 @@ table {
     /* background: white; */
     width: 100%;
   }
-  .ordinal-number-column{
-    min-width: 40px;
-  }
-  tr{
+  
+  table tr{
     background: whitesmoke;
     border: 10px solid white;
     border-radius: 15px;
   }
   th{
-    background: darkblue;
+    background: black;
     color: white;
     border-bottom: 1px solid black;
     padding: 15px 15px;
@@ -27,17 +25,24 @@ table {
   }
   td:not(.ordinal-number-column){
     /* border: 1px solid black; */
-    padding: 8px 15px;
     max-width: 280px;
+  }
+  .ordinal-number-column{
+    min-width: 40px;
+    max-width: 100px;
+  }
+  td{
+    padding: 8px 15px;
     overflow-y: auto;
     margin-top: 5px;
+    /* border: 1px solid black; */
   }
   .action{
     display: flex;
     justify-content: center;
   }
   td.action button{
-    padding: 10px 20px;
+    padding: 5px 10px;
     color: white;
     width: 90px;
     font-weight: bold;

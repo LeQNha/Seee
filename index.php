@@ -6,7 +6,7 @@ session_start();
 
     // $controllerName = ucfirst($_REQUEST['controller'] ?? 'Welcome').'Controller';
     // $actionName     = $_REQUEST['action'] ?? 'index';
-
+    
     // require "./Controllers/$controllerName.php";
 
     // $controllerObject = new $controllerName();
