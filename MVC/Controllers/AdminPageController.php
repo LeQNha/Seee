@@ -50,7 +50,7 @@
          
                     echo '<div class="add-delete-buttons">';
                     echo '<button class="add-button">Thêm</button>';
-                    echo '<button class="delete-all-button">Xóa tất cả</button>';
+                    echo '<button class="delete-all-button btn btn-primary" id="delete-all-button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background: #e5dede; border: none; color:black;">Xóa tất cả</button>';
                     echo '</div>';
 
                     echo '<div class="nametable">';
@@ -89,7 +89,7 @@
 
                     echo '<div class="add-delete-buttons">';
                     echo '<button class="add-button">Thêm</button>';
-                    echo '<button class="delete-all-button">Xóa tất cả</button>';
+                    echo '<button class="delete-all-button btn btn-primary" id="delete-all-button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background: #e5dede; border: none; color:black;">Xóa tất cả</button>';
                     echo '</div>';
 
                     echo '<div class="nametable">';
@@ -108,15 +108,16 @@
 
                     foreach($result as $row){
                         $count++;
-                        echo '<tr id="'.$row['path'].'">';
+                        $pathParts = explode('.',$row['path']);
+                        echo '<tr id="'.$pathParts[0].'">';
                         echo '<td class="ordinal-number-column">'.$count.'</td>';
                         echo '<td>'.$row['path'].'</td>';
-                        echo '<td>'.$row['title'].'</td>';
-                        echo '<td>'.$row['description'].'</td>';
+                        echo '<td class="image-title">'.$row['title'].'</td>';
+                        echo '<td class="image-description">'.$row['description'].'</td>';
                         echo '<td>'.$row['dateuploaded'].'</td>';
                         echo '<td class="action">';
-                        echo '<button class="edit-button"><i class="fa-solid fa-pen"></i> Sửa</button>';
-                        echo '<button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete(\''.$row['path'].'\')"></i> Xóa</button>';
+                        echo '<button class="edit-button" data-bs-toggle="modal" data-bs-target="#editImageModal" onclick="GetUpdateImage(\''.$row['path'].'\')"><i class="fa-solid fa-pen"></i> Sửa</button>';
+                        echo '<button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete(\''.$row['path'].'\')"><i class="fa-solid fa-trash"></i> Xóa</button>';
                         echo '</td>';
                         echo '</tr>';
                     }
@@ -129,7 +130,45 @@
             }
             // echo 'nhan';
 
+        }
+
+        public function GetImage(){
+            if(isset($_GET['pid'])){
+                $pid = $_GET['pid'];
+                $result = $this -> imageModel->GetImage($pid);
+                if($result->num_rows > 0){
+                    $row = $result->fetch_assoc();
+                    $imageTitle = $row['title'];
+                    $imageDescription = $row['description'];
+                    $data = [
+                        'Title'=>$imageTitle,
+                        'Description'=>$imageDescription
+                    ];
+                    echo json_encode($data);
+                }else{
+                    echo 'Ko tìm thấy ảnh! '.$pid;
+                }
+            }else{
+                echo 'Không tìm thấy ảnh!';
             }
+        }
+
+        public function UpdateImage(){
+            if(isset($_GET['imgId'])){
+                $pid = $_GET['imgId'];
+                $imageTitle = trim($_POST['image-title']);
+                $imageDescription = trim($_POST['image-description']);
+
+                if(strlen($imageTitle) < 3){
+                    echo 'title empty';
+                }else{
+                    $this->imageModel->UpdateImage($pid, $imageTitle, $imageDescription);
+                    echo 'update success';
+                }
+            }else{
+                echo 'Không tìm thấy ảnh!';
+            }
+        }
         
         public function DeleteImage(){
             if(isset($_GET['pid'])){

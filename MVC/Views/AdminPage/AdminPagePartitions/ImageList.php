@@ -16,21 +16,24 @@
                     <?php
                         $rows = $data['Result'];
                         $count = 0;
-                        foreach($rows as $row){ $count++ ?>
+                        foreach($rows as $row){ 
+                            $count++;
+                            $pathParts = explode('.',$row['path']); 
+                        ?>
+                        
+                        <tr id="<?= $pathParts[0]; ?>">
 
-                      <tr id="<?= $row['path']; ?>">
-
-                        <td class="ordinal-number-column"><?= $count; ?></td>
-                        <td><?= $row['path']; ?></td>
-                        <td><?= $row['title']; ?></td>
-                        <td><?= $row['description']; ?></td>
-                        <td><?= $row['dateuploaded']; ?></td>
+                            <td class="ordinal-number-column"><?= $count; ?></td>
+                            <td><?= $row['path']; ?></td>
+                            <td class="image-title"><?= $row['title']; ?></td>
+                            <td class="image-description"><?= $row['description']; ?></td>
+                            <td><?= $row['dateuploaded']; ?></td>
 
 
-                        <td class="action">
-                            <button class="edit-button"><i class="fa-solid fa-pen"></i> Sửa</button>
-                            <button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete('<?= $row['path']; ?>')"><i class="fa-solid fa-trash"></i> Xóa</button>
-                        </td>
+                            <td class="action">
+                                <button class="edit-button" data-bs-toggle="modal" data-bs-target="#editImageModal" onclick="GetUpdateImage('<?= $row['path']; ?>')"><i class="fa-solid fa-pen"></i> Sửa</button>
+                                <button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete('<?= $row['path']; ?>')"><i class="fa-solid fa-trash"></i> Xóa</button>
+                            </td>
                       </tr>
                       <?php } ?>
                     </tbody>

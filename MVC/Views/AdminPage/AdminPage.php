@@ -125,6 +125,60 @@
   </div>
 </div>
 
+<!-- Edit Image modal -->
+<div class="modal fade" id="editImageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Sửa ảnh</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="image-container">
+            <img class="image" id="image" src="./Public/img/65222248e81a5.jpg" alt="">
+        </div>
+        <form action="#" method="post" id="image-infor-form">
+          <div>
+            <label for="image-title">Tiêu đề</label>
+            <input type="text" name="image-title" id="image-title">
+            <span class="edit-image-error-message" id="image-title-error-messsage"></span>
+          </div>
+          <div>
+            <label for="image-description">Mô tả</label>
+            <textarea name="image-description" id="image-description"></textarea>
+            <span class="edit-image-error-message" id="image-description-error-messsage"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="modal-image-close-button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" id="modal-image-save-change-button" class="btn btn-primary">Lưu thay đổi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit User modal -->
+<!-- <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img class="image" src="" alt="">
+        <input type="text" name="image-title" id="image-title">
+        <textarea name="image-description" id="image-description"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" id="modal-user-update-button" class="btn btn-primary" data-bs-dismiss="modal">Cập nhật</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
     <script src="Public/js/AdminPageJs/AdminPage.js"></script>
 
     <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>

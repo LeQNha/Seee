@@ -203,7 +203,52 @@
     color: white;
   }
   
-  
-  
+  /* EDIT IMAGE MODAL*/
+  #editImageModal .modal-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #editImageModal .modal-body #image-infor-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #editImageModal .modal-body div.image-container{
+    margin-top: 20px;
+    width: 90%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #editImageModal .modal-body div:not(.image-container){
+    width: 90%;
+    margin-top: 10px;
+  }
+  #editImageModal #image{
+    height: 100%;
+    object-position: center;
+  }
+  #editImageModal  #image-title{
+    width: 100%;
+    outline: 2px solid rgb(12, 156, 156);
+    padding: 10px;
+    border-radius: 4px;
+  }
+  #editImageModal #image-description{
+    width: 100%;
+    outline: 2px solid rgb(12, 156, 156);
+    padding: 10px;
+    border-radius: 4px;
+    resize: none;
+    overflow: hidden;
+  }
+  .edit-image-error-message{
+    color: red;
+  }
+
   
   

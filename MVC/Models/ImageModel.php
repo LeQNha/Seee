@@ -12,6 +12,11 @@
             return $this -> Query($sql);
         }
 
+        public function GetImage($pid = ''){
+            $sql = "SELECT * FROM imgupload WHERE path = '$pid'";
+            return $this->Query($sql);
+        }
+
         public function DeleteImage($pid = ''){
             $sql = "DELETE FROM imgupload WHERE path = '$pid'";
             $this->Query($sql);
