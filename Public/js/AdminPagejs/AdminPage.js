@@ -2,7 +2,10 @@ var usersManagementButton = document.getElementById('users-management');
 var imagesManagementButton = document.getElementById('images-management');
 var deleteAllButton = document.getElementById('delete-all-button');
 var mainTable = document.getElementById('main-table');
-var listTableBody = document.getElementById('list-table-body')
+var listTableBody = document.getElementById('list-table-body');
+
+//ERROR MESS
+var errorMessages = document.getElementsByClassName('error-message');
 
 //MODAL DELETE
 var modalBody = document.querySelector('.modal-body');
@@ -20,12 +23,21 @@ var updateImageTitle = document.getElementById('image-title');
 var updateImageDescription = document.getElementById('image-description');
 var imageTitleErrorMessage = document.getElementById('image-title-error-messsage');
 
+//MODAL UPDATE USER
+var userEmail = document.getElementById('email');
+var userUsername = document.getElementById('username');
+var userPassword = document.getElementById('password');
+var userLastname = document.getElementById('lastname');
+var userFirstname = document.getElementById('firstname');
+updateUserId = '';
+var modalUserCloseButton = document.getElementById('modal-user-close-button');
+var modalUserSaveChangeButton = document.getElementById('modal-user-save-change-button');
+
 var ml = document.getElementById('management-list').value;
 
 var xhr = new XMLHttpRequest();
 
 window.onload = function(){
-    
     console.log(ml);
     if(ml == 'UserList'){
         usersManagementButton.classList.add('more_nav-clicked');
@@ -77,7 +89,8 @@ function DeleteImage(pid){
         if(xhr.status == 200){
             console.log(pid)
             if(xhr.responseText.trim() == 'delete success'){
-                listTableBody.removeChild(document.getElementById(pid));
+                [name, extension] = pid.split(".");
+                listTableBody.removeChild(document.getElementById(name));
             }else{
                 alert(xhr.responseText.trim());
             }
@@ -132,14 +145,12 @@ function ChangeModalContent(){
 
 
 //UPDATE IMG
-
 function GetUpdateImage(pid){
     imageTitleErrorMessage.textContent = '';
     updateImageId = pid;
     xhr.open('GET','index.php?controller=AdminPage&action=GetImage&pid='+encodeURIComponent(pid));
     xhr.onload = function(){
         if(xhr.status == 200){
-            console.log('get image');
             receivedData = JSON.parse(xhr.responseText);
             image.src = './Public/img/'+pid;
             imageTitle.value = receivedData.Title;
@@ -153,7 +164,6 @@ function GetUpdateImage(pid){
 
 modalImageSaveChangeButton.addEventListener('click',SaveChangeImage);
 function SaveChangeImage(){
-    console.log('dfsfs');
     xhr.open('POST','index.php?controller=AdminPage&action=UpdateImage&imgId='+encodeURIComponent(updateImageId));
     formData = new FormData(document.getElementById('image-infor-form'));
     xhr.onload = function(){
@@ -177,6 +187,59 @@ function SaveChangeImage(){
                     break;
                 default:
                     alert(msg);
+            }
+            
+        }else{
+            alert('Đã có lỗi xảy ra!');
+        }
+    }
+
+    xhr.send(formData);
+}
+
+//Update User
+function GetUpdateUser(uId){
+    xhr.open('GET','index.php?controller=AdminPage&action=GetUser&uId='+encodeURIComponent(uId));
+    updateUserId = uId;
+    console.log('tim '+updateUserId);
+    xhr.onload = function(){
+        if(xhr.status == 200){
+            console.log(xhr.responseText);
+            receivedData = JSON.parse(xhr.responseText);
+           userEmail.value = receivedData.Email;
+           userUsername.value = receivedData.Username;
+           userPassword.value = receivedData.Password;
+           userLastname.value = receivedData.Lastname;
+           userFirstname.value = receivedData.Firstname;
+        }else{
+            alert('Đã có lỗi xảy ra!');
+        }
+    };
+    xhr.send();
+}
+
+modalUserSaveChangeButton.addEventListener('click', SaveChangeUser);
+function SaveChangeUser(){
+    xhr.open('POST','index.php?controller=AdminPage&action=UpdateUser&uId='+encodeURIComponent(updateUserId));
+    formData = new FormData(document.getElementById('user-infor-form'));
+    xhr.onload = function(){
+        if(xhr.status === 200){
+            for(i = 0; i<errorMessages.length ; i++){
+                errorMessages[i].textContent = '';
+            }
+            if(xhr.responseText.trim() == 'update success'){
+                modalUserCloseButton.click();
+                parentElement = document.getElementById(updateUserId);
+                parentElement.querySelector('.user-email').textContent = userEmail.value;
+                parentElement.querySelector('.user-username').textContent = userUsername.value;
+                parentElement.querySelector('.user-password').textContent = userPassword.value;
+                parentElement.querySelector('.user-fullname').textContent = userLastname.value+' '+userFirstname.value;
+            }else{
+                
+                receivedData = JSON.parse(xhr.responseText);
+                for(i = 0; i < receivedData.EmptyInformation.length; i++){
+                    document.getElementById(receivedData.EmptyInformation[i]+'-error-message').textContent = 'Không được để trống';
+                }
             }
             
         }else{

@@ -26,14 +26,14 @@
                         <tr id="<?= $row['username']; ?>">
                           
                           <td class="ordinal-number-column"><?= $count; ?></td>
-                          <td><?= $row['email']; ?></td>
-                          <td><?= $row['username']; ?></td>
-                          <td><?= $row['password']; ?></td>
-                          <td><?= $row['lastname'].' '.$row['firstname']; ; ?></td>
+                          <td class="user-email"><?= $row['email']; ?></td>
+                          <td class="user-username"><?= $row['username']; ?></td>
+                          <td class="user-password"><?= $row['password']; ?></td>
+                          <td class="user-fullname"><?= $row['lastname'].' '.$row['firstname']; ; ?></td>
 
                           
                           <td class="action">
-                              <button class="edit-button"><i class="fa-solid fa-pen"></i> Sửa</button>
+                              <button class="edit-button" data-bs-toggle="modal" data-bs-target="#editUserModal" onclick="GetUpdateUser('<?= $row['username']; ?>')"><i class="fa-solid fa-pen"></i> Sửa</button>
                               <button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete('<?= $row['username']; ?>')"><i class="fa-solid fa-trash"></i> Xóa</button>
                           </td>
                         </tr>

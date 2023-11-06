@@ -71,12 +71,12 @@
                         $count++;
                         echo '<tr id="'.$row['username'].'">';
                         echo '<td class="ordinal-number-column">'.$count.'</td>';
-                        echo '<td>'.$row['email'].'</td>';
-                        echo '<td>'.$row['username'].'</td>';
-                        echo '<td>'.$row['password'].'</td>';
-                        echo '<td>'.$row['lastname'].' '.$row['firstname'].'</td>';
+                        echo '<td class="user-email">'.$row['email'].'</td>';
+                        echo '<td class="user-username">'.$row['username'].'</td>';
+                        echo '<td class="user-password">'.$row['password'].'</td>';
+                        echo '<td class="user-fullname">'.$row['lastname'].' '.$row['firstname'].'</td>';
                         echo '<td class="action">';
-                        echo '<button class="edit-button"><i class="fa-solid fa-pen"></i> Sửa</button>';
+                        echo '<button class="edit-button" data-bs-toggle="modal" data-bs-target="#editUserModal" onclick="GetUpdateUser(\''.$row['username'].'\')"><i class="fa-solid fa-pen"></i> Sửa</button>';
                         echo '<button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete(\''.$row['username'].'\')"><i class="fa-solid fa-trash"></i> Xóa</button>';
                         echo '</td>';
                         echo '</tr>';
@@ -164,6 +164,67 @@
                 }else{
                     $this->imageModel->UpdateImage($pid, $imageTitle, $imageDescription);
                     echo 'update success';
+                }
+            }else{
+                echo 'Không tìm thấy ảnh!';
+            }
+        }
+
+        public function GetUser(){
+            if(isset($_GET['uId'])){
+                $uId = $_GET['uId'];
+                $result = $this->userModel->GetUser($uId);
+                if($result->num_rows > 0){
+                    $row = $result->fetch_assoc();
+                    $data = [
+                        'Email' => $row['email'],
+                        'Username' => $row['username'],
+                        'Password' => $row['password'],
+                        'Lastname' => $row['lastname'],
+                        'Firstname' => $row['firstname']
+                    ];
+                    echo json_encode($data);
+                }else{
+                    echo 'Ko tìm thấy người dùn! '.$uId;
+                }
+            }else{
+                echo 'Không tìm thấy người dùng!';
+            }
+        }
+
+        public function UpdateUser(){
+            if(isset($_GET['uId'])){
+                $username = $_GET['uId'];
+                $email = trim($_POST['email']);
+                $newUsername = trim($_POST['username']);
+                $password = trim($_POST['password']);
+                $lastname = trim($_POST['lastname']);
+                $firstname = trim($_POST['firstname']);
+
+                $emptyInformation = [];
+
+                if(empty($email) || empty($newUsername) || empty($password)){
+                    if(empty($email)){
+                        array_push($emptyInformation, 'email');
+                    }
+                    if(empty($newUsername)){
+                        array_push($emptyInformation, 'username');
+                    }
+                    if(empty($password)){
+                        array_push($emptyInformation, 'password');
+                    }
+                    $data = [
+                        'CheckEmpty' => 'true',
+                        'EmptyInformation' => $emptyInformation
+
+                    ];
+                    echo json_encode($data); 
+                }else{
+                    $sql = "UPDATE users 
+                            SET email = '$email', username ='$newUsername', password='$password', firstname = '$firstname', lastname = '$lastname'  
+                            WHERE username = '$username'; ";
+                    $this->userModel->DoQuery($sql);
+                    echo "update success";
                 }
             }else{
                 echo 'Không tìm thấy ảnh!';

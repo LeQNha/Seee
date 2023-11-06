@@ -130,7 +130,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Sửa ảnh</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Chỉnh sửa thông tin ảnh</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -139,14 +139,14 @@
         </div>
         <form action="#" method="post" id="image-infor-form">
           <div>
-            <label for="image-title">Tiêu đề</label>
+            <label for="image-title">Tiêu đề<span class="require">*</span></label>
             <input type="text" name="image-title" id="image-title">
-            <span class="edit-image-error-message" id="image-title-error-messsage"></span>
+            <span class="error-message" id="image-title-error-messsage"></span>
           </div>
           <div>
             <label for="image-description">Mô tả</label>
             <textarea name="image-description" id="image-description"></textarea>
-            <span class="edit-image-error-message" id="image-description-error-messsage"></span>
+            <span class="error-message" id="image-description-error-messsage"></span>
           </div>
         </form>
       </div>
@@ -159,25 +159,47 @@
 </div>
 
 <!-- Edit User modal -->
-<!-- <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Chỉnh sửa thông tin người dùng</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img class="image" src="" alt="">
-        <input type="text" name="image-title" id="image-title">
-        <textarea name="image-description" id="image-description"></textarea>
+        <form action="#" id="user-infor-form">
+            <div>
+              <label for="email">Email<span class="require">*</span></label>
+              <input type="email" name="email" id="email">
+              <span class="error-message" id="email-error-message"></span>
+            </div>
+            <div>
+              <label for="username">Tên tài khoản<span class="require">*</span></label>
+              <input type="text" name="username" id="username">
+              <span class="error-message" id="username-error-message"></span>
+            </div>
+            <div>
+              <label for="password">Mật khẩu<span class="require">*</span></label>
+              <input type="text" name="password" id="password">
+              <span class="error-message" id="password-error-message"></span>
+            </div>
+            <div>
+              <label for="">Họ</label>
+              <input type="text" name="lastname" id="lastname">
+            </div>
+            <div>
+              <label for="">Tên</label>
+              <input type="text" name="firstname" id="firstname">
+            </div>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="button" id="modal-user-update-button" class="btn btn-primary" data-bs-dismiss="modal">Cập nhật</button>
+        <button type="button" id="modal-user-close-button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" id="modal-user-save-change-button" class="btn btn-primary">Lưu thay đổi</button>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
     <script src="Public/js/AdminPageJs/AdminPage.js"></script>
 

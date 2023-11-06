@@ -84,7 +84,7 @@
   .example + i:hover {
     cursor: pointer;
   }
-  input {
+  .header__search input {
     padding-left: 35px;
   }
   
@@ -203,6 +203,13 @@
     color: white;
   }
   
+  /*Edit Modal */
+  .require{
+    color: red;
+  }
+  .error-message{
+    color: red;
+  }
   /* EDIT IMAGE MODAL*/
   #editImageModal .modal-body{
     display: flex;
@@ -246,8 +253,23 @@
     resize: none;
     overflow: hidden;
   }
-  .edit-image-error-message{
-    color: red;
+
+  /* EDIT USER MODAL*/
+  #editUserModal .modal-body form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #editUserModal .modal-body div{
+    width: 90%;
+  }
+  #editUserModal input{
+    outline: 2px solid rgb(12, 156, 156);
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 4px;
   }
 
   
