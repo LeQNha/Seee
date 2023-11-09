@@ -23,8 +23,6 @@ window.onload = function(){
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onload = function(){
             if(xhr.status === 200){
-                console.log(xhr.responseText);
-                
                 listShowedContainer = document.getElementById('liked-created-images');
                 if(listShowed == 'liked' || listShowed == 'created'){
                     listShowedContainer.innerHTML='<div class="container"></div>';

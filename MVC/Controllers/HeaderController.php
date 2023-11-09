@@ -91,6 +91,30 @@ class HeaderController extends BaseController
         $sql = "SELECT followed FROM follow WHERE follower = '$username'";
         $followingNumber = mysqli_num_rows($this->userModel->DoQuery($sql));
 
+        //lấy thông tin ng dùng
+        $email = '';
+        $firstname = '';
+        $lastname = '';
+        $ocupation = '';
+        $location = '';
+        $introduction = '';
+        $joinningDate ='';
+        $rs = $this->userModel->GetUser($username);
+        if($rs->num_rows > 0){
+            $r = $rs->fetch_assoc();
+            $email = $r['email'];
+            $firstname = $r['firstname'];
+            $lastname = $r['lastname'];
+            $ocupation = $r['ocupation'];
+            $location = $r['location'];
+            $introduction = $r['introduction'];
+
+            $joinningDate = $r['register_date'];
+            $jd = explode('-', $joinningDate);
+            $joinningDate = $jd[2].' tháng '.$jd[1].', '.$jd[0];
+            
+        }
+
         $data = [
                 'Page'=>'PersonalPage',
                 'Rows'=>$result_1,
@@ -99,6 +123,15 @@ class HeaderController extends BaseController
                     'FollowingNumber'=>$followingNumber,
                     'LikedImageNumber'=>$likedImageNumber,
                     'UploadedImageNumber'=>$uploadedImageNumber
+                ],
+                'UserInformation'=>[
+                    'Email'=> $email,
+                    'Firstname'=> $firstname,
+                    'Lastname'=> $lastname,
+                    'Ocupation'=> $ocupation,
+                    'Location'=> $location,
+                    'Introduction'=> $introduction,
+                    'JoinningDate'=> $joinningDate
                 ],
                 'ListShowed'=>$listShowed,
                 'FollowList'=>$followList

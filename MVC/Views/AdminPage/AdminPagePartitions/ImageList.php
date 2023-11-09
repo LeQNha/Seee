@@ -1,6 +1,6 @@
 
                 <div class="nametable">
-                    <h3>Danh sách ảnh</h3>
+                    <h3>Danh sách ảnh tải lên</h3>
                 </div>
                 <table>
                     <tbody id="list-table-body">

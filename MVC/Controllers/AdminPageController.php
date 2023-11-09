@@ -201,31 +201,11 @@
                 $lastname = trim($_POST['lastname']);
                 $firstname = trim($_POST['firstname']);
 
-                $emptyInformation = [];
-
-                if(empty($email) || empty($newUsername) || empty($password)){
-                    if(empty($email)){
-                        array_push($emptyInformation, 'email');
-                    }
-                    if(empty($newUsername)){
-                        array_push($emptyInformation, 'username');
-                    }
-                    if(empty($password)){
-                        array_push($emptyInformation, 'password');
-                    }
-                    $data = [
-                        'CheckEmpty' => 'true',
-                        'EmptyInformation' => $emptyInformation
-
-                    ];
-                    echo json_encode($data); 
-                }else{
                     $sql = "UPDATE users 
                             SET email = '$email', username ='$newUsername', password='$password', firstname = '$firstname', lastname = '$lastname'  
                             WHERE username = '$username'; ";
                     $this->userModel->DoQuery($sql);
                     echo "update success";
-                }
             }else{
                 echo 'Không tìm thấy ảnh!';
             }

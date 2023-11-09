@@ -90,7 +90,9 @@ function DeleteImage(pid){
             console.log(pid)
             if(xhr.responseText.trim() == 'delete success'){
                 [name, extension] = pid.split(".");
+                console.log('name1: '+name);
                 listTableBody.removeChild(document.getElementById(name));
+                console.log('name: '+name);
             }else{
                 alert(xhr.responseText.trim());
             }
@@ -220,32 +222,48 @@ function GetUpdateUser(uId){
 
 modalUserSaveChangeButton.addEventListener('click', SaveChangeUser);
 function SaveChangeUser(){
-    xhr.open('POST','index.php?controller=AdminPage&action=UpdateUser&uId='+encodeURIComponent(updateUserId));
-    formData = new FormData(document.getElementById('user-infor-form'));
-    xhr.onload = function(){
-        if(xhr.status === 200){
-            for(i = 0; i<errorMessages.length ; i++){
-                errorMessages[i].textContent = '';
-            }
-            if(xhr.responseText.trim() == 'update success'){
-                modalUserCloseButton.click();
-                parentElement = document.getElementById(updateUserId);
-                parentElement.querySelector('.user-email').textContent = userEmail.value;
-                parentElement.querySelector('.user-username').textContent = userUsername.value;
-                parentElement.querySelector('.user-password').textContent = userPassword.value;
-                parentElement.querySelector('.user-fullname').textContent = userLastname.value+' '+userFirstname.value;
-            }else{
-                
-                receivedData = JSON.parse(xhr.responseText);
-                for(i = 0; i < receivedData.EmptyInformation.length; i++){
-                    document.getElementById(receivedData.EmptyInformation[i]+'-error-message').textContent = 'Không được để trống';
-                }
-            }
-            
-        }else{
-            alert('Đã có lỗi xảy ra!');
-        }
+
+    for(i = 0; i<errorMessages.length ; i++){
+        errorMessages[i].textContent = '';
     }
 
-    xhr.send(formData);
+    checkEmpty = false;
+    if(userEmail.value.length === 0){
+        document.getElementById('email-error-message').textContent = 'Không được để trống!';
+        checkEmpty = true;
+    }
+    if(userUsername.value.length === 0){
+        document.getElementById('username-error-message').textContent = 'Không được để trống!';
+        checkEmpty = true;
+    }
+    if(userPassword.value.length === 0){
+        document.getElementById('password-error-message').textContent = 'Không được để trống!';
+        checkEmpty = true;
+    }
+
+    if(!checkEmpty){
+        xhr.open('POST','index.php?controller=AdminPage&action=UpdateUser&uId='+encodeURIComponent(updateUserId));
+        formData = new FormData(document.getElementById('user-infor-form'));
+
+        xhr.onload = function(){
+            if(xhr.status === 200){
+                if(xhr.responseText.trim() == 'update success'){
+                    modalUserCloseButton.click();
+                    parentElement = document.getElementById(updateUserId);
+                    parentElement.querySelector('.user-email').textContent = userEmail.value;
+                    parentElement.querySelector('.user-username').textContent = userUsername.value;
+                    parentElement.querySelector('.user-password').textContent = userPassword.value;
+                    parentElement.querySelector('.user-fullname').textContent = userLastname.value+' '+userFirstname.value;
+                }else{
+                    
+                }
+                
+            }else{
+                alert('Đã có lỗi xảy ra!');
+            }
+        }
+
+        xhr.send(formData);
+    }
+
 }

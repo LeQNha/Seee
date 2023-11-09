@@ -16,7 +16,7 @@
                 <label for="search-box" class="fas-fa-search" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></label>        
             </form>
             <div class="button-container">
-                <a href="index.php?controller=Header&action=UploadImage" class="button button-createImg">Tạo ảnh</a>
+                <a href="index.php?controller=Header&action=UploadImage" class="button button-createImg">Chia sẻ</a>
                 <a href="index.php?controller=Header&action=PersonalPage&listShowed=liked" class="button button-Info">Trang cá nhân</a>
             </div>
             <ul class="account">

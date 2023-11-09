@@ -1,32 +1,25 @@
 <?php 
      
-        
-            if(isset($_GET['pid'])){
-                $pid = $_GET['pid'];
-                $detailTitleCreated = $_POST['detailTitleCreated'];
-                $descriptionCreated = $_POST['descriptionCreated'];
+     $date = new DateTime('now', new DateTimeZone('Asia/Ho_Chi_Minh')); 
+     $pastDate = new DateTime('2023-11-09 18:00:00'); // Tạo đối tượng DateTime cho một thời điểm trong quá khứ
+     
+    echo $date->format('Y-m-d H:i:s');
+    echo $pastDate->format('Y-m-d H:i:s');
 
-                echo 'success';
-            }else{
-                echo 'ko nhận';
-            }
-        
-           
-        
-        // if(isset($_POST['username'])){
-        //     $detailTitleCreated = $_POST['username'];
-        //     $descriptionCreated = $_POST['password'];
-        //     echo 'nhan dc post';
-        // }else{
-        //     if(isset($_GET['pid'])){
-        //         $pid = $_GET['pid'];
-        //         $detailTitleCreated = $_POST['username'];
-        //         $descriptionCreated = $_POST['password'];
+        $currentDate = new DateTime($date->format('Y-m-d H:i:s'));
 
-
-        //         echo 'success';
-        //     }else{
-        //         echo 'ko nhận';
-        //     }
-        // }
+     $interval = $currentDate->diff($pastDate); // Tính khoảng thời gian giữa hai ngày
+     
+     // Lấy kết quả
+     $years = $interval->y;
+     $months = $interval->m;
+     $days = $interval->d;
+     $hours = $interval->h;
+     $minutes = $interval->i;
+     $seconds = $interval->s;
+     
+     // In kết quả
+     echo "Khoảng thời gian giữa hiện tại và ngày quá khứ là: ";
+     echo "$years năm, $months tháng, $days ngày, $hours giờ, $minutes phút, $seconds giây.";
+            
 ?>

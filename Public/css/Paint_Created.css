@@ -26,6 +26,11 @@
     bottom: 14px;
     transition: all ease 0.2s;
 }
+.paint:hover .view-number{
+    opacity: 1;
+    bottom: 14px;
+    transition: all ease 0.2s;
+}
 .paint img{
     max-width: 100%;
     border-radius: 15px;
@@ -34,7 +39,7 @@
 .paint .image-name{
     display: none;
 }
-.image-title, .like-number{
+.image-title, .like-number, .view-number{
     position: absolute;
     bottom: 0px;
     color: white;
@@ -81,8 +86,22 @@
     right: 20px;
     bottom: 4px;
     color: white;
+    font-size: 13px;
 }
 .like-number span{
     font-weight: lighter;
-    font-size: 14px;
+    font-size: 10px;
+    color: white;
+}
+.view-number{
+    right: 70px;
+    bottom: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+}
+.view-number span{
+    font-weight: lighter;
+    font-size: 10px;
+    color: white;
 }

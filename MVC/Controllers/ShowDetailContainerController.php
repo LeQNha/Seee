@@ -3,6 +3,7 @@
     {
         private $imageModel;
         private $userModel;
+        private $commentModel;
         function __construct()
         {
             $this->LoadModel('UserModel');
@@ -10,6 +11,9 @@
 
             $this->LoadModel('ImageModel');
             $this->imageModel = new ImageModel();
+
+            $this->LoadModel('CommentModel');
+            $this->commentModel = new CommentModel();
         }
 
         public function GetImage(){
@@ -154,9 +158,107 @@
 
         }
 
-        public function RemoveImage(){
+        public function Comment(){
+            if(isset($_POST['comment'])){
+                $commentContent = trim($_POST['comment']);
+                $imagePath = trim($_POST['image-path']);
+                echo $commentContent;
+                $username = $_SESSION['Login']['username'];
+
+                $this->commentModel->AddComment($commentContent, $username, $imagePath);
+                echo 'comment success';
+            }else{
+                echo 'ko nhan dc';
+            }
+        }
+        
+        public function CalculateTimeGap($datetimeFromDB){
+            // $datetimeFromDB = '2023-11-08 16:27:32';
+
+            // Lấy thời gian hiện tại
+            $dateTimeNow = new DateTime('now', new DateTimeZone('Asia/Ho_Chi_Minh'));
+            $currentDatetimeStr = $dateTimeNow->format('Y-m-d H:i:s');
+            $currentDatetime = new DateTime($currentDatetimeStr);
+            // Chuyển đổi ngày giờ từ database thành đối tượng DateTime
+            $datetime = new DateTime($datetimeFromDB);
+
+            // Tính toán khoảng thời gian
+            $diff = $currentDatetime->diff($datetime);
+
+
+            if($diff->y == 0){
+                if($diff->m == 0){
+                    // Kiểm tra nếu khoảng thời gian dưới một ngày
+                    if ($diff->days == 0) {
+                        // nếu khoảng tg dưới 1 h
+                        if($diff->h == 0){
+                            // nếu tg dưới 1 phút
+                            if($diff->i == 0){
+                                $seconds = $diff->s;
+                                return $seconds.' giây trước';
+                            }else{
+                                $minutes = $diff->i;
+                                return $minutes.' phút trước';
+                            }
+                        }else{
+                            $hours = $diff->h;
+                            return $hours.' giờ trước';
+                        }
+                        
+                        
+                    }
+                    // Nếu khoảng thời gian qua một ngày
+                    else {
+                        $days = $diff->days;
+                        
+                        return $days.' ngày trước';
+                    }
+                }else{
+                    $months = $diff->m;
+                    return $months.' tháng trước';
+                }
+            }else{
+                $years = $diff->y;
+                return $years.' năm trước';
+            }
             
         }
+
+        public function GetComments(){
+            if(isset($_GET['pid'])){
+                $pid = $_GET['pid'];
+                $result = $this->commentModel->GetComments($pid);
+                $commenterAvatar = '';
+                $timeGap = '';
+                if($result->num_rows > 0){
+                    foreach($result as $row){
+                        echo '<div class="comment__card" id="'.$row['comment_id'].'">';
+                        $commenterAvatar = $this->userModel->GetUserAvatar($row['username']);
+                        echo '<img id="avt-img" src="./Public/profileimg/'.$commenterAvatar.'" alt="">';
+                        echo '<div class="comment__info">';
+                        echo '<div class="main-com-fo">';
+                        echo '<span class="nickname">'.$row['username'].'</span>';
+                        $timeGap = $this->CalculateTimeGap($row['comment_date']);
+                        echo '<span class="currentDate">'.$timeGap.'</span>';
+                        echo '</div>';
+                        echo '<p class="comment">'.$row['comment_content'].'</p>';
+                        echo '<div class="comment__bottom">';
+                        echo '<div class="like__icon--comment">';
+                        echo '<i id="like__icon" class="fa-regular fa-thumbs-up"></i>';
+                        echo '<small class="count">0</small>';
+                        echo '<i id="dislike__icon" class="fa-regular fa-thumbs-down"></i>';
+                        echo '<small class="count1">0</small>';
+                        echo '</div>';
+                        echo '<button class="reply">Phản hồi</button>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                }
+            }
+        }
+
+        
 
     }
 ?>

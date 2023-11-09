@@ -15,6 +15,10 @@
             <form action="#" method="post" id="registerForm">
                 
                     <input type="email" name="email" id="email" placeholder="Email" required>
+
+                    <input type="text" name="lastname" id="lastname" placeholder="Họ" required>
+
+                    <input type="text" name="firstname" id="firstname" placeholder="Tên" required>
              
                     <input type="text" name="username" id="username" placeholder="Tên tài khoản" required>
                 

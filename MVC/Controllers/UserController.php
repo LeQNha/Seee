@@ -43,13 +43,14 @@
                 // echo json_encode($response);
                 echo "Không được để trống!";
             }else{
-                $sql = "SELECT username, password, email FROM users WHERE username='$username' AND password='$password'";
+                $sql = "SELECT username, password, email, avatar FROM users WHERE username='$username' AND password='$password'";
                 $result = $this->FindUser($sql);
                 if(mysqli_num_rows($result) == 1){
                     echo "success";
                     $_SESSION['Login']['username'] = $username;
                     $row = $result->fetch_assoc();
                     $_SESSION['email'] = $row['email'];
+                    $_SESSION['avatar'] = $row['avatar'];
                 }else{
                     echo "Sai tài khoản hoặc mật khẩu!";
                 }
@@ -59,6 +60,8 @@
         public function Register(){
             $email = $_POST["email"];
             $username = $_POST["username"];
+            $lastname = $_POST["lastname"];
+            $firstname = $_POST["firstname"];
             $password = $_POST["password"];
             $confirmpassword = $_POST["confirmpassword"];
 
@@ -77,7 +80,7 @@
                 }else if(mysqli_num_rows($result) > 0){
                     echo "Tài khoản đã tồn tại";
                 }else{
-                    $this->userModel->DoQuery("INSERT INTO users (username, email, password, avatar) VALUES ('$username', '$email', '$password','userDefaultAvatar.png')");
+                    $this->userModel->DoQuery("INSERT INTO users (username, email, password, firstname, lastname, avatar) VALUES ('$username', '$email', '$password','$firstname', '$lastname', 'userDefaultAvatar.png')");
                 
                     echo "success";
                     $_SESSION['Login']['username'] = $username;

@@ -9,237 +9,319 @@ ul > a{
   text-decoration: none;
 }
 
+#user-infor-side{
+  height: 640px;
+  width: 30%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .banner{
-    background: linear-gradient(to top, rgb(133, 123, 123), white);
-    height: 30vh;
-    width: 93%;
-    margin-left: 50px;
-    border-radius: 0px 0px 20px 20px;
-    position: relative;
-    cursor: pointer;
+    background: linear-gradient(120deg, rgb(102, 109, 109), rgb(140, 150, 150));
+    /* background: white; */
+    height: 95%;
+    width: 90%;
+    border-radius: 20px;
+    margin-bottom: 0px;
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    color: white;
+    overflow-y: auto;
 }
-.user-avatar{
-    position: absolute;
-    top: 21vh;
-    left: 70px;
-    padding: 10px;
-    background: white;
-    border-radius: 50%;
+.banner::-webkit-scrollbar{
+  display: none;
 }
-.user-avatar .user-avatar-img-container{
-    overflow: hidden;
-    height: 203px;
-    width: 203px;
-    border-radius: 50%;
+
+.user-avatar-img-container{
+  margin-top: 15px;
+  overflow: hidden;
+  height: 173px;
+  width: 173px;
+  border-radius: 50%;
+  background: brown;
+  border: 5px solid rgb(212, 205, 205);
 }
-.user-avatar img{
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+.user-avatar-img-container img{
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
-#avatar-file{
-    display: none;
-}
-.user-avatar i{
-    position: absolute;
-    cursor: pointer;
-    font-size: 27px;
-    background: white;
-    box-shadow: 0px 0px 5px lightgray;
-    padding: 5px;
-    border-radius: 50%;
-    top: 22vh;
-    left: 160px;
-}
-.user-avatar img:hover,
-.user-avatar i:hover{
-    opacity: 0.8;
-}
-.short-introduction{
-  margin-left: 380px;
-  position: relative;
-  margin-bottom: 70px;
-}
-.short-introduction h1{
-  font-size: 40px;
-  opacity: 0.8;
-}
-.short-introduction h3{
-  position: absolute;
-  font-size: 22px;
-  font-weight: lighter;
-  left: 300px;
-  top: 10px
-}
-.short-introduction a{
-    color: black;
-    background: rgb(239, 235, 235);
+#go-to-edit-profile{
+    /* margin-top: 15px; */
+    color: white;
+    background: rgba(239, 235, 235, 0.2);
     padding: 13px;
     border-radius: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    position: absolute;
-    top: 15px;
-    left: 830px;
 }
-.short-introduction a:hover{
-    background: lightgray;
+.short-introduction{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.short-introduction span{
+  opacity: 0.8;
+}
+.statistic{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.statistic .number{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-top: 20px;
+  min-width: 120px;
+}
+.number span{
+  opacity: 1;
+}
+.statistic-index{
+  font-size: 18px;
+}
+.follower-number{
+  border-right: 2px solid rgb(198, 186, 186);
+}
+.following-number{
+  border-right: 2px solid rgb(198, 186, 186);
+}
+
+.user-information{
+  width: 90%;
+  margin-top: 10px;
+  padding: 13px 20px;
+  border-radius: 15px;
+  background: rgba(239, 235, 235, 0.2);
+}
+.user-information div{
+  display: flex;
+  border-bottom: 1px solid rgba(245, 240, 240, 0.5);
+  padding: 5px;
+  /* max-height: 36.4px; */
+  /* align-items: center; */
+  /* justify-content: space-; */
+  
+}
+.user-information div::-webkit-scrollbar{
+  display: none;
+} 
+.user-information div span{
+  /* width: 110%; */
+  min-width: 100px;
+  text-align: start;
+}
+.user-information div span{
+  text-align: start;
+  opacity: 0.9;
+}
+.user-information h4{
+  color: rgb(253, 253, 253);
+  font-size: 19px;
+  font-weight: lighter;
+  margin-left: 5%;
+  max-width: 230px;
+}
+#joinning-date{
+  position: absolute;
+  bottom: 20px;
+}
+
+
+/*LIST SIDE */
+#list-side{
+  width: 70%;
+  margin-left: 450px;
+}
+
+.container {
+  columns: 4 !important;
+  width: 1055px !important;
+  column-gap: 30px;
+  height: auto;
+  /* margin: 30px auto; */
+  z-index: 3;
+  position: relative;
+
 }
 
 .follow-list{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    /* justify-content: space-between; */
-    flex-basis: calc(100% / 6);
-    /* flex-direction: row; */
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  
+  flex-basis: calc(100% / 6);
+ 
 }
 .showed-list-button{
-  border-bottom: 3px solid black;
-  background: linear-gradient(to top, rgb(248, 246, 246), white);
-  transition: all ease 0.2s;
+border-bottom: 3px solid black;
+background: linear-gradient(to top, rgb(248, 246, 246), white);
+transition: all ease 0.2s;
 }
 .show-list-btn{
-  cursor: pointer;
+cursor: pointer;
 }
 .show-list-btn:hover{
-  background: linear-gradient(to top, rgb(248, 246, 246), white);
-  border-bottom: 3px solid rgb(113, 111, 111);
-  transition: all ease 0.1s;
+background: linear-gradient(to top, rgb(248, 246, 246), white);
+border-bottom: 3px solid rgb(113, 111, 111);
+transition: all ease 0.1s;
 }
 
-  .followed-user{
-    /* height: 100%; */
-    /* width: 100%; */
-    margin-top: 30px;
-    width: calc(16.67% - 10px); /* Sử dụng calc để tính kích thước cố định cho mỗi phần tử */
-    text-align: center;
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .followed-user-avatar-container{
-    height: 120px;
-    width: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-  .followed-user-avatar-container img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  .followed-user span{
-    color: black;
-    font-weight: bold;  
-  }
-  .follower-number{
-    font-size: 15px;
-    font-weight: lighter;
-  }
+.followed-user{
+  margin-top: 30px;
+  width: calc(16.67% - 10px); /* Sử dụng calc để tính kích thước cố định cho mỗi phần tử */
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 2px black;
+  padding: 10px;
+  margin-left: 20px;
+}
+.followed-user-avatar-container{
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.followed-user-avatar-container img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.followed-user span{
+  color: black;
+  font-weight: bold;  
+}
+.followed-user p{
+  border: none;
+}
+.follower-number{
+  font-size: 15px;
+  font-weight: lighter;
+}
 
-  .liked-created-list{
-    margin-top: 120px;
-    position: relative;
-  }
-  .liked-created-list ul{
-    margin-left: 4%;
-    width: 92%;
-    /* border-bottom: 1px solid rgb(212, 202, 202); */
+.liked-created-list{
+  margin-top: 20px;
+  position: relative;
+}
+.liked-created-list ul{
+  margin-left: 4%;
+  width: 92%;
 
-  }
-  .liked-created-list ul li{
-    color: black;
-    font-size: 20px;
-    opacity: 0.9;
-    display: inline-block;
-    padding: 10px;
-  }
+}
+.liked-created-list ul li{
+  color: black;
+  font-size: 20px;
+  opacity: 0.9;
+  display: inline-block;
+  padding: 10px;
+}
+
+#liked-created-images div.container{
+  columns: 4;
+  width: 1065px;
+  column-gap: 30px;
+  height: auto;
+  margin: 30px auto;
+  z-index: 3;
+  position: relative;
+}
 
 
-  #confirm-remove-image-modal-overlay{
-    display: none;
-    /* opacity: 0; */
-    position: fixed;
-    background: rgba(117, 113, 113, 0.5);
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 21;
+#confirm-remove-image-modal-overlay{
+  display: none;
+  
+  position: fixed;
+  background: rgba(117, 113, 113, 0.5);
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 21;
 }
 #modal-show{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
 }
 #confirm-remove-image-modal{
-    width: 500px;
-    height: 200px;
-    border: 1px solid black;
-    padding: 15px;
-    box-shadow: 0px 0px 3px black;
-    background: white;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 500px;
+  height: 200px;
+  border: 1px solid black;
+  padding: 15px;
+  box-shadow: 0px 0px 3px black;
+  background: white;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 #confirm-remove-image-modal div{
-  width: 95%;
-  padding-left: 10px;
-  padding-right: 10px;
+width: 95%;
+padding-left: 10px;
+padding-right: 10px;
 }
 #confirm-remove-image-modal-header{
- padding-top: 10px; 
- padding-bottom: 10px;
+padding-top: 10px; 
+padding-bottom: 10px;
 }
 #confirm-remove-image-modal-header span{
-  cursor: pointer;
-  font-size: 25px;
-  position: absolute;
-  top: 2px;
-  left: 460px;
- }
+cursor: pointer;
+font-size: 25px;
+position: absolute;
+top: 2px;
+left: 460px;
+}
 #confirm-remove-image-modal-body{
-  border-top: 1px solid rgb(176, 172, 172);
-  border-bottom: 1px solid rgb(176, 172, 172);
-  padding-top: 15px;
-  padding-bottom: 30px;
+border-top: 1px solid rgb(176, 172, 172);
+border-bottom: 1px solid rgb(176, 172, 172);
+padding-top: 15px;
+padding-bottom: 30px;
 }
 #confirm-remove-image-modal-body p{
-  font-size: large;
+font-size: large;
 }
 #confirm-remove-image-modal-footer{
-  margin-top: 20px;
-  display: flex;
-  justify-content: end;
+margin-top: 20px;
+display: flex;
+justify-content: end;
 }
 #confirm-remove-image-modal-footer button{
-  /* width: 150px; */
-  padding: 0px 30px;
-  height: 35px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 17px;
+
+padding: 0px 30px;
+height: 35px;
+border-radius: 5px;
+cursor: pointer;
+font-weight: bold;
+font-size: 17px;
 }
 #remove-image-confirm-button{
-  background: #007bff;
-  color: white;
-  margin-left: 10px;
+background: #007bff;
+color: white;
+margin-left: 10px;
 }
 #remove-image-cancel-button{
-  background: lightgray;
-  color: rgb(70, 65, 65);
+background: lightgray;
+color: rgb(70, 65, 65);
 }
+
 
 
 

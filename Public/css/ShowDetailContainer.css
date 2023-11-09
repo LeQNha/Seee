@@ -164,3 +164,193 @@
 .image-details img{
     height: 84vh;
 }
+
+/* comment */
+/* comment */
+.comment-form1 {
+    position: absolute;
+    width: 86%;
+    min-height: 500px;
+    left: 5%;
+    top: 108%;
+    background-color: black;
+}
+.main-com-fo {
+    display: flex;
+    gap: 20px;
+}
+
+.currentDate {
+    color: #aaa;
+    font-size: smaller;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.num-com{
+    margin: 20px;
+    color: white;
+}
+.main-form {
+    display: flex;
+    border: 1px solid black;
+    height: 110px;
+    width: 70%;
+    justify-content: center;
+    margin: 0 auto;
+}
+#user-comment-avt-img-container{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin: 20px 20px;
+    overflow: hidden;
+}
+#user-comment-avt-img{
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+}
+#avt-img {
+    object-fit: cover;
+    object-position: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin: 10px 10px;
+}
+.part-com {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    margin-top: 20px;
+    align-items: flex-end;
+}
+#write-com{
+    width: 100%;
+    /* height: 30px; */
+    background-color: black;
+    border: none;
+    border-bottom: 2px solid grey;
+    color: white;
+    outline: none;
+    resize: vertical;
+}
+#write-com:focus {
+    color: white;
+    border-bottom: 3px solid white;
+}
+#btn-com {
+    width: 130px;
+    margin-top: 5px;
+}
+button.close-com {
+    width: 60px;
+    height: 38px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button.close-com:hover {
+    background-color: #3F3F3F;
+}
+#post-com {
+    width: 60px;
+    height: 38px;
+    border-radius: 20px;
+    background-color: #393939; /* Đặt nền mờ cho nút khi bị vô hiệu hóa */
+    color: white;
+    cursor: not-allowed; /* Đặt con trỏ chuột thành not-allowed khi bị vô hiệu hóa */
+    transition: background-color 0.3s, cursor 0.3s;
+}
+#post-com.input-filled {
+    background-color: #3EA6FF;
+}
+#post-com.hovered-button:hover {
+    background-color: #65B8FF;
+    cursor: pointer;
+}
+/* #commentContainer {
+    margin-top: 20px;
+    border-radius: 1px solid black;
+    height: 50px;
+    width: 100%;
+} */
+
+
+/* comment */
+/* COMMENTS */
+.comments__container{
+    width: 70%;
+    margin: 20px auto;
+}
+
+.comment__card{
+    width: 100%;
+    height: 106px;
+    display: grid;
+    grid-template-columns: 10% auto;
+    margin: 0.5rem;
+    /* border-bottom: 1px solid #eee; */
+}
+
+.comment__card .pic{
+    background-color: #48cae4;
+    border-radius: 50%;
+    margin: 10%;
+    font-size: 25px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.comment__info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px
+}
+
+.nickname{
+    color: white;
+    font-size: 25px;
+}
+
+.comment__info .comment{
+    margin: 5px 0;
+    color: white;
+}
+
+.comment__info .comment__bottom{
+    display: flex;
+}
+
+.comment__bottom .like__icon--comment{
+    font-size: 20px;
+    margin-right: 20px;
+    color: #eee;
+    gap: 20px;
+}
+
+/* add with JS */
+#like__icon, #dislike__icon {
+    color: white;
+}
+#like__icon.liked1 {
+    color: #adc7ff;
+}
+#dislike__icon.disliked {
+    color: #adc7ff;
+}
+
+.reply{
+    width: 70px;
+    height: 25px;
+    border: none;
+    background: transparent;
+    color: #aaa;
+    text-transform: uppercase;
+    cursor: pointer;
+}

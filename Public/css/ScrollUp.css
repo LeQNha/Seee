@@ -8,9 +8,10 @@
     border-radius: 7px 0 0 0;
     background: rgb(83, 79, 79);
     transition: ease 0.4s;
-    z-index: 2;
+    z-index: 4;
   }
   .scroll-up i{
     font-size: 35px;
     color: white;
+    z-index: 4;
 }

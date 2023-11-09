@@ -7,14 +7,14 @@
                 </div>
                 <h2 id="public-user"><?php echo $data['UploaderData']['uploader']; ?></h2>
                 <span><?php echo $data['UploaderData']['uploaderFirstname']." ".$data['UploaderData']['uploaderLastname'] ?></span>
-                <br>
+                <!-- <br> -->
                 <span class="email"><?php echo $data['UploaderData']['uploaderEmail'] ?></span>
-                <br><br>
-                <span class="place"><?php echo $data['UploaderData']['uploaderLocation'] ?></span>
+                <!-- <br><br> -->
+                <span class="place"><?php if(!empty($data['UploaderData']['uploaderLocation'])){ ?> <i class="fa-solid fa-location-dot"></i> <?php echo $data['UploaderData']['uploaderLocation']; } ?></span>
             </div>
             <div id="button">
                 <button id="bt1" <?php if($data['FollowButtonContent'] == 'Hủy theo dõi'){ echo 'style="background-color: rgb(217, 222, 228); color: rgb(80, 78, 103);"'; } ?> ><?php echo $data['FollowButtonContent'] ?></button>
-                <button id="bt2">Nhắn tin</button>
+                <button id="bt2"><i class="fa-regular fa-envelope"></i> Nhắn tin</button>
             </div>
             <div id="statistics">
                 <div class="line">

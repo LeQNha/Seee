@@ -1,53 +1,65 @@
-<!-- <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script> -->
-
     
     <link rel="stylesheet" href="./Public/css/ImagesContainer.css">
     <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <!-- <link rel="stylesheet" href="./Public/css/ImagesContainer.css"> -->
-    <div class="banner">
-        <div class="user-avatar">
+    <div id="user-infor-side">
+        <div class="banner">
             <div class="user-avatar-img-container">
                 <img src="Public/profileimg/<?php echo $avatar;?>" alt="" id="user-avatar">
             </div>
-            <i class="fa-solid fa-camera" id="change-avatar-btn"></i>
-            <input type="file" id="avatar-file">
+            <h1 class="username"><?php echo $_SESSION['Login']['username'] ?></h1>
+            <a id="go-to-edit-profile" href="index?controller=PersonalPage&action=EditProfile">Chỉnh sửa thông tin <i class="fa-solid fa-pen"></i></a>
+            
+            <div class="short-introduction">
+                <div class="statistic">
+                    <div class="number follower-number">
+                        <span class="number-follower"><?php echo $data['BriefInformation']['FollowerNumber']; ?></span>
+                        <span class="statistic-index">Người theo dõi</span>
+                    </div>
+                    <div class="number following-number">
+                        <span class="number-following"><?php echo $data['BriefInformation']['FollowingNumber']; ?></span>
+                        <span class="statistic-index">Đang theo dõi</span>
+                    </div>
+                    <div class="number uploaded-image-number">
+                        <span class="number-uploaded-image"><?php echo $data['BriefInformation']['UploadedImageNumber']; ?></span>
+                        <span class="statistic-index">Ảnh tải lên</span>
+                    </div>
+                </div>
+                <div class="user-information">
+                    <div>
+                        <span>Email:</span>
+                        <h4><?= $data['UserInformation']['Email']; ?></h4>
+                    </div>
+                    <div>
+                        <span>Họ và tên:</span>
+                        <h4><?= $data['UserInformation']['Lastname'].' '.$data['UserInformation']['Firstname'];; ?></h4>
+                    </div>
+                    <div>
+                        <span>Nghề nghiệp:</span>
+                        <h4><?= $data['UserInformation']['Ocupation']; ?></h4>
+                    </div>
+                    <div id="location">
+                        <span>Vị trí:</span>
+                        <h4><?= $data['UserInformation']['Location'];?></h4>
+                    </div>
+                </div>
+
+                <span id="joinning-date">Tham gia vào <?= $data['UserInformation']['JoinningDate']; ?></span>
+            </div>
         </div>
     </div>
-    <div class="short-introduction">
-        <h1 class="username"><?php echo $_SESSION['Login']['username'] ?></h1>
-        <h3><?php echo $_SESSION['email'] ?></h3>
-        <!-- <p class="user-job" style="color: grey;">st</p> -->
-        <p class="number-follower"><?php echo $data['BriefInformation']['FollowerNumber']; ?> người theo dõi - <?php echo $data['BriefInformation']['FollowingNumber']; ?> đang theo dõi</p>
-        <span><span id="uploaded-image-number"><?php echo $data['BriefInformation']['UploadedImageNumber']; ?></span> ảnh đã tải lên</span>
-        <a href="index?controller=PersonalPage&action=EditProfile">Chỉnh sửa hồ sơ cá nhân</a>
-    </div>
+  </div>
 
-    
+  <div id="list-side">
     <div class="liked-created-list">
         <ul>
             <li><i class="fa-solid fa-layer-group"></i></li>
-            <!-- <a href="index.php?controller=Header&action=PersonalPage&listShowed=liked"><li class="show-liked-list">Yêu thích</li></a>
-            <a href="index.php?controller=Header&action=PersonalPage&listShowed=created"><li class="show-created-list">Đã tạo</li></a>
-            <a href="index.php?controller=Header&action=PersonalPage&listShowed=followed"><li class="show-followed-list">Theo dõi</li></a> -->
-            <!-- <li onclick="GetShowList('liked')" class="showed-list-button show-liked-list">Yêu thích</li>
-            <li onclick="GetShowList('created')" class="showed-list-button show-created-list">Đã tạo</li> -->
-
             <li class="show-liked-list show-list-btn" onclick="ShowList('liked')">Yêu thích</li>
             <li class="show-created-list show-list-btn" onclick="ShowList('created')">Đã tải lên</li>
             <li class="show-followed-list show-list-btn" onclick="ShowList('following')">Theo dõi</li>
-            
         </ul>
+
         <div id="liked-created-images">
             <div id="show-list-text-content" hidden><?php echo $data['ListShowed'] ?></div>
             <?php 
@@ -89,8 +101,9 @@
                 ?>
         </div>
     </div>
+  </div>
 
-    <div id="confirm-remove-image-modal-overlay">
+  <div id="confirm-remove-image-modal-overlay">
         <div id="modal-show">
             <div id="confirm-remove-image-modal">
                 <div id="confirm-remove-image-modal-header">
@@ -108,8 +121,8 @@
             </div>
         </div>
     </div>
-    
-    <?php include "./MVC/Views/Partitions/ShowDetailContainer.php"; ?>
+
+  <?php include "./MVC/Views/Partitions/ShowDetailContainer.php"; ?>
     <?php include "./MVC/Views/Partitions/ShowDetailContainer_Created.php"; ?>
     
     

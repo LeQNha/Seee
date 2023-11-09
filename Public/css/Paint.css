@@ -23,7 +23,12 @@
 }
 .paint:hover .like-number{
     opacity: 1;
-    bottom: 14px;
+    bottom: 16px;
+    transition: all ease 0.2s;
+}
+.paint:hover .view-number{
+    opacity: 1;
+    bottom: 16px;
     transition: all ease 0.2s;
 }
 .paint img{
@@ -34,12 +39,13 @@
 .paint .image-name{
     display: none;
 }
-.image-title, .like-number{
+.image-title, .like-number, .view-number{
     position: absolute;
     bottom: 0px;
     color: white;
     font-size: 18px;
     opacity: 0;
+    /* font-size: 13px; */
 }
 .image-uploader{
     top: 0px;
@@ -55,6 +61,7 @@
 }
 .image-uploader .uploader-username{
     margin-left: 4px;
+    color: white;
 }
 .image-uploader-avatar-container{
     width: 25px;
@@ -81,8 +88,22 @@
     right: 20px;
     bottom: 4px;
     color: white;
+    font-size: 13px;
 }
 .like-number span{
     font-weight: lighter;
-    font-size: 14px;
+    font-size: 10px;
+    color: white;
+}
+.view-number{
+    right: 70px;
+    bottom: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+}
+.view-number span{
+    font-weight: lighter;
+    font-size: 10px;
+    color: white;
 }
