@@ -119,10 +119,10 @@ header{
 } */
 .search-form{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 750px;
-    height: 40px;
+    height: 35px;
     border: 1px solid black;
     border-radius: 15px;
 
@@ -131,14 +131,24 @@ header{
     margin-left: 70px; */
 }
 .search-form input{
-    width: 680px;
+    width: 650px;
     height: 18px;
     background: rgb(249, 246, 246);
     font-size: 20px;
+    margin-left: 3%;
+    font-size: 17px;
 }
 .search-form label i{
     cursor: pointer;
-    font-size: 20px;
+    font-size: 23px;
+    background: rgb(235, 225, 226);
+    height: 100%;
+    border-radius: 0px 15px 15px 0px;
+    /* padding: 0px 45px 0px 5px; */
+    width: 53px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .button-container{
     display: flex;
@@ -155,7 +165,9 @@ header{
     border-radius: 15px;
 }
 .button-createImg{
-
+    background: white;
+    color: black;
+    border:1px solid rgb(214, 203, 203);
     width: 120px;
 }
 .button-Info{

@@ -17,7 +17,10 @@ var detailDescription = document.querySelector('.detail-description');
 var dateUploaded = document.querySelector('.detail-date-uploaded');
 var detailUploader = document.querySelector('.detail-uploader');
 var detailUploaderAvatar = document.querySelector('.detail-avatar');
-
+var paints = document.getElementsByClassName('paint');
+// for(i = 0 ; i<paints.length; i++){
+//   paints[i].addEventListener('click', GetComments);
+// }
 var imgId = "";
 
 
@@ -86,10 +89,10 @@ function ShowDetails(pid){
     
 
     imgId = receivedData.path;
-    CheckLikeAndFollow(imgId);
-    GetComments();
     commentImagePath.value = imgId;
-    
+    CheckLikeAndFollow(imgId, function() {
+      GetComments(imgId);
+  });
   };
   
 
@@ -141,7 +144,7 @@ function ShowPublicUserPage(){
     
   }
 
-  function CheckLikeAndFollow(imgId){
+  function CheckLikeAndFollow(imgId, callback){
     console.log('check like n');
     xhr.open('POST', 'index.php?controller=ShowDetailContainer&action=CheckLikeAndFollow');
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -149,7 +152,7 @@ function ShowPublicUserPage(){
       console.log(xhr.responseText);
       receivedData = JSON.parse(xhr.responseText);
       if(xhr.status === 200){
-        console.log(receivedData.Like);
+        console.log('che: '+ xhr.responseText);
         if(receivedData.Like === 'liked'){
           likeIcon.style.display = "block";
           unlikeIcon.style.display = "none";
@@ -160,11 +163,17 @@ function ShowPublicUserPage(){
 
         if(receivedData.Follow === 'following'){
           followStatus.textContent = 'Bỏ theo dõi';
+          console.log('bỏ theo');
         }else{
           followStatus.textContent = 'Theo dõi'
+          console.log('theo');
         }
       }else{
-        alert('Đã có lỗi xảy ra! check like n f');
+        alert('Đã có lỗi xảy ra!');
+      }
+
+      if (typeof callback === 'function') {
+        callback();
       }
       
     };
@@ -417,10 +426,10 @@ function addFeedback(item){
     }
 
     //GET COMMENTS
-    function GetComments(){
-      console.log('get com');
-      xhr.open('GET','index.php?controller=ShowDetailContainer&action=GetComments&pid='+encodeURIComponent(imgId));
-
+    function GetComments(pid){
+      console.log('getcom');
+      xhr.open('POST','index.php?controller=ShowDetailContainer&action=GetComments');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.onload = function(){
         if(xhr.status === 200){
           console.log(xhr.responseText);
@@ -430,5 +439,5 @@ function addFeedback(item){
         }
       }
 
-      xhr.send();
+      xhr.send('pid='+encodeURIComponent(pid));
     }

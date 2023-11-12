@@ -225,8 +225,8 @@
         }
 
         public function GetComments(){
-            if(isset($_GET['pid'])){
-                $pid = $_GET['pid'];
+            if(isset($_POST['pid'])){
+                $pid = $_POST['pid'];
                 $result = $this->commentModel->GetComments($pid);
                 $commenterAvatar = '';
                 $timeGap = '';
@@ -255,6 +255,8 @@
                         echo '</div>';
                     }
                 }
+            }else{
+                echo 'ko nhận đc';
             }
         }
 

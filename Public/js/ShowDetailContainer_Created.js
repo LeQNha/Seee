@@ -1,27 +1,31 @@
-// var input = document.getElementById("detail-title-created");
+var input1 = document.getElementById("detail-title-created");
 
-// input.addEventListener("input", function() {
-//   if (input.value.length > 0) {
-//     input.style.border = "none"; // Nếu có ít nhất một ký tự, ẩn viền
-//   } else {
-//     input.style.border = "1px solid black"; // Nếu trống, hiển thị viền lại
-//   }
-// });
+input1.addEventListener("input", function() {
+  this.style.height = "auto";
+  this.style.height = (this.scrollHeight) + "px";
+});
+input1.addEventListener("input", function() {
+  if (input1.value.length > 0) {
+    input1.style.border = "none"; // Nếu có ít nhất một ký tự, ẩn viền
+  } else {
+    input1.style.border = "1px solid black"; // Nếu trống, hiển thị viền lại
+  }
+});
 
-// var textarea = document.getElementById("description");
+var textarea1 = document.getElementById("description-created");
 
-// textarea.addEventListener("input", function() {
-//   this.style.height = "auto";
-//   this.style.height = (this.scrollHeight) + "px";
-// });
+textarea1.addEventListener("input", function() {
+  this.style.height = "auto";
+  this.style.height = (this.scrollHeight) + "px";
+});
 
-// textarea.addEventListener("input", function() {
-//   if (textarea.value.length > 0) {
-//     textarea.style.border = "none"; // Nếu có ít nhất một ký tự, ẩn viền
-//   } else {
-//     textarea.style.border = "1px solid black"; // Nếu trống, hiển thị viền lại
-//   }
-// });
+textarea1.addEventListener("input", function() {
+  if (textarea1.value.length > 0) {
+    textarea1.style.border = "none"; // Nếu có ít nhất một ký tự, ẩn viền
+  } else {
+    textarea1.style.border = "1px solid black"; // Nếu trống, hiển thị viền lại
+  }
+});
 
 // var commentInput = document.getElementById("comment-input");
 // var submitButton = document.getElementById("send");
@@ -121,7 +125,7 @@ if(confirmRemoveImageModal){
  imagesContainer = document.querySelector('.container');
 function ConfirmRemoveImage(pid){
   pid = imgId;
-  xhr.open('POST', 'index.php?controller=ShowDetailContainer_Created&action=DeleteImage');
+  xhr.open('POST', 'index.php?controller=ShowDetailContainer_Created&action=RemoveImage');
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onload = function() {
     if(xhr.responseText.trim(0) == 'remove success'){
@@ -161,6 +165,188 @@ function UpdateImage(){
   xhr.send(formData);
 }
 
+//comment
 
+// var currentDateParagraph = document.getElementById('currentDate');
+// var currentDate = new Date();
 
+// var day = currentDate.getDate();
+// var month = currentDate.getMonth() + 1; // Lưu ý rằng tháng bắt đầu từ 0
+// var year = currentDate.getFullYear();
 
+// var formattedDate = day + '/' + month + '/' + year;
+// currentDateParagraph.textContent = formattedDate;
+
+var commenter = document.getElementById('comment-input');
+var send11 = document.getElementById("send");
+
+feedbackArr1 = [];
+const commentsContain1= document.querySelector('.comments');
+
+send11.addEventListener('click', submitFeedback1);
+function submitFeedback1(e){
+  const userForm1 = 'sunrisegxg';
+  const commentForm1 = commenter.value;
+  const date1 = currentDateParagraph.textContent;
+  // if inputs are not empty
+  if(commentForm1 !== ''){
+      // create new feedback
+      newFeedback1 = {
+          "id": Math.floor((Math.random() * 1000)+ 1),
+          "userName": userForm1,
+          "userComment": commentForm1,
+          "dated": date1
+      };
+      // add new feedback to array
+      feedbackArr1.push(newFeedback1);
+      // clear inputs 
+      resetForm1();
+      // add feedback to list
+      addFeedback1(newFeedback1);
+  }
+  e.preventDefault();
+};
+function resetForm1(){
+  commenter.value = '';
+  // positiveFeedback = false
+};
+
+function addFeedback1(item){
+    // create new div
+    const div1 = document.createElement('div');
+    // add class
+    div1.classList = 'comment__card1';
+    // add id
+    div1.id = item.id;
+    // add html
+    div1.innerHTML = `
+                          <img id="avt-img1" src="https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABeNzg-kMHhUBP4AmHnLsrPYzxKHVceLnkwtLhxZlDssj7KjhStloJR6px7EbquZ83uDcygnWkekxysvuNYVzLQ3GyBMRl2PpU7pO.jpg?r=db8" alt="">
+                          <div class="comment__info1">
+                              <div class="main-com-fo1">
+                                  <small class="nickname1">
+                                      ${item.userName}
+                                  </small>
+                                  <p id="currentDate1">
+                                      ${item.dated}
+                                  </p>
+                              </div>
+                              <p class="comment10">
+                                  ${item.userComment}
+                              </p>
+                              <div class="comment__bottom1">
+                                  <div class="like__icon--comment1">
+                                      <i id="like__icon1" class="fa-regular fa-thumbs-up"></i>
+                                      <small class="counted">0</small>
+                                      <i id="dislike__icon1" class="fa-regular fa-thumbs-down"></i>
+                                      <small class="counted1">0</small>
+                                  </div>
+                                  <button class="reply1">
+                                      Phản hồi
+                                  </button>
+                                  <button onclick="deleteDiv()" class="delete1">Xóa</button>
+                              </div>
+                          </div>
+    `;
+    
+    // insert feedback into the list
+    commentsContain1.insertAdjacentElement('beforeend', div1);
+
+    // Lấy tham chiếu đến các phần tử bên trong div
+    const counted = div1.querySelector('.counted');
+    const counted1 = div1.querySelector('.counted1');
+    var likeico = div1.querySelector("#like__icon1");
+    var dislikeico = div1.querySelector("#dislike__icon1");
+
+    // Gắn kết lại sự kiện cho likeico và dislikeico
+    likeico.addEventListener("click", likeComment1(likeico, dislikeico, counted, counted1));
+    dislikeico.addEventListener("click", dislikeComment1(dislikeico, likeico, counted1, counted));
+};
+
+        const counted = document.querySelector('.counted');
+        const counted1 = document.querySelector('.counted1');
+        let likesCount1 = 0;
+        let dislikeCount1 = 0;
+        var likeico = document.getElementById('like__icon1'); // Lấy tham chiếu đến phần tử like__icon
+        var dislikeico = document.getElementById('dislike__icon1'); // Lấy tham chiếu đến phần tử dislike__icon
+        var isLiked1 = false; // Biến theo dõi trạng thái like
+        var isDisliked1 = false; // Biến theo dõi trạng thái dislike 
+      function likeComment1(likeico, dislikeico, counted, counted1) {
+        return function() {
+            if (!isLiked1) {
+                likeico.classList.remove("fa-regular");
+                likeico.classList.add("fa-solid");
+                likeico.classList.add("liked1");
+                isLiked1 = true;
+                likesCount1++;
+                counted.innerHTML = likesCount1;
+    
+                // Kiểm tra nếu dislike đã được chọn thì hủy chọn nó
+                if (isDisliked1) {
+                    dislikeico.classList.remove("fa-solid");
+                    dislikeico.classList.add("fa-regular");
+                    isDisliked1 = false;
+                    dislikeico.classList.remove("disliked");
+                    dislikeCount1--;
+                    counted1.innerHTML = dislikeCount1;
+                }
+            } else {
+                likeico.classList.remove("fa-solid");
+                likeico.classList.add("fa-regular");
+                isLiked1 = false;
+                likeico.classList.remove("liked1");
+                likesCount1--;
+                counted.innerHTML = likesCount1;
+                if (!isDisliked1) {
+                  dislikeico.classList.remove("fa-regular");
+                  dislikeico.classList.add("fa-solid");
+                  isDisliked1 = true;
+                  dislikeico.classList.add("disliked");
+                  dislikeCount1++;
+                  counted1.innerHTML = dislikeCount1;
+                }
+            }
+        };
+    }
+    
+    function dislikeComment1(dislikeico, likeico, counted1, counted) {
+        return function() {
+            if (!isDisliked1) {
+                dislikeico.classList.remove("fa-regular");
+                dislikeico.classList.add("fa-solid");
+                isDisliked1 = true;
+                dislikeico.classList.add("disliked");
+                dislikeCount1++;
+                counted1.innerHTML = dislikeCount1;
+    
+                // Kiểm tra nếu like đã được chọn thì hủy chọn nó
+                if (isLiked1) {
+                    likeico.classList.remove("fa-solid");
+                    likeico.classList.add("fa-regular");
+                    isLiked1 = false;
+                    likeico.classList.remove("liked1");
+                    likesCount1--;
+                    counted.innerHTML = likesCount1;
+                }
+            } else {
+                dislikeico.classList.remove("fa-solid");
+                dislikeico.classList.add("fa-regular");
+                isDisliked1 = false;
+                dislikeico.classList.remove("disliked");
+                dislikeCount1--;
+                counted1.innerHTML = dislikeCount1;
+                if (!isLiked1) {
+                  likeico.classList.remove("fa-regular");
+                  likeico.classList.add("fa-solid");
+                  likeico.classList.add("liked1");
+                  isLiked1 = true;
+                  likesCount1++;
+                  counted.innerHTML = likesCount1;
+                }
+                
+            }
+        };
+    }
+function deleteDiv() {
+  var divToDelete = document.querySelector(".comment__card1");
+  divToDelete.parentNode.removeChild(divToDelete);
+}

@@ -1,5 +1,4 @@
-    
-    <div class="show-details-container-created">
+<div class="show-details-container-created">
             <ul class="behavior-list-created">
                 <li class="close-show-details-created"><i class="fa-solid fa-xmark"></i></li>
                 <li>
@@ -57,6 +56,34 @@
                         <div class="separate2"></div>
                         <div id="comment-container" class="comments">
                             <!-- Thêm các comment khác ở đây -->
+                            <div class="comment__card1" style="display: none">
+                                <img id="avt-img1" src="https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABeNzg-kMHhUBP4AmHnLsrPYzxKHVceLnkwtLhxZlDssj7KjhStloJR6px7EbquZ83uDcygnWkekxysvuNYVzLQ3GyBMRl2PpU7pO.jpg?r=db8" alt="">
+                                <div class="comment__info1">
+                                    <div class="main-com-fo1">
+                                        <small class="nickname1">
+                                            sunrisegxg
+                                        </small>
+                                        <p id="currentDate1">
+                                            01/01/2004
+                                        </p>
+                                    </div>
+                                    <p class="comment10">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, in magnam! Libero?
+                                    </p>
+                                    <div class="comment__bottom1">
+                                        <div class="like__icon--comment1">
+                                            <i id="like__icon1" class="fa-regular fa-thumbs-up"></i>
+                                            <small class="counted">0</small>
+                                            <i id="dislike__icon1" class="fa-regular fa-thumbs-down"></i>
+                                            <small class="counted1">0</small>
+                                        </div>
+                                        <button class="reply1">
+                                            Phản hồi
+                                        </button>
+                                        <button onclick="deleteDiv()" class="delete1">Xóa</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div id="comment">
                             <form class="comment-form">
@@ -72,5 +99,3 @@
 
     
     <script src="./Public/js/ShowDetailContainer_Created.js"></script>
-    
-    

@@ -5,7 +5,7 @@
                 <div class="follow-button-avatar-container">
                     <img src="Public/webimg/defaultAvatar.png" alt="">
                 </div>
-                <span id="follow-status">Follow</span>
+                <span id="follow-status">Theo dõi</span>
             </li>
             <li>
                 <i class="fa-regular fa-thumbs-up" id="unlike-icon"></i>
