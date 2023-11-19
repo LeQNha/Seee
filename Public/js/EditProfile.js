@@ -65,3 +65,34 @@ avatarInput.addEventListener('change',function(e){
         fileReader.readAsDataURL(file);
     }
 });
+
+var abc = document.querySelector('.edit-file');
+var edf = document.querySelector('.edit-acc');
+
+abc.addEventListener('click', function() {
+    abc.classList.add("focus1");
+    edf.classList.remove("focus2");
+});
+edf.addEventListener('click', function() {
+    abc.classList.remove("focus1");
+    edf.classList.add("focus2");
+});
+
+// location
+function toggleOptions() {
+    var options = document.querySelector('.options');
+    options.style.display = options.style.display === 'block' ? 'none' : 'block';
+}
+function selectOption(optionIndex) {
+    var mainBox = document.querySelector('.location');
+    var options = document.querySelectorAll('.option');
+    options.forEach(function(option, index) {
+        if (index === optionIndex - 1) {
+          option.classList.add('selected');
+        } else {
+          option.classList.remove('selected');
+        }
+      });
+    mainBox.value = options[optionIndex - 1].textContent;
+    toggleOptions();
+}

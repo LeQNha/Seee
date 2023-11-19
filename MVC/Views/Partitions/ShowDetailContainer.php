@@ -39,7 +39,17 @@
             </div>
         </div>
         <div class="comment-form1">
+            <div class="comment-sta">
             <h2 class="num-com"><span id="comment-number">46</span> bình luận</h2>
+                <div class="sorted" onclick="togglenav_sorteds()">
+                    <i class="fa-solid fa-sort-down"></i>
+                    <div class="sorted-com">Sắp xếp theo</div>
+                </div>
+                <div class="nav-sorteds">
+                    <div class="nav-sorted" onclick="selectnav_sorted(1)">Bình luận hàng đầu</div>
+                    <div class="nav-sorted" onclick="selectnav_sorted(2)">Bình luận mới nhất</div>
+                </div>
+            </div>
             <form class="main-form" id="comment-form">
                 <div id="user-comment-avt-img-container">
                     <img id="user-comment-avt-img" src="./Public/profileimg/<?= $_SESSION['avatar']; ?>" alt="">

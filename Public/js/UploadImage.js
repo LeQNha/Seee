@@ -158,4 +158,23 @@ title.addEventListener('click', function(){
   document.querySelector('.alertP').style.display="none";
 });
 
+//CATEGORY JS
+function toggleOptions2() {
+  var cate_others = document.querySelector('.cate-others');
+  cate_others.style.display = cate_others.style.display === 'block' ? 'none' : 'block';
+}
+function selectOption2(optionIndex) {
+  var categories = document.querySelector('.categories');
+  var cate_other = document.querySelectorAll('.cate-other');
+  cate_other.forEach(function(option, index) {
+      if (index === optionIndex - 1) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+  categories.value = cate_other[optionIndex - 1].textContent;
+  toggleOptions2();
+}
+
 

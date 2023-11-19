@@ -56,7 +56,16 @@
                             </div>
                         </div>
                         <div class="separate2"></div>
+                        <div class="sorted1" onclick="togglenav_sorteds1()">
+                            <i class="fa-solid fa-sort-down down1"></i>
+                            <div class="sorted-com1">Sắp xếp theo</div>
+                        </div>
+                        <div class="nav-sorteds1">
+                            <div class="nav-sorted1" onclick="selectnav_sorted1(1)">Bình luận hàng đầu</div>
+                            <div class="nav-sorted1" onclick="selectnav_sorted1(2)">Bình luận mới nhất</div>
+                        </div>
                         <div id="comment-container" class="comments">
+
                             <!-- Thêm các comment khác ở đây -->
                             <input type="text" value="<?= $_SESSION['avatar']; ?>" id="get-user-avatar-created" hidden>
                             <input type="text" value="<?= $_SESSION['Login']['username']; ?>" id="get-user-username-created" hidden>

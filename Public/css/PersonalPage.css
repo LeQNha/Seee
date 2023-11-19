@@ -322,6 +322,50 @@ background: lightgray;
 color: rgb(70, 65, 65);
 }
 
+/* search-small */
+#sub-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.sub__search {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 283px;
+  margin: 0 20px;
+  right: 35px;
+  top: -43px;
+}
+form {
+  width: 100%;
+}
+.search-small {
+  width: 100%;
+  background-color: white;
+  height: 35px;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 35px;
+}
+.search-small:focus {
+  color: black;
+}
+.search-small + i {
+  width: 25px;
+  color: rgb(125, 124, 124);
+  position: absolute;
+  right: 245px; /* Điều chỉnh vị trí của icon */
+  top: 50%;
+  transform: translateY(-50%);
+}
+.search-small + i:hover {
+  cursor: pointer;
+}
 
 
 

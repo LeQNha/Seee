@@ -437,3 +437,21 @@ function showAndHide(msg){
        notifyMessage.style.opacity = "0.3";
      }, 2000); // Thời gian đếm ngược (đơn vị: mili giây)
 }
+
+//FILTER JS
+function togglenav_sorteds1() {
+  var nav_sorteds1 = document.querySelector('.nav-sorteds1');
+  nav_sorteds1.style.display = nav_sorteds1.style.display === 'block' ? 'none' : 'block';
+}
+function selectnav_sorted1(optionIndex) {
+  var nav_sorted1 = document.querySelectorAll('.nav-sorted1');
+  nav_sorted1.forEach(function(option, index) {
+      if (index === optionIndex - 1) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+    togglenav_sorteds1();
+}
+

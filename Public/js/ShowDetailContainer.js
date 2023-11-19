@@ -458,3 +458,20 @@ function addFeedback(item){
 
       xhr.send();
     }
+
+    //FILTER
+    function togglenav_sorteds() {
+      var nav_sorteds = document.querySelector('.nav-sorteds');
+      nav_sorteds.style.display = nav_sorteds.style.display === 'block' ? 'none' : 'block';
+    }
+    function selectnav_sorted(optionIndex) {
+      var nav_sorted = document.querySelectorAll('.nav-sorted');
+      nav_sorted.forEach(function(option, index) {
+          if (index === optionIndex - 1) {
+            option.classList.add('selected');
+          } else {
+            option.classList.remove('selected');
+          }
+        });
+        togglenav_sorteds();
+  }

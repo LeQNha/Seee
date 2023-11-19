@@ -60,6 +60,15 @@
             <li class="show-followed-list show-list-btn" onclick="ShowList('following')">Theo dõi</li>
         </ul>
 
+        <div id="sub-header">
+            <div class="sub__search">
+                <form >
+                    <input type="text" class="search-small" placeholder= "Tìm kiếm">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </form>
+            </div>
+        </div>
+
         <div id="liked-created-images">
             <div id="show-list-text-content" hidden><?php echo $data['ListShowed'] ?></div>
             <?php 

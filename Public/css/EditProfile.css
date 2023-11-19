@@ -1,4 +1,3 @@
-
 body{
     background: rgb(247, 245, 245);
 }
@@ -33,7 +32,7 @@ body{
     /* background: pink; */
     font-size: 27px;
     cursor: pointer;
-    width: 230px;
+    /* width: 230px; */
     padding: 15px;
     border-radius: 15px 0 0 0;
     box-shadow: 0px 0px 5px gray;
@@ -48,7 +47,7 @@ body{
     color: cornflowerblue;
 }
 .actions li i.set-back-icon{
-    color: yellowgreen;
+    color: grey;
 }
 .container{
     /* display: flex;
@@ -60,8 +59,8 @@ body{
 }
 .edit-navigation{
     position: fixed;
-    background: white;
-    left: 15%;
+    left: 3%;
+    width: 360px;
 }
 .edit-navigation a{
     font-size: 18px;
@@ -69,6 +68,23 @@ body{
     padding: 15px;
     display: block;
     font-weight: 500;
+    background-color: white;
+    /* transition: background-color 0.3s color 0.3s; */
+}
+.edit-navigation a:hover {
+    background-color: #D9D9D9;
+}
+.edit-file {
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.edit-file.focus1 {
+    color: rgb(153, 188, 144);
+    border-left: 3px solid rgb(153, 188, 144);
+}
+.edit-acc.focus2 {
+    color: rgb(153, 188, 144);
+    border-left: 3px solid rgb(153, 188, 144);
 }
 .container input{
     display: block;
@@ -166,4 +182,51 @@ textarea:focus{
     width: 740px;
     margin-left: 30%;
     margin-top: 50px;
+}
+.fa-solid.fa-caret-down.down-click {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 42px;
+    position: absolute;
+    right: 704px;
+    top: 65.5%;
+    transform: translateY(-50%);
+}
+.options {
+    position: absolute;
+    z-index: 25;
+    display: none;
+    width: 315px;
+    height: 200px;
+    overflow-y: scroll;
+    /* border: 1px solid black; */
+    box-shadow: 0px 0px 5px gray;
+    background-color: white;
+}
+.edit-profile div.option {
+    word-wrap: break-word;
+    padding-left: 15px;
+    height: 35px;
+    display: flex;
+    margin: 0;
+    align-items: center;
+}
+.option:hover {
+    background-color: rgb(153, 188, 144);
+    cursor: pointer;
+    color: black;
+}
+.option.selected {
+    color: rgb(153, 188, 144);
+} 
+.option.selected:hover {
+    background-color: rgb(153, 188, 144);
+    cursor: pointer;
+    color: black;
+}
+.main-box {
+    width: 320px;
 }
