@@ -1,5 +1,20 @@
 var input1 = document.getElementById("detail-title-created");
 
+//NotifyMessage
+var notifyMessage = document.querySelector('.notify-message');
+var message = document.querySelector('.notify-message p');
+
+//COMMENT SECTION
+var commenter = document.getElementById('comment-input');
+var send11 = document.getElementById("send");
+var commentImagePathCreated = document.getElementById('comment-image-path-created');
+
+feedbackArr1 = [];
+const commentsContain1= document.querySelector('.comments');
+
+var getUserAvatarCreated = document.getElementById('get-user-avatar-created');
+var getUsernameCreated = document.getElementById('get-user-username-created');
+
 input1.addEventListener("input", function() {
   this.style.height = "auto";
   this.style.height = (this.scrollHeight) + "px";
@@ -96,6 +111,8 @@ function ShowDetails_Created(pid){
     detailUploaderAvatarCreated.src = "./Public/profileimg/"+receivedData.uploaderAvatar;
 
     imgId = receivedData.path;
+    commentImagePathCreated.value = imgId;
+    GetCommentsCreated(pid);
   };
 
   xhr.send("pid=" + encodeURIComponent(pid));
@@ -125,22 +142,28 @@ if(confirmRemoveImageModal){
  imagesContainer = document.querySelector('.container');
 function ConfirmRemoveImage(pid){
   pid = imgId;
-  xhr.open('POST', 'index.php?controller=ShowDetailContainer_Created&action=RemoveImage');
+  xhr.open('POST', 'index.php?controller=ShowDetailContainer_Created&action=DeleteImage');
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onload = function() {
-    if(xhr.responseText.trim(0) == 'remove success'){
-      alert('Xóa thành công');
-      //Xóa nó khỏi personal page
-      imagesContainer.removeChild(document.getElementById(pid));
+    if(xhr.status === 200){
+      if(xhr.responseText.trim(0) == 'remove success'){
+        
+        //Xóa nó khỏi personal page
+        imagesContainer.removeChild(document.getElementById(pid));
+        showAndHide('Đã xóa ảnh!');
+      }
+    }else{
+      alert('Đã có lỗi xảy ra!');
     }
+    
   }
   xhr.send("pid=" + encodeURIComponent(pid));
   confirmRemoveImageModal.style.display = 'none';
   CloseShowDetailsContainerCreated();
 
   //giảm số lượng ảnh tải lên
-  uploadedImgNum = parseInt(document.getElementById('uploaded-image-number').textContent) - 1;
-  document.getElementById('uploaded-image-number').textContent = uploadedImgNum;
+  uploadedImgNum = parseInt(document.getElementById('number-uploaded-image').textContent) - 1;
+  document.getElementById('number-uploaded-image').textContent = uploadedImgNum;
 }
 
 //Update img
@@ -152,9 +175,10 @@ function UpdateImage(){
   formData = new FormData(document.getElementById('update-image-infor-form'));
   xhr.onload = function(){
     if(xhr.status === 200){
-      console.log('có nhân = ' + xhr.responseText +' ' + imgId );
+      // console.log('có nhân = ' + xhr.responseText +' ' + imgId );
       if(xhr.responseText.trim() == 'update success'){
-        alert('Cập nhật thành công');
+        // alert('Cập nhật thành công');
+        showAndHide('Đã cập nhật!');
       }else{
         alert(xhr.responseText.trim());
       }
@@ -177,15 +201,12 @@ function UpdateImage(){
 // var formattedDate = day + '/' + month + '/' + year;
 // currentDateParagraph.textContent = formattedDate;
 
-var commenter = document.getElementById('comment-input');
-var send11 = document.getElementById("send");
-
-feedbackArr1 = [];
-const commentsContain1= document.querySelector('.comments');
 
 send11.addEventListener('click', submitFeedback1);
 function submitFeedback1(e){
-  const userForm1 = 'sunrisegxg';
+  AddComment();
+  const userForm1 = getUsernameCreated.value;
+  const userAvatar1 = getUserAvatarCreated.value
   const commentForm1 = commenter.value;
   const date1 = currentDateParagraph.textContent;
   // if inputs are not empty
@@ -194,6 +215,7 @@ function submitFeedback1(e){
       newFeedback1 = {
           "id": Math.floor((Math.random() * 1000)+ 1),
           "userName": userForm1,
+          "userAvatar": userAvatar1,
           "userComment": commentForm1,
           "dated": date1
       };
@@ -220,15 +242,15 @@ function addFeedback1(item){
     div1.id = item.id;
     // add html
     div1.innerHTML = `
-                          <img id="avt-img1" src="https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABeNzg-kMHhUBP4AmHnLsrPYzxKHVceLnkwtLhxZlDssj7KjhStloJR6px7EbquZ83uDcygnWkekxysvuNYVzLQ3GyBMRl2PpU7pO.jpg?r=db8" alt="">
+                          <img id="avt-img1" src="./Public/profileimg/${item.userAvatar}" alt="">
                           <div class="comment__info1">
                               <div class="main-com-fo1">
-                                  <small class="nickname1">
+                                  <span class="nickname1">
                                       ${item.userName}
-                                  </small>
-                                  <p id="currentDate1">
-                                      ${item.dated}
-                                  </p>
+                                  </span>
+                                  <span class="currentDate1">
+                                      1 giây trước
+                                  </span>
                               </div>
                               <p class="comment10">
                                   ${item.userComment}
@@ -243,13 +265,13 @@ function addFeedback1(item){
                                   <button class="reply1">
                                       Phản hồi
                                   </button>
-                                  <button onclick="deleteDiv()" class="delete1">Xóa</button>
+                                  <button onclick="deleteDiv(`+imgId+`)" class="delete1">Xóa</button>
                               </div>
                           </div>
     `;
     
     // insert feedback into the list
-    commentsContain1.insertAdjacentElement('beforeend', div1);
+    commentsContain1.insertAdjacentElement('afterbegin', div1);
 
     // Lấy tham chiếu đến các phần tử bên trong div
     const counted = div1.querySelector('.counted');
@@ -346,7 +368,72 @@ function addFeedback1(item){
             }
         };
     }
-function deleteDiv() {
-  var divToDelete = document.querySelector(".comment__card1");
-  divToDelete.parentNode.removeChild(divToDelete);
+  //DELETE COMMENT
+function deleteDiv(comId) {
+  console.log('xoa: '+comId);
+  xhr.open('POST','index.php?controller=ShowDetailContainer_Created&action=DeleteComment');
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+  xhr.onload = function(){
+    if(xhr.status === 200){
+      console.log(xhr.responseText);
+      showAndHide('Đã xóa bình luận!');
+    }else{
+      alert('Đã có lỗi xảy ra!');
+    }
+
+  }
+  xhr.send('comId='+encodeURIComponent(comId));
+  // xhr.send();
+  commentsContain1.removeChild(document.getElementById(comId));
+}
+
+
+//ADD COMMENT
+function AddComment(){
+  xhr.open('POST','index.php?controller=ShowDetailContainer_Created&action=Comment');
+  var commentFormDataCreated = new FormData(document.getElementById('comment-form-created'));
+  xhr.onload = function(){
+    if(xhr.status === 200){
+      
+    }else{
+      alert('Đã có lỗi xảy ra');
+    }
+  }
+  xhr.send(commentFormDataCreated);
+  // xhr.send();
+}
+//GET COMMENTS
+function GetCommentsCreated(pid){
+  console.log('getcom');
+  xhr.open('POST','index.php?controller=ShowDetailContainer_Created&action=GetComments');
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onload = function(){
+    if(xhr.status === 200){
+      commentsContain1.innerHTML = xhr.responseText;
+    }else{
+      alert('Đã có lỗi xảy ra!');
+    }
+  }
+
+  xhr.send('pid='+encodeURIComponent(pid));
+}
+
+//NotifyMessage
+function showAndHide(msg){
+
+  if(message){
+    console.log('co ton tai');
+  }else{
+    console.log('ko ton');
+  }
+
+  message.textContent = msg;
+  notifyMessage.style.top = "91vh";
+  notifyMessage.style.opacity = "0.9";
+
+   setTimeout(function () {
+       notifyMessage.style.top = "100vh"; // Ẩn thẻ div sau khoảng thời gian
+       notifyMessage.style.opacity = "0.3";
+     }, 2000); // Thời gian đếm ngược (đơn vị: mili giây)
 }

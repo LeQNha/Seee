@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="Public/css/Footer.css">
     <link rel="stylesheet" href="Public/css/ScrollUp.css">
     <link rel="stylesheet" href="Public/css/ShowDetailContainer.css">
+    <link rel="stylesheet" href="Public/css/NotifyMessage.css">
     <?php
         if($data["Page"] == 'PersonalPage'){ ?>
             <link rel="stylesheet" href="Public/css/ShowDetailContainer_Created.css">
@@ -32,11 +33,19 @@
         // if($data["Page"] != 'MainPage'){
         //     require_once './MVC/Views/Partitions/Footer.php';
         // }
+        require_once './MVC/Views/Partitions/NotifyMessage.php'
     ?>
 
         <script src="Public/js/Header.js"></script>
         <script src="Public/js/ScrollUp.js"></script>
         <script src="./Public/js/<?php echo $data['Page']; ?>.js"></script>
+        <script src="./Public/js/ShowDetailContainer.js">
+        </script>
+        <?php
+            if($data['Page'] == 'PersonalPage'){ ?>
+                <script src="./Public/js/ShowDetailContainer_Created.js"></script>
+            <?php }
+        ?>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </body>

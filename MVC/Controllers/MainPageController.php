@@ -2,10 +2,14 @@
     class MainPageController extends BaseController
     {
         private $imageModel;
+        private $categoryModel;
         function __construct()
         {
             $this->loadModel("ImageModel");
             $this->imageModel = new ImageModel();
+
+            $this->loadModel("CategoryModel");
+            $this->categoryModel = new CategoryModel();
         }
         public function index(){
             
@@ -56,6 +60,59 @@
                 echo json_encode($message);
             }
             
+        }
+
+        public function GetCategoryInformation(){
+            if(isset($_GET['category'])){
+                $categoryName = $_GET['category'];
+                $rs = $this->categoryModel->GetCategory($categoryName);
+                if($rs->num_rows > 0){
+                    $r = $rs->fetch_assoc();
+                    echo $r['category_description'];
+                }
+            }else{
+                echo 'Không nhận được';
+            }
+        }
+
+        public function ShowCategoryImages(){
+            if(isset($_GET['category'])){
+                
+                $categoryName = $_GET['category'];
+                $result = $this->imageModel->GetImagesByCategory($categoryName);
+                echo '<link rel="stylesheet" href="./Public/css/Paint.css">';
+
+                        foreach($result as $row){
+
+                            echo '<div class="paint" id="'.$row['path'].'" onclick="ShowDetails(\''. $row['path'] . '\')">'; 
+                            echo '<img class="main-image" src="Public/img/'.$row["path"].'" width="350px" alt="" loading="lazy"> ';
+                            echo '<div class="image-uploader"> ';
+                            echo '<div class="image-uploader-avatar-container"> ';
+                            echo '<img src="./Public/profileimg/'.$row['avatar'].'" alt="">'; 
+                            echo '</div> ';
+                            echo '<span class="uploader-username">'.$row['username'].'</span>';
+                            echo '</div> ';
+                            echo '<h4 class="image-title">'.$row['title'].'</h4>';
+
+                            $path = $row['path'];
+                            $sqll = "SELECT path FROM liked_images WHERE path = '$path'";
+                            $likeNumber = mysqli_num_rows($this->imageModel->DoQuery($sqll));
+                            $likeNumberFomatted = number_format($likeNumber,0,'',' ');
+
+                            if($likeNumber<100000){
+                                $likeNumber = $likeNumberFomatted;
+                            }else{
+                                $likeNumber = '100 000+';
+                            }
+                            
+                            echo '<i class="fa-solid fa-thumbs-up like-number"><span>'.' '.$likeNumber.'</span></i>';
+                            echo '<i class="fa-regular fa-eye view-number"><span> 135</span></i>';
+                            echo '</div>';
+                        }
+
+            }else{
+                echo 'Không nhận được';
+            }
         }
 
     }

@@ -17,6 +17,12 @@
             return $this->Query($sql);
         }
 
+        public function GetImagesByCategory($category = ''){
+            $username = $_SESSION['Login']['username'];
+            $sql = "SELECT * FROM imgupload WHERE category = '$category' AND username <> '$username'";
+            return $this->Query($sql);
+        }
+
         public function DeleteImage($pid = ''){
             $sql = "DELETE FROM imgupload WHERE path = '$pid'";
             $this->Query($sql);
@@ -54,9 +60,9 @@
             }
         }
 
-        public function UpdateImage($pid = '', $detailTitleCreated = '', $descriptionCreated = ''){
+        public function UpdateImage($pid = '', $detailTitleCreated = '', $descriptionCreated = '', $categoryCreated ='Khác'){
             $sql = "UPDATE imgupload
-                SET title = '$detailTitleCreated', description = '$descriptionCreated' 
+                SET title = '$detailTitleCreated', description = '$descriptionCreated', category = '$categoryCreated'  
                 WHERE path = '$pid'";
             $this->DoQuery($sql);
         }

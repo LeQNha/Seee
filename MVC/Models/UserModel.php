@@ -6,6 +6,11 @@
     {
        return $this->All(self::TABLE, $select);
     }
+
+    public function AddUser(){
+      
+    }
+
     public function GetAllUser(){
       $sql = "SELECT * FROM users";
       return $this->Query($sql);

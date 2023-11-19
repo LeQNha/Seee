@@ -239,17 +239,13 @@
     height: 100%;
     object-position: center;
   }
-  #editImageModal  #image-title{
+  #editImageModal .input-edit{
     width: 100%;
     outline: 2px solid rgb(12, 156, 156);
     padding: 10px;
     border-radius: 4px;
   }
   #editImageModal #image-description{
-    width: 100%;
-    outline: 2px solid rgb(12, 156, 156);
-    padding: 10px;
-    border-radius: 4px;
     resize: none;
     overflow: hidden;
   }

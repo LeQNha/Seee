@@ -2,7 +2,7 @@
             <ul class="behavior-list-created">
                 <li class="close-show-details-created"><i class="fa-solid fa-xmark"></i></li>
                 <li>
-                    <i class="fa-regular fa-heart" id="update-button-created"></i>
+                    <i class="fa-solid fa-square-check" id="update-button-created"></i>
                     <span>Cập nhật</span>
                 </li>
                 <li>
@@ -28,7 +28,9 @@
                 <div class="image-details-created">
                     <div class="separate"></div>
                     <div class="main-see">
-                        <img class="detail-img-created" src="https://vtv1.mediacdn.vn/2018/11/22/photo-3-15428716111551636354706.jpg" alt="">
+                        <div id="created-image-container">
+                            <img class="detail-img-created" src="https://vtv1.mediacdn.vn/2018/11/22/photo-3-15428716111551636354706.jpg" alt="">
+                        </div>
                         <form action="#" method="post" id="update-image-infor-form">
                             <input type="text" id="detail-title-created" name="detailTitleCreated"></input>
                             <textarea id="description-created" name="descriptionCreated"></textarea>
@@ -56,6 +58,8 @@
                         <div class="separate2"></div>
                         <div id="comment-container" class="comments">
                             <!-- Thêm các comment khác ở đây -->
+                            <input type="text" value="<?= $_SESSION['avatar']; ?>" id="get-user-avatar-created" hidden>
+                            <input type="text" value="<?= $_SESSION['Login']['username']; ?>" id="get-user-username-created" hidden>
                             <div class="comment__card1" style="display: none">
                                 <img id="avt-img1" src="https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABeNzg-kMHhUBP4AmHnLsrPYzxKHVceLnkwtLhxZlDssj7KjhStloJR6px7EbquZ83uDcygnWkekxysvuNYVzLQ3GyBMRl2PpU7pO.jpg?r=db8" alt="">
                                 <div class="comment__info1">
@@ -86,8 +90,9 @@
                             </div>
                         </div>
                         <div id="comment">
-                            <form class="comment-form">
-                                <textarea placeholder="Viết bình luận..." class="comment-input" id="comment-input"></textarea>
+                            <form class="comment-form" id="comment-form-created">
+                            <input type="text" name="image-path" id="comment-image-path-created" value="" hidden>
+                                <textarea placeholder="Viết bình luận..." name="comment" class="comment-input" id="comment-input"></textarea>
                                 <i class="fa-solid fa-paper-plane" id="send"></i>
                             </form>
                         </div>
@@ -96,6 +101,3 @@
                 
         </div>
     </div>
-
-    
-    <script src="./Public/js/ShowDetailContainer_Created.js"></script>

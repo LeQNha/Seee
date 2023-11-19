@@ -21,10 +21,11 @@
                 <div class="description-bottom-border bottom-border" id="description-bottom-border"></div>
                 <input type="submit" name="submit" value="Đăng tải" id="submit">
 
-                <input type="text" name="keywords" placeholder="keyword">
+                <input style="width: 100px; height: 20px;" type="text" name="keywords" placeholder="keyword">
+                <input style="width: 100px; height: 20px; margin-left: 130px;" type="text" name="category" placeholder="category">
             </div>
         </form>
     </div>
     
-    <div class="alert-message"><p>Thay đổi thành công!</p></div>
+    
         

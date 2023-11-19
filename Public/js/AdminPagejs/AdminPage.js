@@ -15,6 +15,7 @@ var modalDeleteButton = document.getElementById('modal-delete-button');
 //MODAL UPDATE IMG
 var image = document.getElementById('image');
 var imageTitle = document.getElementById('image-title');
+var imageCategory = document.getElementById('image-category');
 var imageDescription = document.getElementById('image-description');
 var modalImageSaveChangeButton = document.getElementById('modal-image-save-change-button');
 var modalImageCloseButton = document.getElementById('modal-image-close-button');
@@ -156,6 +157,7 @@ function GetUpdateImage(pid){
             receivedData = JSON.parse(xhr.responseText);
             image.src = './Public/img/'+pid;
             imageTitle.value = receivedData.Title;
+            imageCategory.value = receivedData.Category
             imageDescription.value = receivedData.Description;
         }else{
             alert('Đã có lỗi xảy ra!');

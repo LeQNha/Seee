@@ -1,22 +1,34 @@
 
   searchIcon = document.getElementById('search-icon');
   searchBox = document.getElementById('search-box');
+
+  var submenu = document.getElementById("submenu");
+  var avatar = document.querySelector(".avatar");
+  
   //open submenu by clicking on avatar
   window.onload = function() {
-    var submenu = document.getElementById("submenu");
     submenu.style.display = "none";
   };
+
+  var showSubmenuButton = document.querySelector('.show-submenu-button');
+  showSubmenuButton.addEventListener('click',ShowSubmenu);
+  function clickCheck(){
+    console.log('lklk');
+  }
+
   function ShowSubmenu() {
-    
-    var submenu = document.getElementById("submenu");
-    var avatar = document.querySelector(".avatar");
+    console.log('pâppap');
    
     if (submenu.style.display === "none") {
       avatar.style.borderColor = "lightgrey";
       submenu.style.display = "block";
+      
+      showSubmenuButton.classList.add('show-submenu-button-clicked');
     } else {
       avatar.style.borderColor = "transparent";
       submenu.style.display = "none";
+
+      showSubmenuButton.classList.remove('show-submenu-button-clicked');
     }
   }
   // Ẩn submenu đi

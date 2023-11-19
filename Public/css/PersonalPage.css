@@ -220,9 +220,9 @@ transition: all ease 0.1s;
   position: relative;
 }
 .liked-created-list ul{
-  margin-left: 4%;
-  width: 92%;
-
+  width: 100%;
+  background: rgb(243, 241, 241);
+  border-radius: 15px;
 }
 .liked-created-list ul li{
   color: black;

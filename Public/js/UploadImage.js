@@ -127,15 +127,15 @@ submitBtn.addEventListener('click', function(){
 });
 //hiện thông báo
 function showAndHide(msg){
-  var alertMessage = document.querySelector('.alert-message');
-  var message = document.querySelector('.alert-message p');
+  var notifyMessage = document.querySelector('.notify-message');
+  var message = document.querySelector('.notify-message p');
   message.textContent = msg;
-  alertMessage.style.top = "86vh";
-  alertMessage.style.opacity = "0.9";
+  notifyMessage.style.top = "91vh";
+  notifyMessage.style.opacity = "0.9";
 
    setTimeout(function () {
-       alertMessage.style.top = "100vh"; // Ẩn thẻ div sau khoảng thời gian
-       alertMessage.style.opacity = "0.3";
+       notifyMessage.style.top = "100vh"; // Ẩn thẻ div sau khoảng thời gian
+       notifyMessage.style.opacity = "0.3";
      }, 2000); // Thời gian đếm ngược (đơn vị: mili giây)
 }
 

@@ -244,9 +244,9 @@
                         echo '<p class="comment">'.$row['comment_content'].'</p>';
                         echo '<div class="comment__bottom">';
                         echo '<div class="like__icon--comment">';
-                        echo '<i id="like__icon" class="fa-regular fa-thumbs-up"></i>';
+                        echo '<i id="like__icon" class="fa-regular fa-thumbs-up like__icon"></i>';
                         echo '<small class="count">0</small>';
-                        echo '<i id="dislike__icon" class="fa-regular fa-thumbs-down"></i>';
+                        echo '<i id="dislike__icon" class="fa-regular fa-thumbs-down dislike__icon"></i>';
                         echo '<small class="count1">0</small>';
                         echo '</div>';
                         echo '<button class="reply">Phản hồi</button>';
@@ -257,6 +257,18 @@
                 }
             }else{
                 echo 'ko nhận đc';
+            }
+        }
+
+        public function GetCommentNumber(){
+            if(isset($_GET['pid'])){
+                $pid = $_GET['pid'];
+                $sql = "SELECT comment_id FROM comments WHERE path = '$pid'";
+                $rs = $this->imageModel->DoQuery($sql);
+
+                echo $rs->num_rows;
+            }else{
+                echo 'Không nhận được';
             }
         }
 

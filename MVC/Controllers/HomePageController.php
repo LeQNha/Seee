@@ -3,6 +3,7 @@
     {
         private $imageModel;
         private $userModel;
+        private $categoryModel;
         function __construct()
         {
             $this->LoadModel("ImageModel");
@@ -10,6 +11,9 @@
             
             $this->LoadModel("UserModel");
             $this->userModel = new UserModel();
+
+            $this->LoadModel('CategoryModel');
+            $this->categoryModel = new CategoryModel();
         }
         public function index()
         {
@@ -43,10 +47,13 @@
                                                       ON i.username = u.username
                                                       WHERE i.username <> '$username' ORDER BY RAND();");
             }
+
+            $categories = $this->categoryModel->GetAllCategory();
             $data = [
                 "Page"=>"MainPage",
                 "SearchQuery"=>$q,
-                "Rows"=>$result
+                "Rows"=>$result,
+                "Categories"=>$categories
             ];
 
             return $this->View('Layout.MasterLayout', $data);

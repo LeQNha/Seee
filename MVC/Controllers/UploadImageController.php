@@ -12,6 +12,10 @@
 
             $title = $_POST["title"];
             $description = $_POST["description"];
+            $category = $_POST['category'];
+            if(empty($category)){
+                $category = 'Khác';
+            }
             $uploader = $_SESSION['Login']['username'];
 
             if(empty($title)){
@@ -40,7 +44,7 @@
                         $newDestination = "Public/img/".$newImageName;
                         
                         move_uploaded_file($tmpName, $newDestination);
-                        $sql = "INSERT INTO imgupload(title, path, description, username) VALUES('$title','$newImageName','$description','$uploader')";
+                        $sql = "INSERT INTO imgupload(title, path, description, username, category) VALUES('$title','$newImageName','$description','$uploader','$category')";
                         $this->imageModel->DoQuery($sql);
 
                         $this->AddKeyword($keywords, $newImageName);

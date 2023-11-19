@@ -10,6 +10,7 @@
                         <th>Tiêu đề</th>
                         <th>Mô tả</th>
                         <th>Ngày tải lên</th>
+                        <th>Danh mục</th>
                         <th></th>
                     </tr>
 
@@ -28,6 +29,7 @@
                             <td class="image-title"><?= $row['title']; ?></td>
                             <td class="image-description"><?= $row['description']; ?></td>
                             <td><?= $row['dateuploaded']; ?></td>
+                            <td><?= $row['category']; ?></td>
 
 
                             <td class="action">

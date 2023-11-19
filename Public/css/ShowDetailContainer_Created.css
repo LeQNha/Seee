@@ -85,8 +85,8 @@
 .behavior-list-crated li i.fa-trash-can{
     color: blue;
 }
-.behavior-list-created li i.fa-heart{
-    color: red;
+.behavior-list-created li #update-button-created{
+    color: yellowgreen;
 }
 .behavior-list-created li i.fa-comment{
     color: black;
@@ -148,10 +148,18 @@
 .nav-see {
     width: 50%;
 }
-.image-details-created img{
+#created-image-container{
     margin-top: 30px;
-    width: 500px;
     height: 450px;
+    width: 95%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+#created-image-container img{
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 
@@ -243,7 +251,6 @@
     margin: 20px 0;
     resize: none; /* Ẩn thanh cuốn */
     height: auto; /* Không giới hạn chiều cao */
-    outline: 1px solid lightcyan;
     /* border: 1px solid black; */
 }
 #update-image-infor-form {
@@ -288,6 +295,13 @@ h4 {
 .main-com-fo1 {
     display: flex;
     gap: 20px;
+}
+.currentDate1{
+    color: #aaa;
+    font-size: smaller;
+    display: flex;
+    align-items: center;
+    justify-content: end;
 }
 #currentDate1 {
     color: black;
@@ -344,6 +358,7 @@ h4 {
 
 .comment__info1 .nickname1{
     color: #aaa;
+    font-size: 20px;
 }
 
 .comment__info1 .comment10{
@@ -363,6 +378,9 @@ h4 {
     margin-right: 20px;
     color: black;
     gap: 20px;
+}
+.like__icon--comment1 *{
+    margin-left: 5px;
 }
 
 /* add with JS */

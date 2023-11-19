@@ -19,7 +19,7 @@
             <div id="statistics">
                 <div class="line">
                     <div class="name">
-                        <h3>Ảnh đã tạo</h3>
+                        <h3>Ảnh chia sẻ</h3>
                     </div>
                     <div class="number">
                         <p><?php echo $data['UploaderData']['ImageUploadNumber']; ?></p>

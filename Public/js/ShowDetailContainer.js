@@ -25,6 +25,7 @@ var imgId = "";
 
 
 //COMMENT SECTION
+var commentNum = document.getElementById('comment-number');
 var currentDateParagraph = document.getElementById('currentDate');
 var currentDate = new Date();
 
@@ -309,9 +310,13 @@ function addFeedback(item){
                         </div>
                     </div>
     `;
+
+    //tăng hiển thị số bình luận
+    commentNum.textContent = parseInt(commentNum.textContent) + 1;
+    console.log(parseInt(commentNum.textContent) + 1);
     
     // insert feedback into the list
-    commentsCont.insertAdjacentElement('beforeend', div);
+    commentsCont.insertAdjacentElement('afterbegin', div);
 
     // Lấy tham chiếu đến các phần tử bên trong div
     const count = div.querySelector('.count');
@@ -427,17 +432,29 @@ function addFeedback(item){
 
     //GET COMMENTS
     function GetComments(pid){
-      console.log('getcom');
       xhr.open('POST','index.php?controller=ShowDetailContainer&action=GetComments');
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.onload = function(){
         if(xhr.status === 200){
-          console.log(xhr.responseText);
           commentsCont.innerHTML = xhr.responseText;
+          GetCommentNumber(pid);
         }else{
           alert('Đã có lỗi xảy ra! get com');
         }
       }
 
       xhr.send('pid='+encodeURIComponent(pid));
+    }
+
+    function GetCommentNumber(pid){
+      xhr.open('GET','index.php?controller=ShowDetailContainer&action=GetCommentNumber&pid='+encodeURIComponent(pid));
+      xhr.onload = function(){
+        if(xhr.status === 200){
+          commentNum.textContent = xhr.responseText.trim();
+        }else{
+          alert('Đã có lỗi xảy ra!');
+        }
+      }
+
+      xhr.send();
     }

@@ -336,6 +336,9 @@ button.close-com:hover {
     color: #eee;
     gap: 20px;
 }
+.like__icon--comment *{
+    margin-left: 5px;
+}
 
 /* add with JS */
 #like__icon, #dislike__icon {

@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="comment-form1">
-            <h2 class="num-com">46 bình luận</h2>
+            <h2 class="num-com"><span id="comment-number">46</span> bình luận</h2>
             <form class="main-form" id="comment-form">
                 <div id="user-comment-avt-img-container">
                     <img id="user-comment-avt-img" src="./Public/profileimg/<?= $_SESSION['avatar']; ?>" alt="">
@@ -86,6 +86,3 @@
             </div>
         </div>
     </div>
-
-    <script src="./Public/js/ShowDetailContainer.js">
-    </script>

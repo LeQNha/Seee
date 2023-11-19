@@ -2,6 +2,7 @@ var showLikedListButton = document.querySelector('.show-liked-list');
 var showCreatedListButton = document.querySelector('.show-created-list');
 var showFollowedListButton = document.querySelector('.show-followed-list');
 window.onload = function(){
+        // showLikedListButton.click();
         showedList = document.getElementById('show-list-text-content').textContent;
         if(showedList == 'liked'){
             showLikedListButton.classList.add('showed-list-button');

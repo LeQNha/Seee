@@ -103,6 +103,7 @@
                     echo '<th>Tiêu đề</th>';
                     echo '<th>Mô tả</th>';
                     echo '<th>Ngày tải lên</th>';
+                    echo '<th>Danh mục</th>';
                     echo '<th></th>';
                     echo '</tr>';
 
@@ -115,6 +116,7 @@
                         echo '<td class="image-title">'.$row['title'].'</td>';
                         echo '<td class="image-description">'.$row['description'].'</td>';
                         echo '<td>'.$row['dateuploaded'].'</td>';
+                        echo '<td>'.$row['category'].'</td>';
                         echo '<td class="action">';
                         echo '<button class="edit-button" data-bs-toggle="modal" data-bs-target="#editImageModal" onclick="GetUpdateImage(\''.$row['path'].'\')"><i class="fa-solid fa-pen"></i> Sửa</button>';
                         echo '<button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete(\''.$row['path'].'\')"><i class="fa-solid fa-trash"></i> Xóa</button>';
@@ -140,8 +142,10 @@
                     $row = $result->fetch_assoc();
                     $imageTitle = $row['title'];
                     $imageDescription = $row['description'];
+                    $imageCategory = $row['category'];
                     $data = [
                         'Title'=>$imageTitle,
+                        'Category'=>$imageCategory,
                         'Description'=>$imageDescription
                     ];
                     echo json_encode($data);
@@ -157,12 +161,13 @@
             if(isset($_GET['imgId'])){
                 $pid = $_GET['imgId'];
                 $imageTitle = trim($_POST['image-title']);
+                $imageCategory = trim($_POST['image-category']);
                 $imageDescription = trim($_POST['image-description']);
 
                 if(strlen($imageTitle) < 3){
                     echo 'title empty';
                 }else{
-                    $this->imageModel->UpdateImage($pid, $imageTitle, $imageDescription);
+                    $this->imageModel->UpdateImage($pid, $imageTitle, $imageDescription, $imageCategory);
                     echo 'update success';
                 }
             }else{

@@ -63,7 +63,7 @@
                 <li>
                     <div class="more_nav">
                         <i class='bx bx-circle' ></i>
-                        <h3 class="title_nav">Quản lý tin tức</h3>
+                        <h3 class="title_nav">Quản lý danh mục</h3>
                     </div>
                     <div class="separate"></div>
                 </li>
@@ -140,12 +140,16 @@
         <form action="#" method="post" id="image-infor-form">
           <div>
             <label for="image-title">Tiêu đề<span class="require">*</span></label>
-            <input type="text" name="image-title" id="image-title">
+            <input class="input-edit" type="text" name="image-title" id="image-title">
             <span class="error-message" id="image-title-error-messsage"></span>
           </div>
           <div>
+            <label for="image-category">Danh mục</label>
+            <input class="input-edit" type="text" name="image-category" id="image-category">
+          </div>
+          <div>
             <label for="image-description">Mô tả</label>
-            <textarea name="image-description" id="image-description"></textarea>
+            <textarea class="input-edit" name="image-description" id="image-description"></textarea>
             <span class="error-message" id="image-description-error-messsage"></span>
           </div>
         </form>

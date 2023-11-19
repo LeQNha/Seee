@@ -15,8 +15,13 @@
         }
 
         public function GetComments($pid = ''){
-            $sql = "SELECT * FROM comments WHERE path = '$pid';";
+            $sql = "SELECT * FROM comments WHERE path = '$pid' ORDER BY comment_date DESC;";
             return $this->Query($sql);
+        }
+
+        public function DeleteComment($comId = ''){
+            $sql = "DELETE FROM comments WHERE comment_id = '$comId'";
+            $this->Query($sql);
         }
         
     }

@@ -22,7 +22,7 @@
                         <span class="statistic-index">Đang theo dõi</span>
                     </div>
                     <div class="number uploaded-image-number">
-                        <span class="number-uploaded-image"><?php echo $data['BriefInformation']['UploadedImageNumber']; ?></span>
+                        <span id="number-uploaded-image"><?php echo $data['BriefInformation']['UploadedImageNumber']; ?></span>
                         <span class="statistic-index">Ảnh tải lên</span>
                     </div>
                 </div>
