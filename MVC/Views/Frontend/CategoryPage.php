@@ -13,6 +13,6 @@
         <button id="buuton">xác nhận</button>
     </form>
 
-    <script src="./Public/js/CategoryPage.js"></script>
+    <script src="/Public/js/CategoryPage.js"></script>
 </body>
 </html>

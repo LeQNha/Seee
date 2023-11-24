@@ -1,8 +1,6 @@
-RewriteEngine ON
-
-# RewriteCond để kiểm tra không phải thư mục
-RewriteCond %{REQUEST_FILENAME}% !-d
-# RewriteCond để kiểm tra không phải tệp
-RewriteCond %{REQUEST_FILENAME}% !-f
-
-RewriteRule ^(.+)$ index.php?url=$1
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule>

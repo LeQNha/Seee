@@ -7,7 +7,7 @@
       <div class="swiper mySwiper">
           <div class="swiper-wrapper">
               <?php foreach($data['Categories'] as $category): ?>
-                  <div class="swiper-slide category" id="<?= $category['category']; ?>" style="background-image: url('./Public/categoryimg/<?= $category['background']; ?>');" onclick="GetCategoryInformation('<?= $category['category']; ?>')">
+                  <div class="swiper-slide category" id="<?= $category['category']; ?>" style="background-image: url('/Public/categoryimg/<?= $category['background']; ?>');" onclick="GetCategoryInformation('<?= $category['category']; ?>')">
                       <span class="category-name"><?= $category['category']; ?></span>
                   </div>
               <?php endforeach; ?>

@@ -80,15 +80,15 @@
                 
                 $categoryName = $_GET['category'];
                 $result = $this->imageModel->GetImagesByCategory($categoryName);
-                echo '<link rel="stylesheet" href="./Public/css/Paint.css">';
+                echo '<link rel="stylesheet" href="/Public/css/Paint.css">';
 
                         foreach($result as $row){
 
                             echo '<div class="paint" id="'.$row['path'].'" onclick="ShowDetails(\''. $row['path'] . '\')">'; 
-                            echo '<img class="main-image" src="Public/img/'.$row["path"].'" width="350px" alt="" loading="lazy"> ';
+                            echo '<img class="main-image" data-src="/Public/img/'.$row["path"].'" width="350px" alt="" loading="lazy"> ';
                             echo '<div class="image-uploader"> ';
                             echo '<div class="image-uploader-avatar-container"> ';
-                            echo '<img src="./Public/profileimg/'.$row['avatar'].'" alt="">'; 
+                            echo '<img src="/Public/profileimg/'.$row['avatar'].'" alt="">'; 
                             echo '</div> ';
                             echo '<span class="uploader-username">'.$row['username'].'</span>';
                             echo '</div> ';

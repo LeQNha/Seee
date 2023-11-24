@@ -22,7 +22,7 @@ function GetCategoryInformation(cId){
       console.log('Không tồn tại');
     }
 
-  xhr.open('GET','index.php?controller=MainPage&action=GetCategoryInformation&category='+encodeURIComponent(cId));
+  xhr.open('GET','/index.php?controller=MainPage&action=GetCategoryInformation&category='+encodeURIComponent(cId));
   xhr.onload = function(){
     if(xhr.status === 200){
 
@@ -38,17 +38,19 @@ function GetCategoryInformation(cId){
 }
 
 function ShowCategoryImages(cId){
-  xhr.open('GET','index.php?controller=MainPage&action=ShowCategoryImages&category='+encodeURIComponent(cId));
+  xhr.open('GET','/index.php?controller=MainPage&action=ShowCategoryImages&category='+encodeURIComponent(cId));
   xhr.onload = function(){
     if(xhr.status === 200){
       console.log(xhr.responseText);
       imagesContainer.innerHTML = xhr.responseText;
+      LazyLoading();
       // history.pushState(null,null,'index.php?controller=HomePage&action=MainPage&category='+encodeURIComponent(cId));
     }else{
       alert('Đã có lỗi xảy ra!');
     }
   };
   xhr.send();
+
 }
 
 //Toggle follow
@@ -59,7 +61,7 @@ function ToggleFollow(){
       toggle = "unfollow";
     }
     
-    xhr.open('POST', 'index.php?controller=ShowDetailContainer&action=ToggleFollow');
+    xhr.open('POST', '/index.php?controller=ShowDetailContainer&action=ToggleFollow');
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = function(){
     if(xhr.status == 200){

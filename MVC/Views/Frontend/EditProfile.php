@@ -24,7 +24,7 @@
                 
                     <div class="edit-avatar">
                         <div class="user-avatar-img-container">
-                            <img src="Public/profileimg/<?php echo $avatar; ?>" alt="" class="user-avatar" id="user-avatar">
+                            <img src="/Public/profileimg/<?php echo $avatar; ?>" alt="" class="user-avatar" id="user-avatar">
                         </div>
                         <p class="change-avatar-btn" id="change-avatar-btn"><i class="fa-solid fa-camera"></i> Thay đổi</p>
                         <input type="file" name="avatar-file" class="avatar-file" id="avatar-file" value="<?php echo $avatar; ?>">

@@ -2,6 +2,9 @@ var showLikedListButton = document.querySelector('.show-liked-list');
 var showCreatedListButton = document.querySelector('.show-created-list');
 var showFollowedListButton = document.querySelector('.show-followed-list');
 window.onload = function(){
+
+        document.querySelector('.user-avatar-container img').click();
+
         // showLikedListButton.click();
         showedList = document.getElementById('show-list-text-content').textContent;
         if(showedList == 'liked'){
@@ -19,8 +22,8 @@ window.onload = function(){
         ToggleShowListButton(listShowed);
 
         console.log('click ' + listShowed);
-        xhr.open('GET',"index.php?controller=PersonalPage&action=GetShowedList&listShowed="+listShowed);
-        // xhr.open('GET',"index.php?controller=AdminPage&action=SwitchManagement");
+        xhr.open('GET',"/index.php?controller=PersonalPage&action=GetShowedList&listShowed="+listShowed);
+        // xhr.open('GET',"/index.php?controller=AdminPage&action=SwitchManagement");
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onload = function(){
             if(xhr.status === 200){
@@ -38,6 +41,7 @@ window.onload = function(){
 
                     followListContainer.innerHTML = xhr.responseText;
                 }
+                LazyLoading();
                 
             }else{
                 alert ('Đã có lỗi xảy ra');
@@ -50,19 +54,19 @@ window.onload = function(){
     function ToggleShowListButton(showedList){
         if(showedList == 'liked'){
             showLikedListButton.classList.add('showed-list-button');
-            history.pushState(null,null,'index.php?controller=Header&action=PersonalPage&listShowed=liked');
+            history.pushState(null,null,'/index.php?controller=Imey&action=PersonalPage&listShowed=liked');
 
             showCreatedListButton.classList.remove('showed-list-button');
             showFollowedListButton.classList.remove('showed-list-button');
         }else if(showedList == 'created'){
             showCreatedListButton.classList.add('showed-list-button');
-            history.pushState(null,null,'index.php?controller=Header&action=PersonalPage&listShowed=created');
+            history.pushState(null,null,'/index.php?controller=Imey&action=PersonalPage&listShowed=created');
 
             showLikedListButton.classList.remove('showed-list-button');
             showFollowedListButton.classList.remove('showed-list-button');
         }else{
             showFollowedListButton.classList.add('showed-list-button');
-            history.pushState(null,null,'index.php?controller=Header&action=PersonalPage&listShowed=following');
+            history.pushState(null,null,'/index.php?controller=Imey&action=PersonalPage&listShowed=following');
 
             showLikedListButton.classList.remove('showed-list-button');
             showCreatedListButton.classList.remove('showed-list-button');

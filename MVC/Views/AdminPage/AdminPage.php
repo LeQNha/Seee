@@ -6,8 +6,8 @@
     <title>Admin-page</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="Public/css/AdminPageCss/AdminPage.css">
-    <link rel="stylesheet" href="Public/css/AdminPageCss/UserList.css">
+    <link rel="stylesheet" href="/Public/css/AdminPageCss/AdminPage.css">
+    <link rel="stylesheet" href="/Public/css/AdminPageCss/UserList.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -135,7 +135,7 @@
       </div>
       <div class="modal-body">
         <div class="image-container">
-            <img class="image" id="image" src="./Public/img/65222248e81a5.jpg" alt="">
+            <img class="image" id="image" src="/Public/img/65222248e81a5.jpg" alt="">
         </div>
         <form action="#" method="post" id="image-infor-form">
           <div>
@@ -145,7 +145,26 @@
           </div>
           <div>
             <label for="image-category">Danh mục</label>
-            <input class="input-edit" type="text" name="image-category" id="image-category">
+            <div class="box-cate1" style="width: 100%;" onclick="toggleOptions3()">
+              <input class="input-edit" type="text" name="image-category" id="image-category">
+              <i class="fa-solid fa-caret-down down-click12"></i>
+            </div>
+            <div class="sub-cate1" style="width: 400px;">
+                <?php
+                  $count = 0;
+                  foreach($data['Categories'] as $category){ ?>
+                    <div class="sub-cate10" onclick="selectOption5(<?= ++$count; ?>)" style="margin: 0;width: 100%;"><?= $category['category']; ?></div>
+                  <?php }
+                ?>
+                    
+              <!-- <div class="sub-cate10" onclick="selectOption5(1)" style="margin: 0;width: 100%;">3D</div>
+              <div class="sub-cate10" onclick="selectOption5(2)" style="margin: 0;width: 100%;">Quảng cáo</div>
+              <div class="sub-cate10" onclick="selectOption5(3)" style="margin: 0;width: 100%;">Kiến trúc</div>
+              <div class="sub-cate10" onclick="selectOption5(4)" style="margin: 0;width: 100%;">Anime</div>
+              <div class="sub-cate10" onclick="selectOption5(5)" style="margin: 0;width: 100%;">Nhiếp ảnh</div>
+              <div class="sub-cate10" onclick="selectOption5(6)" style="margin: 0;width: 100%;">Trừu tượng</div>
+              <div class="sub-cate10" onclick="selectOption5(7)" style="margin: 0;width: 100%;">Khác</div> -->
+            </div>
           </div>
           <div>
             <label for="image-description">Mô tả</label>
@@ -205,7 +224,7 @@
   </div>
 </div>
 
-    <script src="Public/js/AdminPageJs/AdminPage.js"></script>
+    <script src="/Public/js/AdminPageJs/AdminPage.js"></script>
 
     <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>

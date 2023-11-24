@@ -33,8 +33,8 @@
 
                           
                           <td class="action">
-                              <button class="edit-button" data-bs-toggle="modal" data-bs-target="#editUserModal" onclick="GetUpdateUser('<?= $row['username']; ?>')"><i class="fa-solid fa-pen"></i> Sửa</button>
-                              <button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete('<?= $row['username']; ?>')"><i class="fa-solid fa-trash"></i> Xóa</button>
+                              <span><button class="edit-button" data-bs-toggle="modal" data-bs-target="#editUserModal" onclick="GetUpdateUser('<?= $row['username']; ?>')"><i class="fa-solid fa-pen"></i> Sửa</button></span>
+                              <span><button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete('<?= $row['username']; ?>')"><i class="fa-solid fa-trash"></i> Xóa</button></span>
                           </td>
                         </tr>
 

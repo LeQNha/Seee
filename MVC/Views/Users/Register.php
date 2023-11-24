@@ -29,7 +29,7 @@
                 <label for=""><input type="checkbox" class="checkbox"> <span>Tôi đồng ý với các</span> <a href="#">Điều khoản & Chính sách</a></label> 
                 
                 <button type="submit" name="submit" onclick="submitRegisterData()">Đăng ký</button>
-                <p class="not-have-account">Đã có tài khoản? <a href="index?controller=HomePage&action=Login" class="switch" id="switch-to-login">Đăng nhập</a></p>
+                <p class="not-have-account">Đã có tài khoản? <a href="index.php?controller=HomePage&action=Login" class="switch" id="switch-to-login">Đăng nhập</a></p>
             </form>
         </div>
     </div>

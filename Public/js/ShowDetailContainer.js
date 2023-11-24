@@ -69,7 +69,7 @@ function ShowDetails(pid){
     document.body.style.overflow = "auto";
   });
 
-  xhr.open('POST', 'index.php?controller=ShowDetailContainer&action=GetImage');
+  xhr.open('POST', '/index.php?controller=ShowDetailContainer&action=GetImage');
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onload = function() {
     console.log(xhr.responseText);
@@ -81,12 +81,12 @@ function ShowDetails(pid){
     
     // imgDetailsContainer.innerHTML = receivedData.title;
     detailTile.textContent = receivedData.title;
-    detailImg.src = "./Public/img/"+receivedData.path;
+    detailImg.src = "/Public/img/"+receivedData.path;
     detailDescription.textContent = receivedData.description;
     dateUploaded.textContent = receivedData.dateuploaded
     detailUploader.textContent = receivedData.uploader;
-    detailUploaderAvatar.src = "./Public/profileimg/"+receivedData.uploaderAvatar;
-    document.querySelector('.behavior-list li .follow-button-avatar-container img').src = "./Public/profileimg/"+receivedData.uploaderAvatar;
+    detailUploaderAvatar.src = "/Public/profileimg/"+receivedData.uploaderAvatar;
+    document.querySelector('.behavior-list li .follow-button-avatar-container img').src = "/Public/profileimg/"+receivedData.uploaderAvatar;
     
 
     imgId = receivedData.path;
@@ -106,7 +106,7 @@ var followStatus = document.getElementById('follow-status');
 
 //aslkdfjsladkf
 function ShowPublicUserPage(){
-  window.location.href = "index.php?controller=PublicUserPage&action=PublicUserPage&uploader="+detailUploader.textContent;
+  window.location.href = "/index.php?controller=Imey&action=PublicUserPage&uploader="+detailUploader.textContent;
 }
 
   //Toggle like
@@ -123,7 +123,7 @@ function ShowPublicUserPage(){
         toggle = "unlike";
       }
       
-      xhr.open('POST', 'index.php?controller=ShowDetailContainer&action=ToggleLike');
+      xhr.open('POST', '/index.php?controller=ShowDetailContainer&action=ToggleLike');
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       xhr.onload = function(){
       if(xhr.status == 200){
@@ -147,7 +147,7 @@ function ShowPublicUserPage(){
 
   function CheckLikeAndFollow(imgId, callback){
     console.log('check like n');
-    xhr.open('POST', 'index.php?controller=ShowDetailContainer&action=CheckLikeAndFollow');
+    xhr.open('POST', '/index.php?controller=ShowDetailContainer&action=CheckLikeAndFollow');
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = function(){
       console.log(xhr.responseText);
@@ -190,7 +190,7 @@ function ShowPublicUserPage(){
       toggle = "unfollow";
     }
     
-    xhr.open('POST', 'index.php?controller=ShowDetailContainer&action=ToggleFollow');
+    xhr.open('POST', '/index.php?controller=ShowDetailContainer&action=ToggleFollow');
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = function(){
     if(xhr.status == 200){
@@ -283,7 +283,7 @@ function addFeedback(item){
     div.id = item.id;
     // add html
     div.innerHTML = `
-                    <img id="avt-img" src="./Public/profileimg/${item.userAvatar}" alt="">
+                    <img id="avt-img" src="/Public/profileimg/${item.userAvatar}" alt="">
                     <div class="comment__info">
                         <div class="main-com-fo">
                           <span class="nickname">
@@ -416,7 +416,7 @@ function addFeedback(item){
     //ADD COMMENT
     function AddComment(){
       console.log('get com');
-      xhr.open('POST','index.php?controller=ShowDetailContainer&action=Comment');
+      xhr.open('POST','/index.php?controller=ShowDetailContainer&action=Comment');
       var commentFormData = new FormData(document.getElementById('comment-form'));
       xhr.onload = function(){
         if(xhr.status === 200){
@@ -432,7 +432,7 @@ function addFeedback(item){
 
     //GET COMMENTS
     function GetComments(pid){
-      xhr.open('POST','index.php?controller=ShowDetailContainer&action=GetComments');
+      xhr.open('POST','/index.php?controller=ShowDetailContainer&action=GetComments');
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.onload = function(){
         if(xhr.status === 200){
@@ -447,7 +447,7 @@ function addFeedback(item){
     }
 
     function GetCommentNumber(pid){
-      xhr.open('GET','index.php?controller=ShowDetailContainer&action=GetCommentNumber&pid='+encodeURIComponent(pid));
+      xhr.open('GET','/index.php?controller=ShowDetailContainer&action=GetCommentNumber&pid='+encodeURIComponent(pid));
       xhr.onload = function(){
         if(xhr.status === 200){
           commentNum.textContent = xhr.responseText.trim();
@@ -464,7 +464,7 @@ function addFeedback(item){
       var nav_sorteds = document.querySelector('.nav-sorteds');
       nav_sorteds.style.display = nav_sorteds.style.display === 'block' ? 'none' : 'block';
     }
-    function selectnav_sorted(optionIndex) {
+    function selectnav_sorted(optionIndex, comFilter) {
       var nav_sorted = document.querySelectorAll('.nav-sorted');
       nav_sorted.forEach(function(option, index) {
           if (index === optionIndex - 1) {
@@ -474,4 +474,22 @@ function addFeedback(item){
           }
         });
         togglenav_sorteds();
-  }
+
+        FilterComment(comFilter);
+    }
+
+    function FilterComment(comFilter){
+      console.log('filterc');
+      xhr.open('GET','/index.php?controller=ShowDetailContainer&action=FilterComment&pid='+encodeURIComponent(imgId)+'&comFilter='+encodeURIComponent(comFilter));
+      xhr.onload = function(){
+        if(xhr.status === 200){
+          console.log('fil: '+xhr.responseText);
+          // commentsCont.innerHTML("");
+          // commentsCont.append(xhr.responseText) ;
+          commentsCont.innerHTML = xhr.responseText;
+        }else{
+          alert('Đã có lỗi xảy ra!');
+        }
+      };
+      xhr.send();
+    }

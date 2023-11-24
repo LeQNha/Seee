@@ -86,7 +86,7 @@ submitBtn = document.getElementById('submit');
 submitBtn.addEventListener('click', function(){
   var xhr = new XMLHttpRequest();
   formData = new FormData(document.getElementById('upload-form'));
-  xhr.open("POST", 'index.php?controller=UploadImage&action=UploadImage');
+  xhr.open("POST", '/index.php?controller=UploadImage&action=UploadImage');
   event.preventDefault();
 
   xhr.onload = function(){

@@ -4,7 +4,7 @@ saveButton.addEventListener('click', function(){
     showAndHide();
     var xhr = new XMLHttpRequest();
     formData = new FormData(document.getElementById('edit-profile-form'));
-    xhr.open('POST','index.php?controller=EditProfile&action=Save',true);
+    xhr.open('POST','/index.php?controller=EditProfile&action=Save',true);
     event.preventDefault();
     xhr.onload = function(){
         if(xhr.status == 200){
@@ -37,7 +37,7 @@ function showAndHide(msg){
         alertMessage.style.top = "100vh"; // Ẩn thẻ div sau khoảng thời gian
         alertMessage.style.opacity = "0.3";
         if(msg == 'Thay đổi thành công!'){
-            window.location.href = "index.php?controller=PersonalPage&action=EditProfile";
+            window.location.href = "/index.php?controller=Imey&action=EditProfile";
         }
       }, 1000); // Thời gian đếm ngược (đơn vị: mili giây)
 }

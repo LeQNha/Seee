@@ -9,7 +9,7 @@
                 <img src="Public/profileimg/<?php echo $avatar;?>" alt="" id="user-avatar">
             </div>
             <h1 class="username"><?php echo $_SESSION['Login']['username'] ?></h1>
-            <a id="go-to-edit-profile" href="index?controller=PersonalPage&action=EditProfile">Chỉnh sửa thông tin <i class="fa-solid fa-pen"></i></a>
+            <a id="go-to-edit-profile" href="index?controller=Imey&action=EditProfile">Chỉnh sửa thông tin <i class="fa-solid fa-pen"></i></a>
             
             <div class="short-introduction">
                 <div class="statistic">
@@ -92,7 +92,7 @@
                                     <?php
                                         foreach($data['FollowList'] as $userFollowed){ ?>
                                             <div class="followed-user">
-                                                <a href="index.php?controller=PublicUserPage&action=PublicUserPage&uploader=<?php echo $userFollowed['FollowedUsername'] ?>">
+                                                <a href="/index.php?controller=Imey&action=PublicUserPage&uploader=<?php echo $userFollowed['FollowedUsername'] ?>">
                                                     <div class="followed-user-avatar-container">
                                                         <img src="./Public/profileimg/<?php echo $userFollowed['FollowedAvatar'] ?>" alt="">
                                                     </div>

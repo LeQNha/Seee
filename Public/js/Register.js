@@ -1,13 +1,13 @@
 function submitRegisterData(){
     var xhr = new XMLHttpRequest();
     var formData = new FormData(document.getElementById('registerForm'));
-    xhr.open('POST', 'index.php?controller=User&action=register', true);
+    xhr.open('POST', '/index.php?controller=User&action=register', true);
     event.preventDefault();
     xhr.onload = function(){
         console.log(xhr.responseText);
         if(xhr.status === 200){
             if(xhr.responseText.trim() === 'success'){
-                window.location.href = 'index.php?controller=HomePage&action=MainPage';
+                window.location.href = '/index.php?controller=HomePage&action=MainPage';
             }else{
                 // alert(xhr.responseText);
                 alertP.innerHTML = xhr.responseText;

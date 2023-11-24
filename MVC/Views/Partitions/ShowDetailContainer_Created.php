@@ -17,7 +17,7 @@
         <div class="show-details-created">
                 <div class="uploader-created">
                     <div class="detail-avatar-container-created">
-                        <a href="#"><img class="detail-avatar-created" src="./Public/webimg/defaultAvatar.png" alt=""></a>
+                        <a href="#"><img class="detail-avatar-created" src="/Public/webimg/defaultAvatar.png" alt=""></a>
                     </div>
                     <div>
                         <a href="PublicUserPage.php"><span class="detail-uploader-created">uploader</span></a>
@@ -61,8 +61,9 @@
                             <div class="sorted-com1">Sắp xếp theo</div>
                         </div>
                         <div class="nav-sorteds1">
-                            <div class="nav-sorted1" onclick="selectnav_sorted1(1)">Bình luận hàng đầu</div>
-                            <div class="nav-sorted1" onclick="selectnav_sorted1(2)">Bình luận mới nhất</div>
+                            <div class="nav-sorted1" onclick="selectnav_sorted1(1, 'topComment')">Bình luận hàng đầu</div>
+                            <div class="nav-sorted1" onclick="selectnav_sorted1(2, 'newestComment')">Bình luận mới nhất</div>
+                            <div class="nav-sorted1" onclick="selectnav_sorted1(3, 'oldestComment')">Bình luận cũ nhất</div>
                         </div>
                         <div id="comment-container" class="comments">
 

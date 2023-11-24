@@ -91,7 +91,7 @@ function ShowDetails_Created(pid){
   var closeShowDetailsButtonCreated = document.querySelector('.close-show-details-created');
   closeShowDetailsButtonCreated.addEventListener('click',CloseShowDetailsContainerCreated);
 
-  xhr.open('POST', 'index.php?controller=ShowDetailContainer&action=GetImage');
+  xhr.open('POST', '/index.php?controller=ShowDetailContainer&action=GetImage');
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onload = function() {
     var receivedData = JSON.parse(xhr.responseText);
@@ -142,7 +142,7 @@ if(confirmRemoveImageModal){
  imagesContainer = document.querySelector('.container');
 function ConfirmRemoveImage(pid){
   pid = imgId;
-  xhr.open('POST', 'index.php?controller=ShowDetailContainer_Created&action=DeleteImage');
+  xhr.open('POST', '/index.php?controller=ShowDetailContainer_Created&action=DeleteImage');
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onload = function() {
     if(xhr.status === 200){
@@ -170,7 +170,7 @@ function ConfirmRemoveImage(pid){
 var updateImageButton = document.getElementById('update-button-created');
 updateImageButton.addEventListener('click',UpdateImage);
 function UpdateImage(){
-  xhr.open('POST', 'index.php?controller=ShowDetailContainer_Created&action=UpdateImage&pid=' + encodeURIComponent(imgId));
+  xhr.open('POST', '/index.php?controller=ShowDetailContainer_Created&action=UpdateImage&pid=' + encodeURIComponent(imgId));
   // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   formData = new FormData(document.getElementById('update-image-infor-form'));
   xhr.onload = function(){
@@ -371,7 +371,7 @@ function addFeedback1(item){
   //DELETE COMMENT
 function deleteDiv(comId) {
   console.log('xoa: '+comId);
-  xhr.open('POST','index.php?controller=ShowDetailContainer_Created&action=DeleteComment');
+  xhr.open('POST','/index.php?controller=ShowDetailContainer_Created&action=DeleteComment');
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function(){
@@ -391,7 +391,7 @@ function deleteDiv(comId) {
 
 //ADD COMMENT
 function AddComment(){
-  xhr.open('POST','index.php?controller=ShowDetailContainer_Created&action=Comment');
+  xhr.open('POST','/index.php?controller=ShowDetailContainer_Created&action=Comment');
   var commentFormDataCreated = new FormData(document.getElementById('comment-form-created'));
   xhr.onload = function(){
     if(xhr.status === 200){
@@ -406,7 +406,7 @@ function AddComment(){
 //GET COMMENTS
 function GetCommentsCreated(pid){
   console.log('getcom');
-  xhr.open('POST','index.php?controller=ShowDetailContainer_Created&action=GetComments');
+  xhr.open('POST','/index.php?controller=ShowDetailContainer_Created&action=GetComments');
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onload = function(){
     if(xhr.status === 200){
@@ -443,7 +443,7 @@ function togglenav_sorteds1() {
   var nav_sorteds1 = document.querySelector('.nav-sorteds1');
   nav_sorteds1.style.display = nav_sorteds1.style.display === 'block' ? 'none' : 'block';
 }
-function selectnav_sorted1(optionIndex) {
+function selectnav_sorted1(optionIndex, comFilter) {
   var nav_sorted1 = document.querySelectorAll('.nav-sorted1');
   nav_sorted1.forEach(function(option, index) {
       if (index === optionIndex - 1) {
@@ -453,5 +453,20 @@ function selectnav_sorted1(optionIndex) {
       }
     });
     togglenav_sorteds1();
+
+    FilterCommentCreated(comFilter);
+}
+
+function FilterCommentCreated(comFilter){
+  console.log('filterc');
+  xhr.open('GET','/index.php?controller=ShowDetailContainer_Created&action=FilterComment&pid='+encodeURIComponent(imgId)+'&comFilter='+encodeURIComponent(comFilter));
+  xhr.onload = function(){
+    if(xhr.status === 200){
+      commentsContain1.innerHTML = xhr.responseText;
+    }else{
+      alert('Đã có lỗi xảy ra!');
+    }
+  };
+  xhr.send();
 }
 

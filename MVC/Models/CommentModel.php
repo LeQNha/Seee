@@ -14,8 +14,8 @@
             $this->Query($sql);
         }
 
-        public function GetComments($pid = ''){
-            $sql = "SELECT * FROM comments WHERE path = '$pid' ORDER BY comment_date DESC;";
+        public function GetComments($pid = '', $order = 'DESC'){
+            $sql = "SELECT * FROM comments WHERE path = '$pid' ORDER BY comment_date $order;";
             return $this->Query($sql);
         }
 

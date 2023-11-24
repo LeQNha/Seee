@@ -32,7 +32,7 @@
       toggle = "unfollow";
     }
     
-    xhr.open('POST', 'index.php?controller=PublicUserPage&action=ToggleFollow');
+    xhr.open('POST', '/index.php?controller=PublicUserPage&action=ToggleFollow');
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = function(){
     if(xhr.status == 200){

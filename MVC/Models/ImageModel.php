@@ -19,7 +19,9 @@
 
         public function GetImagesByCategory($category = ''){
             $username = $_SESSION['Login']['username'];
-            $sql = "SELECT * FROM imgupload WHERE category = '$category' AND username <> '$username'";
+            $sql = "SELECT * FROM imgupload i INNER JOIN users u
+                    ON i.username = u.username
+                    WHERE i.category = '$category' AND i.username <> '$username'";
             return $this->Query($sql);
         }
 

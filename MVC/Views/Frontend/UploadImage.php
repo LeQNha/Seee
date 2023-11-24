@@ -19,14 +19,12 @@
                     <i class="fa-solid fa-caret-down down-click1"></i>
                 </div>
                 <div class="cate-others">
-                    <div class="cate-other" onclick="selectOption2(1)">Chân dung</div>
-                    <div class="cate-other" onclick="selectOption2(2)">3D</div>
-                    <div class="cate-other" onclick="selectOption2(3)">Phong cảnh</div>
-                    <div class="cate-other" onclick="selectOption2(4)">Kiến trúc</div>
-                    <div class="cate-other" onclick="selectOption2(5)">Tĩnh vật</div>
-                    <div class="cate-other" onclick="selectOption2(6)">Quảng cáo</div>
-                    <div class="cate-other" onclick="selectOption2(7)">Thể thao</div>
-                    <div class="cate-other" onclick="selectOption2(8)">Khác</div>
+                    <?php
+                        $count = 0;
+                        foreach($data['Categories'] as $category){ ?>
+                            <div class="cate-other" onclick="selectOption2(<?= ++$count; ?>)"><?= $category['category']; ?></div>
+                        <?php }
+                    ?>
                 </div>
                 <input type="text" name="title" id="title" placeholder="Tiêu đề">
                 <div class="title-bottom-border bottom-border" id="title-bottom-border"></div>

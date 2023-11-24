@@ -29,12 +29,12 @@
                             <td class="image-title"><?= $row['title']; ?></td>
                             <td class="image-description"><?= $row['description']; ?></td>
                             <td><?= $row['dateuploaded']; ?></td>
-                            <td><?= $row['category']; ?></td>
+                            <td class="image-category"><?= $row['category']; ?></td>
 
 
                             <td class="action">
-                                <button class="edit-button" data-bs-toggle="modal" data-bs-target="#editImageModal" onclick="GetUpdateImage('<?= $row['path']; ?>')"><i class="fa-solid fa-pen"></i> Sửa</button>
-                                <button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete('<?= $row['path']; ?>')"><i class="fa-solid fa-trash"></i> Xóa</button>
+                                <span><button class="edit-button" data-bs-toggle="modal" data-bs-target="#editImageModal" onclick="GetUpdateImage('<?= $row['path']; ?>')"><i class="fa-solid fa-pen"></i> Sửa</button></span>
+                                <span><button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete('<?= $row['path']; ?>')"><i class="fa-solid fa-trash"></i> Xóa</button></span>
                             </td>
                       </tr>
                       <?php } ?>

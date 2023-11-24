@@ -3,6 +3,8 @@
     {
         private $imageModel;
         private $userModel;
+        private $categoryModel;
+
         function __construct()
         {
             $this->LoadModel("ImageModel");
@@ -10,6 +12,9 @@
             
             $this->LoadModel("UserModel");
             $this->userModel = new UserModel();
+
+            $this->LoadModel("CategoryModel");
+            $this->categoryModel = new CategoryModel();
             
         }
         public function index(){
@@ -32,10 +37,13 @@
                 // echo $list;
                 $result = $this->userModel->GetAllUser();
             }
+
+            $categories = $this->categoryModel->GetAllCategory();
         
             $data = [
                         'Result'=> $result,
-                        'List'=> $list
+                        'List'=> $list,
+                        'Categories'=>$categories
                     ];
 
             $this->View('AdminPage.AdminPage', $data);
@@ -76,8 +84,8 @@
                         echo '<td class="user-password">'.$row['password'].'</td>';
                         echo '<td class="user-fullname">'.$row['lastname'].' '.$row['firstname'].'</td>';
                         echo '<td class="action">';
-                        echo '<button class="edit-button" data-bs-toggle="modal" data-bs-target="#editUserModal" onclick="GetUpdateUser(\''.$row['username'].'\')"><i class="fa-solid fa-pen"></i> Sửa</button>';
-                        echo '<button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete(\''.$row['username'].'\')"><i class="fa-solid fa-trash"></i> Xóa</button>';
+                        echo '<span><button class="edit-button" data-bs-toggle="modal" data-bs-target="#editUserModal" onclick="GetUpdateUser(\''.$row['username'].'\')"><i class="fa-solid fa-pen"></i> Sửa</button></span>';
+                        echo '<span><button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete(\''.$row['username'].'\')"><i class="fa-solid fa-trash"></i> Xóa</button></span>';
                         echo '</td>';
                         echo '</tr>';
                     }
@@ -116,10 +124,10 @@
                         echo '<td class="image-title">'.$row['title'].'</td>';
                         echo '<td class="image-description">'.$row['description'].'</td>';
                         echo '<td>'.$row['dateuploaded'].'</td>';
-                        echo '<td>'.$row['category'].'</td>';
+                        echo '<td class="image-category">'.$row['category'].'</td>';
                         echo '<td class="action">';
-                        echo '<button class="edit-button" data-bs-toggle="modal" data-bs-target="#editImageModal" onclick="GetUpdateImage(\''.$row['path'].'\')"><i class="fa-solid fa-pen"></i> Sửa</button>';
-                        echo '<button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete(\''.$row['path'].'\')"><i class="fa-solid fa-trash"></i> Xóa</button>';
+                        echo '<span><button class="edit-button" data-bs-toggle="modal" data-bs-target="#editImageModal" onclick="GetUpdateImage(\''.$row['path'].'\')"><i class="fa-solid fa-pen"></i> Sửa</button></span>';
+                        echo '<span><button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete(\''.$row['path'].'\')"><i class="fa-solid fa-trash"></i> Xóa</button></span>';
                         echo '</td>';
                         echo '</tr>';
                     }

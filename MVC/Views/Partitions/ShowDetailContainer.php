@@ -3,7 +3,7 @@
             <li class=" close-show-details"><i class="fa-solid fa-xmark"></i></li>
             <li id="behavior-follow-button">
                 <div class="follow-button-avatar-container">
-                    <img src="Public/webimg/defaultAvatar.png" alt="">
+                    <img src="/Public/webimg/defaultAvatar.png" alt="">
                 </div>
                 <span id="follow-status">Theo dõi</span>
             </li>
@@ -24,7 +24,7 @@
         <div class="show-details">
             <div class="uploader">
                 <div class="detail-avatar-container">
-                    <a href="#" onclick="ShowPublicUserPage()"><img class="detail-avatar" src="Public/webimg/defaultAvatar.png" alt=""></a>
+                    <a href="#" onclick="ShowPublicUserPage()"><img class="detail-avatar" src="/Public/webimg/defaultAvatar.png" alt=""></a>
                 </div>
                 <div style="display: flex; align-items: center;">
                     <a href="#"><span class="detail-uploader">uploader</span></a>
@@ -46,13 +46,14 @@
                     <div class="sorted-com">Sắp xếp theo</div>
                 </div>
                 <div class="nav-sorteds">
-                    <div class="nav-sorted" onclick="selectnav_sorted(1)">Bình luận hàng đầu</div>
-                    <div class="nav-sorted" onclick="selectnav_sorted(2)">Bình luận mới nhất</div>
+                    <div class="nav-sorted" onclick="selectnav_sorted(1, 'topComment')">Bình luận hàng đầu</div>
+                    <div class="nav-sorted" onclick="selectnav_sorted(2, 'newestComment')">Bình luận mới nhất</div>
+                    <div class="nav-sorted" onclick="selectnav_sorted(3, 'oldestComment')">Bình luận cũ nhất</div>
                 </div>
             </div>
             <form class="main-form" id="comment-form">
                 <div id="user-comment-avt-img-container">
-                    <img id="user-comment-avt-img" src="./Public/profileimg/<?= $_SESSION['avatar']; ?>" alt="">
+                    <img id="user-comment-avt-img" src="/Public/profileimg/<?= $_SESSION['avatar']; ?>" alt="">
                 </div>
                 <div class="part-com">
                     <input type="text" name="image-path" id="comment-image-path" value="" hidden>

@@ -3,7 +3,7 @@
         <div id="aside1">
             <div id="introduction">
                 <div class="avatar-container">
-                    <img src="./Public/profileimg/<?php echo $data['UploaderData']['uploaderAvatar']; ?>" alt="" class="image">
+                    <img src="/Public/profileimg/<?php echo $data['UploaderData']['uploaderAvatar']; ?>" alt="" class="image">
                 </div>
                 <h2 id="public-user"><?php echo $data['UploaderData']['uploader']; ?></h2>
                 <span><?php echo $data['UploaderData']['uploaderFirstname']." ".$data['UploaderData']['uploaderLastname'] ?></span>

@@ -1,11 +1,11 @@
-<link rel="stylesheet" href="./Public/css/Paint_Created.css">
+<link rel="stylesheet" href="/Public/css/Paint_Created.css">
 <?php
             $rows = $data['Rows'];
             if($rows->num_rows != 0){
                 foreach($rows as $row){ ?>
                         <div class="paint" id="<?php echo $row['path']; ?>" onclick="ShowDetails_Created('<?php echo $row['path']; ?>')">
                             <!-- <p class="image-name"><?php echo $row['path'] ?></p> -->
-                            <img class="main-image" src="Public/img/<?php echo $row["path"] ?> " width="350px" alt="" loading="lazy">
+                            <img class="main-image" data-src="/Public/img/<?php echo $row["path"] ?> " width="350px" alt="" loading="lazy">
                             <!-- <div class="image-uploader">
                                 <div class="image-uploader-avatar-container">
                                     <img src="./Public/profileimg/<?php echo $row['avatar'] ?>" alt="">

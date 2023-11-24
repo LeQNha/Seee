@@ -11,6 +11,7 @@ tr{
   background: whitesmoke;
   border: 10px solid white;
   border-radius: 15px;
+  height: auto;
 }
 th{
   background: darkblue;
@@ -27,7 +28,8 @@ td:not(.ordinal-number-column){
   /* border: 1px solid black; */
   padding: 8px 15px;
   max-width: 280px;
-  overflow-y: auto;
+  /* overflow-y: auto; */
+  height: auto;
   margin-top: 5px;
 }
 .action{

@@ -20,8 +20,7 @@ var imageDescription = document.getElementById('image-description');
 var modalImageSaveChangeButton = document.getElementById('modal-image-save-change-button');
 var modalImageCloseButton = document.getElementById('modal-image-close-button');
 var updateImageId = '';
-var updateImageTitle = document.getElementById('image-title');
-var updateImageDescription = document.getElementById('image-description');
+
 var imageTitleErrorMessage = document.getElementById('image-title-error-messsage');
 
 //MODAL UPDATE USER
@@ -52,7 +51,7 @@ window.onload = function(){
 usersManagementButton.addEventListener('click', function(){
     imagesManagementButton.classList.remove('more_nav-clicked');
     usersManagementButton.classList.add('more_nav-clicked');
-    xhr.open('GET','index.php?controller=AdminPage&action=SwitchManagement&list=UsersManagement');
+    xhr.open('GET','/index.php?controller=AdminPage&action=SwitchManagement&list=UsersManagement');
     xhr.onload = function(){
         if(xhr.status === 200){
             mainTable.innerHTML = xhr.responseText;
@@ -61,7 +60,7 @@ usersManagementButton.addEventListener('click', function(){
         }
     }
     xhr.send();
-    history.pushState(null,null,'index.php?controller=AdminPage&list=UsersManagement');
+    history.pushState(null,null,'/index.php?controller=AdminPage&list=UsersManagement');
     ml = 'UserList';
     ChangeModalContent();
 });
@@ -69,7 +68,7 @@ usersManagementButton.addEventListener('click', function(){
 imagesManagementButton.addEventListener('click', function(){
     usersManagementButton.classList.remove('more_nav-clicked');
     imagesManagementButton.classList.add('more_nav-clicked');
-    xhr.open('GET','index.php?controller=AdminPage&action=SwitchManagement&list=ImagesManagement');
+    xhr.open('GET','/index.php?controller=AdminPage&action=SwitchManagement&list=ImagesManagement');
     xhr.onload = function(){
         if(xhr.status === 200){
             mainTable.innerHTML = xhr.responseText;
@@ -78,14 +77,14 @@ imagesManagementButton.addEventListener('click', function(){
         }
     }
     xhr.send();
-    history.pushState(null,null,'index.php?controller=AdminPage&list=ImagesManagement');
+    history.pushState(null,null,'/index.php?controller=AdminPage&list=ImagesManagement');
     ml = 'ImageList';
     ChangeModalContent();
 });
 
 //XÓA IMG
 function DeleteImage(pid){
-    xhr.open('GET','index.php?controller=AdminPage&action=DeleteImage&pid='+encodeURIComponent(pid.trim()));
+    xhr.open('GET','/index.php?controller=AdminPage&action=DeleteImage&pid='+encodeURIComponent(pid.trim()));
     xhr.onload = function(){
         if(xhr.status == 200){
             console.log(pid)
@@ -105,7 +104,7 @@ function DeleteImage(pid){
 }
 //XÓA USER
 function DeleteUser(uname){
-    xhr.open('GET','index.php?controller=AdminPage&action=DeleteUser&uname='+encodeURIComponent(uname.trim()));
+    xhr.open('GET','/index.php?controller=AdminPage&action=DeleteUser&uname='+encodeURIComponent(uname.trim()));
     xhr.onload = function(){
         if(xhr.status == 200){
             console.log(uname);
@@ -151,7 +150,7 @@ function ChangeModalContent(){
 function GetUpdateImage(pid){
     imageTitleErrorMessage.textContent = '';
     updateImageId = pid;
-    xhr.open('GET','index.php?controller=AdminPage&action=GetImage&pid='+encodeURIComponent(pid));
+    xhr.open('GET','/index.php?controller=AdminPage&action=GetImage&pid='+encodeURIComponent(pid));
     xhr.onload = function(){
         if(xhr.status == 200){
             receivedData = JSON.parse(xhr.responseText);
@@ -168,7 +167,7 @@ function GetUpdateImage(pid){
 
 modalImageSaveChangeButton.addEventListener('click',SaveChangeImage);
 function SaveChangeImage(){
-    xhr.open('POST','index.php?controller=AdminPage&action=UpdateImage&imgId='+encodeURIComponent(updateImageId));
+    xhr.open('POST','/index.php?controller=AdminPage&action=UpdateImage&imgId='+encodeURIComponent(updateImageId));
     formData = new FormData(document.getElementById('image-infor-form'));
     xhr.onload = function(){
         if(xhr.status === 200){
@@ -180,11 +179,10 @@ function SaveChangeImage(){
                     //tách id của ảnh ra vì để fsfsdf.jpg thì ko thể query selector đc
                     [name, extension] = updateImageId.split(".");
                     parentElement = document.getElementById(name);
-                    parentElement.querySelector('.image-title').textContent = updateImageTitle.value.trim();
-                    parentElement.querySelector('.image-description').textContent = updateImageDescription.value.trim();
-                    // document.querySelector('#6524fa54571b1\\.jpg .image-title') ví dụ
-                    // document.querySelector('#' + name + ' .image-title').textContent = updateImageTitle.value.trim();
-                    // document.querySelector('#' + name + ' .image-description').textContent = updateImageDescription.value.trim();
+                    parentElement.querySelector('.image-title').textContent = imageTitle.value.trim();
+                    parentElement.querySelector('.image-description').textContent = imageDescription.value.trim();
+                    parentElement.querySelector('.image-category').textContent = imageCategory.value.trim();
+
                     break;
                 case 'title empty':
                     imageTitleErrorMessage.textContent = 'Không được để trống';
@@ -203,7 +201,7 @@ function SaveChangeImage(){
 
 //Update User
 function GetUpdateUser(uId){
-    xhr.open('GET','index.php?controller=AdminPage&action=GetUser&uId='+encodeURIComponent(uId));
+    xhr.open('GET','/index.php?controller=AdminPage&action=GetUser&uId='+encodeURIComponent(uId));
     updateUserId = uId;
     console.log('tim '+updateUserId);
     xhr.onload = function(){
@@ -244,7 +242,7 @@ function SaveChangeUser(){
     }
 
     if(!checkEmpty){
-        xhr.open('POST','index.php?controller=AdminPage&action=UpdateUser&uId='+encodeURIComponent(updateUserId));
+        xhr.open('POST','/index.php?controller=AdminPage&action=UpdateUser&uId='+encodeURIComponent(updateUserId));
         formData = new FormData(document.getElementById('user-infor-form'));
 
         xhr.onload = function(){
@@ -268,4 +266,23 @@ function SaveChangeUser(){
         xhr.send(formData);
     }
 
+}
+
+//FILLTER JS
+function toggleOptions3() {
+    var sub_cate1 = document.querySelector('.sub-cate1');
+    sub_cate1.style.display = sub_cate1.style.display === 'block' ? 'none' : 'block';
+}
+function selectOption5(optionIndex) {
+    var image_category = document.getElementById('image-category');
+    var options = document.querySelectorAll('.sub-cate10');
+    options.forEach(function(option, index) {
+        if (index === optionIndex - 1) {
+          option.classList.add('selected');
+        } else {
+          option.classList.remove('selected');
+        }
+      });
+      image_category.value = options[optionIndex - 1].textContent;
+    toggleOptions3();
 }

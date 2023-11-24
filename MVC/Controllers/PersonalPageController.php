@@ -11,52 +11,6 @@
             $this->LoadModel('UserModel');
             $this->userModel = new UserModel();
         }
-        public function EditProfile()
-        {   
-            $username = $_SESSION['Login']['username'];
-            $sql = "SELECT * FROM users WHERE username = '$username'";
-            $result = $this->userModel->DoQuery($sql);
-
-            $email = "";
-            $username = "";
-            $password = "";
-            $firstname = "";
-            $lastname = "";
-            $ocupation = "";
-            $location = "";
-            $introduction = "";
-            $avatar = "";
-            if($result->num_rows > 0){
-                $row = $result->fetch_assoc();
-
-                $email = trim($row['email']) ;
-                $username = trim($row['username']);
-                $password = trim($row['password']);
-                $firstname = trim($row['firstname']);
-                $lastname = trim($row['lastname']);
-                $ocupation = trim($row['ocupation']);
-                $location = trim($row['location']);
-                $introduction = trim($row['introduction']);
-                $avatar = trim($row['avatar']);
-            }
-            
-            $userData = [
-                'Email'=>$email,
-                'Username'=>$username,
-                'Password'=>$password,
-                'Firstname'=>$firstname,
-                'Lastname'=>$lastname,
-                'Ocupation'=>$ocupation,
-                'Location'=>$location,
-                'Introduction'=>$introduction,
-                'Avatar'=>$avatar,
-            ];
-            $data = [
-                'Page'=>'EditProfile',
-                'UserData'=>$userData
-            ];
-            $this->View('Layout.MasterLayout', $data);
-        }
 
         public function GetShowedList(){
             $username = $_SESSION['Login']['username'];
@@ -97,10 +51,10 @@
                         foreach($result as $row){
 
                             echo '<div class="paint" id="'.$row['path'].'" onclick="ShowDetails(\''. $row['path'] . '\')">'; 
-                            echo '<img class="main-image" src="Public/img/'.$row["path"].'" width="350px" alt="" loading="lazy"> ';
+                            echo '<img class="main-image" data-src="/Public/img/'.$row["path"].'" width="350px" alt="" loading="lazy"> ';
                             echo '<div class="image-uploader"> ';
                             echo '<div class="image-uploader-avatar-container"> ';
-                            echo '<img src="./Public/profileimg/'.$row['avatar'].'" alt="">'; 
+                            echo '<img src="/Public/profileimg/'.$row['avatar'].'" alt="">'; 
                             echo '</div> ';
                             echo '<span class="uploader-username">'.$row['username'].'</span>';
                             echo '</div> ';
@@ -124,11 +78,11 @@
                 
                     }else if($listShowed == 'created'){
                         
-                        echo '<link rel="stylesheet" href="./Public/css/Paint_Created.css">';
+                        echo '<link rel="stylesheet" href="/Public/css/Paint_Created.css">';
                         foreach($result as $row){
 
                             echo '<div class="paint" id="'.$row['path'].'" onclick="ShowDetails_Created(\''. $row['path'] . '\')">'; 
-                            echo '<img class="main-image" src="Public/img/'.$row["path"].'" width="350px" alt="" loading="lazy"> ';
+                            echo '<img class="main-image" data-src="/Public/img/'.$row["path"].'" width="350px" alt="" loading="lazy"> ';
                             echo '<h4 class="image-title">'.$row['title'].'</h4>';
 
                             $path = $row['path'];
@@ -151,9 +105,9 @@
 
                         foreach($result as $following){
                             echo '<div class="followed-user">';
-                            echo '<a href="index.php?controller=PublicUserPage&action=PublicUserPage&uploader='.$following['followed'].'">';
+                            echo '<a href="/index.php?controller=Imey&action=PublicUserPage&uploader='.$following['followed'].'">';
                             echo '<div class="followed-user-avatar-container">';
-                            echo '<img src="./Public/profileimg/'.$following['avatar'].'" alt="">';
+                            echo '<img src="/Public/profileimg/'.$following['avatar'].'" alt="">';
                             echo '</div>';
                             echo '<span class="followed-user-username">'.$following['followed'].'</span>';
                             echo '</a>';

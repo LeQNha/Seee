@@ -224,36 +224,77 @@
             
         }
 
-        public function GetComments(){
-            if(isset($_POST['pid'])){
-                $pid = $_POST['pid'];
-                $result = $this->commentModel->GetComments($pid);
+        // public function GetComments($order = 'DESC'){
+        //     if(isset($_POST['pid'])){
+        //         $pid = $_POST['pid'];
+        //         $result = $this->commentModel->GetComments($pid, $order);
+        //         $commenterAvatar = '';
+        //         $timeGap = '';
+        //         if($result->num_rows > 0){
+        //             foreach($result as $row){
+        //                 echo '<div class="comment__card" id="'.$row['comment_id'].'">';
+        //                 $commenterAvatar = $this->userModel->GetUserAvatar($row['username']);
+        //                 echo '<img id="avt-img" src="/Public/profileimg/'.$commenterAvatar.'" alt="">';
+        //                 echo '<div class="comment__info">';
+        //                 echo '<div class="main-com-fo">';
+        //                 echo '<span class="nickname">'.$row['username'].'</span>';
+        //                 $timeGap = $this->CalculateTimeGap($row['comment_date']);
+        //                 echo '<span class="currentDate">'.$timeGap.'</span>';
+        //                 echo '</div>';
+        //                 echo '<p class="comment">'.$row['comment_content'].'</p>';
+        //                 echo '<div class="comment__bottom">';
+        //                 echo '<div class="like__icon--comment">';
+        //                 echo '<i id="like__icon" class="fa-regular fa-thumbs-up like__icon"></i>';
+        //                 echo '<small class="count">0</small>';
+        //                 echo '<i id="dislike__icon" class="fa-regular fa-thumbs-down dislike__icon"></i>';
+        //                 echo '<small class="count1">0</small>';
+        //                 echo '</div>';
+        //                 echo '<button class="reply">Phản hồi</button>';
+        //                 echo '</div>';
+        //                 echo '</div>';
+        //                 echo '</div>';
+        //             }
+        //         }
+        //     }else{
+        //         echo 'ko nhận đc';
+        //     }
+        // }
+
+        public function GetComments($pid = '', $order = 'DESC'){
+            if(isset($_POST['pid']) || $pid != ''){
+                if(isset($_POST['pid'])){
+                    $pid = $_POST['pid'];
+                }
+                $result = $this->commentModel->GetComments($pid, $order);
                 $commenterAvatar = '';
                 $timeGap = '';
+                $comments = '';
                 if($result->num_rows > 0){
                     foreach($result as $row){
-                        echo '<div class="comment__card" id="'.$row['comment_id'].'">';
+                        $comments .= '<div class="comment__card" id="'.$row['comment_id'].'">';
                         $commenterAvatar = $this->userModel->GetUserAvatar($row['username']);
-                        echo '<img id="avt-img" src="./Public/profileimg/'.$commenterAvatar.'" alt="">';
-                        echo '<div class="comment__info">';
-                        echo '<div class="main-com-fo">';
-                        echo '<span class="nickname">'.$row['username'].'</span>';
+                        $comments .= '<img id="avt-img" src="/Public/profileimg/'.$commenterAvatar.'" alt="">';
+                        $comments .= '<div class="comment__info">';
+                        $comments .= '<div class="main-com-fo">';
+                        $comments .= '<span class="nickname">'.$row['username'].'</span>';
                         $timeGap = $this->CalculateTimeGap($row['comment_date']);
-                        echo '<span class="currentDate">'.$timeGap.'</span>';
-                        echo '</div>';
-                        echo '<p class="comment">'.$row['comment_content'].'</p>';
-                        echo '<div class="comment__bottom">';
-                        echo '<div class="like__icon--comment">';
-                        echo '<i id="like__icon" class="fa-regular fa-thumbs-up like__icon"></i>';
-                        echo '<small class="count">0</small>';
-                        echo '<i id="dislike__icon" class="fa-regular fa-thumbs-down dislike__icon"></i>';
-                        echo '<small class="count1">0</small>';
-                        echo '</div>';
-                        echo '<button class="reply">Phản hồi</button>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</div>';
+                        $comments .= '<span class="currentDate">'.$timeGap.'</span>';
+                        $comments .= '</div>';
+                        $comments .= '<p class="comment">'.$row['comment_content'].'</p>';
+                        $comments .= '<div class="comment__bottom">';
+                        $comments .= '<div class="like__icon--comment">';
+                        $comments .= '<i id="like__icon" class="fa-regular fa-thumbs-up like__icon"></i>';
+                        $comments .= '<small class="count">0</small>';
+                        $comments .= '<i id="dislike__icon" class="fa-regular fa-thumbs-down dislike__icon"></i>';
+                        $comments .= '<small class="count1">0</small>';
+                        $comments .= '</div>';
+                        $comments .= '<button class="reply">Phản hồi</button>';
+                        $comments .= '</div>';
+                        $comments .= '</div>';
+                        $comments .= '</div>';
                     }
+
+                    echo ''.$comments;
                 }
             }else{
                 echo 'ko nhận đc';
@@ -269,6 +310,24 @@
                 echo $rs->num_rows;
             }else{
                 echo 'Không nhận được';
+            }
+        }
+
+        public function FilterComment(){
+            if(isset($_GET['comFilter'])){
+                $comFilter = $_GET['comFilter'];
+                $pid = $_GET['pid'];
+                $order = 'DESC';
+                switch($comFilter){
+                    case 'newestComment':
+                        $order = 'DESC';
+                        break;
+                    case 'oldestComment':
+                        $order = 'ASC';
+                        break;
+                }
+                $comments = $this->GetComments($pid, $order);
+                echo $comments;
             }
         }
 
