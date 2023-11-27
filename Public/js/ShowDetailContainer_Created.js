@@ -15,16 +15,14 @@ const commentsContain1= document.querySelector('.comments');
 var getUserAvatarCreated = document.getElementById('get-user-avatar-created');
 var getUsernameCreated = document.getElementById('get-user-username-created');
 
+//FILTER JS
+var nav_sorteds1 = document.querySelector('.nav-sorteds1');
+//CATEGORY JS
+var cate_others = document.querySelector('.cate-others10');
+
 input1.addEventListener("input", function() {
   this.style.height = "auto";
   this.style.height = (this.scrollHeight) + "px";
-});
-input1.addEventListener("input", function() {
-  if (input1.value.length > 0) {
-    input1.style.border = "none"; // Nếu có ít nhất một ký tự, ẩn viền
-  } else {
-    input1.style.border = "1px solid black"; // Nếu trống, hiển thị viền lại
-  }
 });
 
 var textarea1 = document.getElementById("description-created");
@@ -34,13 +32,6 @@ textarea1.addEventListener("input", function() {
   this.style.height = (this.scrollHeight) + "px";
 });
 
-textarea1.addEventListener("input", function() {
-  if (textarea1.value.length > 0) {
-    textarea1.style.border = "none"; // Nếu có ít nhất một ký tự, ẩn viền
-  } else {
-    textarea1.style.border = "1px solid black"; // Nếu trống, hiển thị viền lại
-  }
-});
 
 // var commentInput = document.getElementById("comment-input");
 // var submitButton = document.getElementById("send");
@@ -64,16 +55,20 @@ var xhr = new XMLHttpRequest();
 
 //Show img details
 var showDetailsContainerCreated = document.querySelector('.show-details-container-created');
+var categoryCreated = document.getElementById('categoryCreated');
 var detailTileCreated = document.getElementById('detail-title-created');
 var detailImgCreated = document.querySelector('.detail-img-created');
 var detailDescriptionCreated = document.getElementById('description-created');
 var dateUploadedCreated = document.querySelector('.detail-date-uploaded-created');
 var detailUploaderCreated = document.querySelector('.detail-uploader-created');
 var detailUploaderAvatarCreated = document.querySelector('.detail-avatar-created');
+var likeNumberCreated = document.querySelector('.like-number-created');
 
 //CloseShowDetailsContainerCreated
 function CloseShowDetailsContainerCreated(){
   showDetailsContainerCreated.style.display = "none";
+  nav_sorteds1.style.display = "none";
+  cate_others.style.display = "none";
   showDetailsContainerCreated.classList.add("show-details-container-show-up-created");
   setTimeout(function () {
     showDetailsContainerCreated.classList.remove("show-details-container-show-up-created");
@@ -91,7 +86,7 @@ function ShowDetails_Created(pid){
   var closeShowDetailsButtonCreated = document.querySelector('.close-show-details-created');
   closeShowDetailsButtonCreated.addEventListener('click',CloseShowDetailsContainerCreated);
 
-  xhr.open('POST', '/index.php?controller=ShowDetailContainer&action=GetImage');
+  xhr.open('POST', '/index.php?controller=ShowDetailContainer_Created&action=GetImage');
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onload = function() {
     var receivedData = JSON.parse(xhr.responseText);
@@ -103,12 +98,14 @@ function ShowDetails_Created(pid){
     }, 20); // Thời gian đếm ngược (đơn vị: mili giây)
     
     // imgDetailsContainer.innerHTML = receivedData.title;
+    categoryCreated.value = receivedData.category;
     detailTileCreated.value = receivedData.title;
     detailImgCreated.src = "./Public/img/"+receivedData.path;
     detailDescriptionCreated.textContent = receivedData.description;
     dateUploadedCreated.textContent = receivedData.dateuploaded
     detailUploaderCreated.textContent = receivedData.uploader;
     detailUploaderAvatarCreated.src = "./Public/profileimg/"+receivedData.uploaderAvatar;
+    likeNumberCreated.textContent = receivedData.likeNumber; 
 
     imgId = receivedData.path;
     commentImagePathCreated.value = imgId;
@@ -439,8 +436,8 @@ function showAndHide(msg){
 }
 
 //FILTER JS
+
 function togglenav_sorteds1() {
-  var nav_sorteds1 = document.querySelector('.nav-sorteds1');
   nav_sorteds1.style.display = nav_sorteds1.style.display === 'block' ? 'none' : 'block';
 }
 function selectnav_sorted1(optionIndex, comFilter) {
@@ -468,5 +465,23 @@ function FilterCommentCreated(comFilter){
     }
   };
   xhr.send();
+}
+
+//CATEGORY JS
+function toggleOptions10() {
+  cate_others.style.display = cate_others.style.display === 'block' ? 'none' : 'block';
+}
+function selectOption10(optionIndex) {
+  var categories = document.querySelector('.categories25');
+  var cate_other = document.querySelectorAll('.cate-other10');
+  cate_other.forEach(function(option, index) {
+      if (index === optionIndex - 1) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+  categories.value = cate_other[optionIndex - 1].textContent;
+  toggleOptions10();
 }
 

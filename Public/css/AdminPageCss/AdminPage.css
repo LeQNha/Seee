@@ -32,6 +32,14 @@
   #logo, #more {
     width: 23%;
   }
+  #logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #logo img{
+    height: 60px;
+  }
   #more {
     height: 86vh;
   }

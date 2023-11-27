@@ -20,6 +20,7 @@
                 <i class="fa-solid fa-share" id="share-icon"></i>
                 <span>Chia sẻ</span>
             </li>
+            <li class="other-behaviors"><span>...</span></li>
         </ul>
         <div class="show-details">
             <div class="uploader">
@@ -33,6 +34,12 @@
                 <p class="detail-date-uploaded">111-111-111</p>
             </div>
             <div class="image-details">
+                <div class="num-like-love">
+                    <i class="fa-solid fa-thumbs-up"></i>
+                    <span class="number-like">0</span>
+                    <i class="fa-solid fa-eye"></i>
+                    <span class="number-view">342</span>
+                </div>
                 <img class="detail-img" src="" alt="">
                 <h1 class="detail-title">tes</h1>
                 <p class="detail-description">ádadada</p>
@@ -46,9 +53,9 @@
                     <div class="sorted-com">Sắp xếp theo</div>
                 </div>
                 <div class="nav-sorteds">
-                    <div class="nav-sorted" onclick="selectnav_sorted(1, 'topComment')">Bình luận hàng đầu</div>
                     <div class="nav-sorted" onclick="selectnav_sorted(2, 'newestComment')">Bình luận mới nhất</div>
                     <div class="nav-sorted" onclick="selectnav_sorted(3, 'oldestComment')">Bình luận cũ nhất</div>
+                    <div class="nav-sorted" onclick="selectnav_sorted(1, 'topComment')">Bình luận hàng đầu</div>
                 </div>
             </div>
             <form class="main-form" id="comment-form">

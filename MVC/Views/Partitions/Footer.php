@@ -3,9 +3,9 @@
             <div class="footer-wrapper">
                 <div class="colmain">
                     <h1 class="title_colmain">
-                        SEEE
+                        Imey
                     </h1>
-                    <img src="https://i.pinimg.com/236x/03/47/d0/0347d06ed58f188e23dba4ebcd4acf0f.jpg" alt="" class="image_logo">
+                    <img src="./Public/webimg/Imey-logo-1.png" alt="" class="image_logo">
                 </div>
                 <div class="col">
                     <h3 class="title">Thông tin</h3>

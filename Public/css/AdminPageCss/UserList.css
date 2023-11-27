@@ -7,7 +7,7 @@ table {
   
 tr{
     background: whitesmoke;
-    border: 10px solid white;
+    border: 10px solid white !important;
     border-radius: 15px;
     height: auto;
 
@@ -45,6 +45,7 @@ tr{
     justify-content: center;
     align-items: center; */
     width: 180px;
+    display: flex;
   }
   td.action button{
     padding: 5px 8px;

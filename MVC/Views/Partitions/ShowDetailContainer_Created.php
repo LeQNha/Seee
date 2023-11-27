@@ -31,17 +31,41 @@
                         <div id="created-image-container">
                             <img class="detail-img-created" src="https://vtv1.mediacdn.vn/2018/11/22/photo-3-15428716111551636354706.jpg" alt="">
                         </div>
-                        <form action="#" method="post" id="update-image-infor-form">
-                            <input type="text" id="detail-title-created" name="detailTitleCreated"></input>
-                            <textarea id="description-created" name="descriptionCreated"></textarea>
-                        </form>
+                        <div class="created-infor">
+        
+                            <form action="#" method="post" id="update-image-infor-form">
+                                <div class="category-img25" onclick="toggleOptions10()">
+                                    <input type="text" name="categoryCreated" class="categories25" id="categoryCreated" placeholder="Chọn thể loại">
+                                    <i class="fa-solid fa-caret-down down-click10"></i>
+                                </div>
+                                <div class="cate-others10">
+                                <?php
+                                    $count = 0;
+                                    foreach($data['Categories'] as $category){ ?>
+                                        <div class="cate-other10" onclick="selectOption10(<?= ++$count; ?>)" style="margin: 0;width: 100%;"><?= $category['category']; ?></div>
+                                    <?php }
+                                ?>
+                                    <!-- <div class="cate-other10" onclick="selectOption10(1)">Kiến trúc</div>
+                                    <div class="cate-other10" onclick="selectOption10(2)">Quảng cáo</div>
+                                    <div class="cate-other10" onclick="selectOption10(3)">Khác</div>
+                                    <div class="cate-other10" onclick="selectOption10(4)">Nhiếp ảnh</div>
+                                    <div class="cate-other10" onclick="selectOption10(5)">Minh họa</div>
+                                    <div class="cate-other10" onclick="selectOption10(6)">Thể thao</div>
+                                    <div class="cate-other10" onclick="selectOption10(7)">3D</div>
+                                    <div class="cate-other10" onclick="selectOption10(8)">Tĩnh vật</div>
+                                    <div class="cate-other10" onclick="selectOption10(9)">Anime</div> -->
+                                </div>
+                                <input type="text" id="detail-title-created" name="detailTitleCreated"></input>
+                                <textarea id="description-created" name="descriptionCreated"></textarea>
+                            </form>
+                        </div>
                     </div>
 
                     <div class="nav-see">
                         <div class="separate1"></div>
                         <div class="detail-infor">
                             <div class="detail-emotion">
-                                <h4>23 lượt like</h4>
+                                <h4><span class="like-number-created"></span> lượt like</h4>
                                 <i class="fa-solid fa-thumbs-up like-icon-created"></i>
                                 <h4>,</h4>&nbsp;
                                 <h4>50 lượt yêu thích</h4>

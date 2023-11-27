@@ -149,9 +149,11 @@
                 $joinningDate = $jd[2].' tháng '.$jd[1].', '.$jd[0];
                 
             }
+            $categories = $this->categoryModel->GetAllCategory();
 
             $data = [
                     'Page'=>'PersonalPage',
+                    'Categories'=>$categories,
                     'Rows'=>$result_1,
                     'BriefInformation'=>[
                         'FollowerNumber'=>$followerNumber,

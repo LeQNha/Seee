@@ -5,7 +5,7 @@
   followButton.addEventListener('click', ToggleFollowButton);
 
   window.onload = function(){
-    
+    document.querySelector('.public-user-page-shared').classList.add('public-user-page-nav-button');
   };
 
   // function CheckFollow(){

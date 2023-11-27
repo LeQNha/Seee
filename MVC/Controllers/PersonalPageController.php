@@ -14,12 +14,6 @@
 
         public function GetShowedList(){
             $username = $_SESSION['Login']['username'];
-
-            // $listShowed = "liked";
-            // if(isset($_GET['listShowed'])){
-            //     $listShowed = $_GET['listShowed'];
-            // }
-
             //hiển thị các ảnh thích/ đã tạo
             $sql = "SELECT * FROM imgupload i INNER JOIN liked_images l
                     ON i.path = l.path
@@ -27,15 +21,42 @@
                     ON i.username = u.username 
                     WHERE l.username = '$username';         
                     ";
+            $q = '';
+            if(isset($_GET['q'])){
+                $q = $_GET['q'];
+            }
             $listShowed = "liked";
             if(isset($_GET['listShowed'])){
                 $listShowed = $_GET['listShowed'];
+            }
+            if($listShowed == 'liked' && isset($_GET['q'])){
+                $sql = "SELECT * FROM imgupload INNER JOIN image_keywords  
+                        ON imgupload.path = image_keywords.path 
+                        INNER JOIN users
+                        ON imgupload.username = users.username
+                        INNER JOIN categories
+                        ON imgupload.category = categories.category 
+                        INNER JOIN liked_images 
+                        ON imgupload.path = liked_images.path
+                        WHERE liked_images.username = '$username' AND (keyword LIKE '%$q%' OR title LIKE '%$q%' OR imgupload.username LIKE '%$q%' OR imgupload.category LIKE '%$q%') 
+                        GROUP BY imgupload.path";      
             }
             if($listShowed == 'created'){
                 $sql = "SELECT * FROM imgupload 
                         WHERE username = '$username';         
                         ";
-            }else if($listShowed == 'following'){
+            }
+            if($listShowed == 'created' && isset($_GET['q'])){
+                $sql = "SELECT * FROM imgupload INNER JOIN image_keywords  
+                        ON imgupload.path = image_keywords.path 
+                        INNER JOIN users
+                        ON imgupload.username = users.username
+                        INNER JOIN categories
+                        ON imgupload.category = categories.category
+                        WHERE imgupload.username = '$username' AND (keyword LIKE '%$q%' OR title LIKE '%$q%' OR imgupload.username LIKE '%$q%' OR imgupload.category LIKE '%$q%') 
+                        GROUP BY imgupload.path";
+            }
+            if($listShowed == 'following'){
                 $sql = "SELECT followed, avatar FROM follow f INNER JOIN users u ON f.followed = u.username WHERE follower = '$username'";
             }
 

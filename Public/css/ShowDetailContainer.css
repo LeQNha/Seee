@@ -120,6 +120,11 @@
     color: rgb(230, 218, 218);
     margin-top: 4px;
 }
+.other-behaviors > span{
+    font-size: 40px !important; 
+    color: white !important;
+    margin-top: 0px;
+}
 .uploader{
     display: flex;
     /* background: rgba(0, 0, 0, 0.859); */
@@ -154,15 +159,29 @@
     color: white;
     font-style: italic;
 }
-.image-details{
+.image-details {
+    position: relative;
     display: flex;
-    flex-direction:column ;
+    flex-direction: column;
     align-items: center;
     justify-content: start;
     background: white;
 }
+.num-like-love {
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-right-radius: 15px;
+    background-color: #00daff;
+    left: 0;
+    position: absolute;
+    padding: 0px 5px;
+    height: 45px;
+}
 .image-details img{
     height: 84vh;
+    max-width: 86%;
 }
 
 /* comment */
@@ -388,7 +407,7 @@ i.fa-solid.fa-sort-down {
     z-index: 25;
     display: none;
     width: 165px;
-    height: 100px;
+    height: auto;
     box-shadow: 0px 0px 5px gray;
     background-color: #272727;
     right: 5px;

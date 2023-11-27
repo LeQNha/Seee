@@ -9,13 +9,13 @@
 </head>
 <body>
     <header>
-        <!-- <img class="logo" src="Public/webimg/Logo-Flippy-Book-3.png" alt=""> -->
+        <img class="logo" src="/Public/webimg/Imey-logo-1.png" alt="">
         <ul>
             <li>Giới thiệu</li>
             <li>Liên lạc</li>
             <a class="dndk loginBtn" href="/index.php?controller=HomePage&action=Login"><li >Đăng nhập</li></a>
             <!-- <a class="dndk loginBtn" href="/HomePage/Login"><li >Đăng nhập</li></a> -->
-            <a class="dndk registerBtn" href="/index.php?controller=HomePage&action=Register"><li>Đăng kí</li></a>
+            <a class="dndk registerBtn" href="/index.php?controller=Imey&action=Register"><li>Đăng kí</li></a>
             <!-- <a class="dndk registerBtn" href="/HomePage/Register"><li>Đăng kí</li></a> -->
            
         </ul>

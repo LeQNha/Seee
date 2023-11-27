@@ -59,6 +59,13 @@
             </div>
         </div>
         <div id="aside2">
+                <div class="public-user-page-nav">
+                    <ul>
+                        <li class="public-user-page-shared">Đã chia sẻ</li>
+                        <li class="public-user-page-achivement">Thành tựu</li>
+                        <!-- <li class="show-followed-list show-list-btn" onclick="ShowList('following')">Theo dõi</li> -->
+                    </ul>
+                </div>
                 <div class="container">
                     <?php
                         include './MVC/Views/Partitions/Paint.php'

@@ -26,17 +26,72 @@
             }
         }
 
+        public function GetImage(){
+            $pid = "s";
+
+            if(isset($_POST['pid'])){
+                $pid = $_POST['pid'];
+                
+                $title="";
+                $imagePath="";
+                $description ="";
+                $dateuploaded = "";
+                $uploader = "";
+                $uploaderAvatar = "";
+                $category = "";
+
+                $sql = "SELECT *
+                        FROM imgupload INNER JOIN users
+                        ON imgupload.username = users.username 
+                        WHERE path = '$pid'";
+                
+                $rs = $this->imageModel->DoQuery($sql);
+                if($rs instanceof mysqli_result){
+                    if(mysqli_num_rows($rs) > 0){
+                        $row = $rs->fetch_assoc();
+                        
+                            $title = $row['title'];
+                            $imagePath = $row['path'];
+                            $description = $row['description'];
+                            $dateuploaded = $row['dateuploaded'];
+                            $datemonthyear = explode('-', $dateuploaded);
+                            $dateuploaded = $datemonthyear[2]." thg ".$datemonthyear[1].", ".$datemonthyear[0];
+                            $uploader = $row['username'];
+                            $uploaderAvatar = $row['avatar'];
+                            $category = $row['category'];
+                    }
+                }
+
+                $likeNumber = mysqli_num_rows($this->imageModel->DoQuery("SELECT path FROM liked_images WHERE path = '$imagePath'"));
+                $likeNumberFomatted = number_format($likeNumber,0,'',' ');
+
+                $message = array(
+                    "title"=>$title, 
+                    "path"=>$imagePath, 
+                    "description"=>$description,
+                    "dateuploaded"=>$dateuploaded,
+                    "uploader"=>$uploader,
+                    "category"=>$category,
+                    "uploaderAvatar"=>$uploaderAvatar,
+                    "likeNumber"=>$likeNumberFomatted
+                );
+                echo json_encode($message);
+            }
+            
+        }
+
         function UpdateImage(){
             if(isset($_GET['pid'])){
                 $pid = $_GET['pid'];
                 $detailTitleCreated = $_POST['detailTitleCreated'];
                 $descriptionCreated = $_POST['descriptionCreated'];
+                $categoryCreated = $_POST['categoryCreated'];
 
                 // if(empty($detailTitleCreated) || empty($descriptionCreated)){
                 //     echo 'Không được để trống';
                 // }
 
-                $this->imageModel->UpdateImage($pid, $detailTitleCreated, $descriptionCreated);
+                $this->imageModel->UpdateImage($pid, $detailTitleCreated, $descriptionCreated, $categoryCreated);
 
                 echo 'update success';
             }else{

@@ -34,6 +34,7 @@
             </div>
             <ul class="header-bar account">
                     
+                    <li><i class="fa-solid fa-envelope"></i></li>
                     <li><i class="fa-solid fa-bell"></i></li>
                     <li style="font-size: 22px; cursor: pointer;"> <?php echo $_SESSION['Login']['username']; ?> </li>
                     <li class="user-avatar-container"><img src="/Public/profileimg/<?php echo $avatar; ?>" alt="aa" class="avatar" onclick="ShowSubmenu()"></li>
@@ -53,7 +54,7 @@
                 <ul>
                     
                     <a href="/index.php?controller=Imey&action=PersonalPage&listShowed=liked"><li>Trang cá nhân</li></a>
-                    <!-- <a href="#"><li>Chính sách và điều khoản</li></a> -->
+                    <a href="#"><li>Điều khoản và dịch vụ</li></a>
                     <a href="#"><li>Trợ giúp</li></a>
                     <a href="#"><li>Liên hệ</li></a>
                     <a href="EditProfile.php"><li>Cài đặt</li></a>

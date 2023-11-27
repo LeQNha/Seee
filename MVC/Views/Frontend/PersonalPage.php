@@ -56,15 +56,16 @@
         <ul>
             <li><i class="fa-solid fa-layer-group"></i></li>
             <li class="show-liked-list show-list-btn" onclick="ShowList('liked')">Yêu thích</li>
-            <li class="show-created-list show-list-btn" onclick="ShowList('created')">Đã tải lên</li>
+            <li class="show-created-list show-list-btn" onclick="ShowList('created')">Đã chia sẻ</li>
             <li class="show-followed-list show-list-btn" onclick="ShowList('following')">Theo dõi</li>
+            <!-- <li class="show-list-btn">Blog</li> -->
         </ul>
 
         <div id="sub-header">
             <div class="sub__search">
                 <form >
-                    <input type="text" class="search-small" placeholder= "Tìm kiếm">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" class="search-small" id="sub-search" placeholder= "Tìm kiếm">
+                    <i id="sub-search-icon" class="fa-solid fa-magnifying-glass"></i>
                 </form>
             </div>
         </div>

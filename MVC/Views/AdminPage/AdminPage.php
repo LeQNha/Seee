@@ -16,7 +16,7 @@
 
     <div id="header">
         <div id="logo">
-            <h2>SEEE</h2>
+            <img src="./Public/webimg/Imey-logo-1.png" alt="">
             
         </div>
         <div id="main-header">
@@ -48,7 +48,7 @@
                 </li>
                 <li>
                 <div class="more_nav" id="users-management">
-                        <i class='bx bx-circle' ></i>
+                        <i class='bx bxs-user-circle' ></i>
                         <h3 class="title_nav">Quản lý người dùng</h3>
                     </div>
                     <div class="separate"></div>

@@ -30,9 +30,9 @@
                 $uploaderAvatar = "";
 
                 $sql = "SELECT *
-                  FROM imgupload INNER JOIN users
-                  ON imgupload.username = users.username 
-                  WHERE path = '$pid'";
+                        FROM imgupload INNER JOIN users
+                        ON imgupload.username = users.username 
+                        WHERE path = '$pid'";
                 
                 $rs = $this->imageModel->DoQuery($sql);
                 if($rs instanceof mysqli_result){
@@ -50,13 +50,18 @@
                     
                     }
                 }
+
+                $likeNumber = mysqli_num_rows($this->imageModel->DoQuery("SELECT path FROM liked_images WHERE path = '$imagePath'"));
+                $likeNumberFomatted = number_format($likeNumber,0,'',' ');
+
                 $message = array(
                     "title"=>$title, 
                     "path"=>$imagePath, 
                     "description"=>$description,
                     "dateuploaded"=>$dateuploaded,
                     "uploader"=>$uploader,
-                    "uploaderAvatar"=>$uploaderAvatar
+                    "uploaderAvatar"=>$uploaderAvatar,
+                    "likeNumber"=>$likeNumberFomatted
                 );
                 echo json_encode($message);
             }

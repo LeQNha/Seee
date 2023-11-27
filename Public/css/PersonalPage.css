@@ -165,21 +165,22 @@ ul > a{
  
 }
 .showed-list-button{
-border-bottom: 3px solid black;
-background: linear-gradient(to top, rgb(248, 246, 246), white);
-transition: all ease 0.2s;
+  border-bottom: 3px solid black;
+  background: linear-gradient(to top, rgb(248, 246, 246), white);
+  transition: all ease 0.2s;
 }
 .show-list-btn{
-cursor: pointer;
+  cursor: pointer;
 }
 .show-list-btn:hover{
-background: linear-gradient(to top, rgb(248, 246, 246), white);
-border-bottom: 3px solid rgb(113, 111, 111);
-transition: all ease 0.1s;
+  background: linear-gradient(to top, rgb(248, 246, 246), white);
+  border-bottom: 3px solid rgb(113, 111, 111);
+  transition: all ease 0.1s;
 }
 
 .followed-user{
   margin-top: 30px;
+  margin-left: 20px;
   width: calc(16.67% - 10px); /* Sử dụng calc để tính kích thước cố định cho mỗi phần tử */
   text-align: center;
   font-size: 18px;
@@ -189,7 +190,7 @@ transition: all ease 0.1s;
   justify-content: center;
   box-shadow: 0px 0px 2px black;
   padding: 10px;
-  margin-left: 20px;
+  border-radius: 20px;
 }
 .followed-user-avatar-container{
   height: 120px;

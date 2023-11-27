@@ -18,11 +18,15 @@ var dateUploaded = document.querySelector('.detail-date-uploaded');
 var detailUploader = document.querySelector('.detail-uploader');
 var detailUploaderAvatar = document.querySelector('.detail-avatar');
 var paints = document.getElementsByClassName('paint');
+
+var likeNumber = document.querySelector('.image-details .number-like');
 // for(i = 0 ; i<paints.length; i++){
 //   paints[i].addEventListener('click', GetComments);
 // }
 var imgId = "";
 
+//FILTER
+var nav_sorteds = document.querySelector('.nav-sorteds');
 
 //COMMENT SECTION
 var commentNum = document.getElementById('comment-number');
@@ -61,6 +65,8 @@ function ShowDetails(pid){
 
     var showDetailsContainer = document.querySelector('.show-details-container');
     showDetailsContainer.style.display = "none";
+    //close filter
+    nav_sorteds.style.display = "none";
     showDetailsContainer.classList.add("show-details-container-show-up");
     setTimeout(function () {
       showDetailsContainer.classList.remove("show-details-container-show-up");
@@ -86,6 +92,7 @@ function ShowDetails(pid){
     dateUploaded.textContent = receivedData.dateuploaded
     detailUploader.textContent = receivedData.uploader;
     detailUploaderAvatar.src = "/Public/profileimg/"+receivedData.uploaderAvatar;
+    likeNumber.textContent = receivedData.likeNumber;
     document.querySelector('.behavior-list li .follow-button-avatar-container img').src = "/Public/profileimg/"+receivedData.uploaderAvatar;
     
 
@@ -131,10 +138,12 @@ function ShowPublicUserPage(){
           if(xhr.responseText.trim() === "like"){
             likeIcon.style.display = "block";
             unlikeIcon.style.display = "none";
+            likeNumber.textContent = parseInt(likeNumber.textContent) +1;
           }
           if(xhr.responseText.trim() === 'unlike'){
             likeIcon.style.display = "none";
             unlikeIcon.style.display = "block";
+            likeNumber.textContent = parseInt(likeNumber.textContent) -1;
           } 
       }else{
           alert('Đã có lỗi xảy ra!');
@@ -226,7 +235,7 @@ close1.addEventListener("click", function(e) {
 // Thêm sự kiện khi thay đổi giá trị trong thẻ input
 comment.addEventListener("input", function(e) {
   // Kiểm tra nếu thẻ input có giá trị
-  if (comment.value.length > 0) {
+  if (comment.value.trim().length > 0) {
       // Thêm lớp CSS khi thẻ input có giá trị
       post1.classList.add("input-filled");
       post1.classList.add("hovered-button");
@@ -461,7 +470,6 @@ function addFeedback(item){
 
     //FILTER
     function togglenav_sorteds() {
-      var nav_sorteds = document.querySelector('.nav-sorteds');
       nav_sorteds.style.display = nav_sorteds.style.display === 'block' ? 'none' : 'block';
     }
     function selectnav_sorted(optionIndex, comFilter) {
