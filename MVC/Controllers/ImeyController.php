@@ -75,13 +75,13 @@
             $username = $_SESSION['Login']['username'];
 
             //hiển thị các ảnh thích/ đã tạo
-            $sql = "SELECT * FROM imgupload i INNER JOIN liked_images l
-                    ON i.path = l.path
+            $sql = "SELECT * FROM imgupload i INNER JOIN saved_images s
+                    ON i.path = s.path
                     INNER JOIN users u
                     ON i.username = u.username
-                    WHERE l.username = '$username';         
+                    WHERE s.username = '$username';         
                     ";
-            $listShowed = "liked";
+            $listShowed = "saved";
             $result_1 = $this->imageModel->DoQuery($sql);
             $likedImageNumber = $result_1->num_rows;
             if(isset($_GET['listShowed'])){

@@ -106,7 +106,7 @@
                             }
                             
                             echo '<i class="fa-solid fa-thumbs-up like-number"><span>'.' '.$likeNumber.'</span></i>';
-                            echo '<i class="fa-regular fa-eye view-number"><span> 135</span></i>';
+                            echo '<i class="fa-regular fa-eye view-number"><span> 342</span></i>';
                             echo '</div>';
                         }
 

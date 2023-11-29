@@ -160,7 +160,17 @@ title.addEventListener('click', function(){
 
 //CATEGORY JS
 function toggleOptions2() {
+  var categories = document.querySelector('.categories');
   var cate_others = document.querySelector('.cate-others');
+  var cate_other = document.querySelectorAll('.cate-other');
+
+  if (categories.value.trim() === '') {
+      // Nếu 'categories' rỗng, thiết lập CSS mặc định cho 'cate-other'
+      cate_other.forEach(function (option) {
+          option.classList.remove('selected');
+      });
+  }
+
   cate_others.style.display = cate_others.style.display === 'block' ? 'none' : 'block';
 }
 function selectOption2(optionIndex) {

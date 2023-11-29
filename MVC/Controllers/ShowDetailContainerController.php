@@ -93,6 +93,31 @@
             }
         }
 
+        function ToggleSave()
+        {
+            $toggle = 'save';
+            if(isset($_POST['toggle'])){
+                $toggle = $_POST['toggle'];
+            }
+            $imgId = '';
+            if(isset($_POST['imgId'])){
+                $imgId = $_POST['imgId'];
+            }
+
+            $username = $_SESSION['Login']['username'];
+
+
+            if($toggle == 'save'){
+                $sql = "INSERT INTO saved_images (path, username ) VALUES ('$imgId','$username') ";
+                $this->imageModel->DoQuery($sql);
+                echo "save";
+            }else{
+                $sql = "DELETE FROM saved_images WHERE path = '$imgId' AND username = '$username'";
+                $this->imageModel->DoQuery($sql);
+                echo "unsave";
+            }
+        }
+
         public function ToggleFollow()
         {
             $toggle = 'follow';
@@ -122,15 +147,17 @@
             
         }
 
-        public function CheckLikeAndFollow()
+        public function CheckLikeSaveFollow()
         {
             $like = "not liked";
+            $save = "not saved";
             $follow = "not following";
             $imgId = "";
             if(isset($_POST['imgId'])){
                 $imgId = $_POST['imgId'];
             }
             $username = $_SESSION['Login']['username'];
+            //check liked
             $sql = "SELECT * FROM liked_images WHERE username = '$username' AND path = '$imgId'";
             $result = $this->imageModel->DoQuery($sql);
 
@@ -140,6 +167,17 @@
                 $like = "not liked";
             }
 
+            //check saved
+            $sql = "SELECT * FROM saved_images WHERE username = '$username' AND path = '$imgId'";
+            $result = $this->imageModel->DoQuery($sql);
+
+            if($result->num_rows > 0){
+                $save = "saved";
+            }else{
+                $save = "not saved";
+            }
+
+            //check followed
             $uploaderName = "";
             if(isset($_POST['uploaderName'])){
                 $uploaderName = $_POST['uploaderName'];
@@ -156,6 +194,7 @@
 
             $message = [
                 "Like"=>$like,
+                "Save"=>$save,
                 "Follow"=>$follow
             ];
 

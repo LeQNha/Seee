@@ -91,6 +91,8 @@ function DeleteImage(pid){
             if(xhr.responseText.trim() == 'delete success'){
                 [name, extension] = pid.split(".");
                 console.log('name1: '+name);
+                //lại lần nx vì sau khi ajax nó bị thay đổi
+                listTableBody = document.getElementById('list-table-body');
                 listTableBody.removeChild(document.getElementById(name));
                 console.log('name: '+name);
             }else{
@@ -109,6 +111,7 @@ function DeleteUser(uname){
         if(xhr.status == 200){
             console.log(uname);
             if(xhr.responseText.trim() == 'delete success'){
+                listTableBody = document.getElementById('list-table-body');
                 listTableBody.removeChild(document.getElementById(uname));
             }else{
                 alert(xhr.responseText.trim());

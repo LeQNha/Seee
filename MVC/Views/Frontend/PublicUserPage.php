@@ -1,5 +1,4 @@
-
-    <div id="contain">
+<div id="contain">
         <div id="aside1">
             <div id="introduction">
                 <div class="avatar-container">
@@ -53,9 +52,10 @@
                     </div>
                     
                 </div>
-            </div>
-            <div class="self-introduction">
-                <?php echo $introduction; ?>
+                <div class="separate25"></div>
+                <div class="self-introduction">
+                    <?php echo $introduction; ?>
+                </div>
             </div>
         </div>
         <div id="aside2">

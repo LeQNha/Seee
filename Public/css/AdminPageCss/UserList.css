@@ -40,15 +40,25 @@ tr{
     margin-top: 5px;
     /* border: 1px solid black; */
   }
+  .image{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .image img{
+    max-height: 60px;
+    max-width: 270px;
+  }
   .action{
     /* display: flex;
     justify-content: center;
     align-items: center; */
     width: 180px;
-    display: flex;
+    /* display: flex; */
   }
   td.action button{
-    padding: 5px 8px;
+    padding: 5px 6px;
     color: white;
     font-weight: bold;
     cursor: pointer;

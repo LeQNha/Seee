@@ -111,9 +111,14 @@
 #like-icon{
     display: none;
 }
-
 .behavior-list li i.fa-heart{
     color: red;
+}
+#unsave-icon{
+    display: block;
+}
+#save-icon{
+    display: none;
 }
 .behavior-list li span{
     font-size: 13px;
@@ -181,7 +186,7 @@
 }
 .image-details img{
     height: 84vh;
-    max-width: 86%;
+    max-width: 84%;
 }
 
 /* comment */
@@ -237,7 +242,7 @@
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    margin: 10px 10px;
+    margin: auto;
 }
 .part-com {
     display: flex;

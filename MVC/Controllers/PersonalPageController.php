@@ -15,30 +15,30 @@
         public function GetShowedList(){
             $username = $_SESSION['Login']['username'];
             //hiển thị các ảnh thích/ đã tạo
-            $sql = "SELECT * FROM imgupload i INNER JOIN liked_images l
-                    ON i.path = l.path
+            $sql = "SELECT * FROM imgupload i INNER JOIN saved_images s
+                    ON i.path = s.path
                     INNER JOIN users u
                     ON i.username = u.username 
-                    WHERE l.username = '$username';         
+                    WHERE s.username = '$username';         
                     ";
             $q = '';
             if(isset($_GET['q'])){
                 $q = $_GET['q'];
             }
-            $listShowed = "liked";
+            $listShowed = "saved";
             if(isset($_GET['listShowed'])){
                 $listShowed = $_GET['listShowed'];
             }
-            if($listShowed == 'liked' && isset($_GET['q'])){
+            if($listShowed == 'saved' && isset($_GET['q'])){
                 $sql = "SELECT * FROM imgupload INNER JOIN image_keywords  
                         ON imgupload.path = image_keywords.path 
                         INNER JOIN users
                         ON imgupload.username = users.username
                         INNER JOIN categories
                         ON imgupload.category = categories.category 
-                        INNER JOIN liked_images 
-                        ON imgupload.path = liked_images.path
-                        WHERE liked_images.username = '$username' AND (keyword LIKE '%$q%' OR title LIKE '%$q%' OR imgupload.username LIKE '%$q%' OR imgupload.category LIKE '%$q%') 
+                        INNER JOIN saved_images 
+                        ON imgupload.path = saved_images.path
+                        WHERE saved_images.username = '$username' AND (keyword LIKE '%$q%' OR title LIKE '%$q%' OR imgupload.username LIKE '%$q%' OR imgupload.category LIKE '%$q%') 
                         GROUP BY imgupload.path";      
             }
             if($listShowed == 'created'){
@@ -65,7 +65,7 @@
             if($result->num_rows > 0){
                 
                 
-                    if($listShowed == 'liked'){
+                    if($listShowed == 'saved'){
                         //IN DANH SACH ANH DA LIKE
 
                         echo '<link rel="stylesheet" href="./Public/css/Paint.css">';
@@ -93,7 +93,7 @@
                             }
                             
                             echo '<i class="fa-solid fa-thumbs-up like-number"><span>'.' '.$likeNumber.'</span></i>';
-                            echo '<i class="fa-regular fa-eye view-number"><span> 135</span></i>';
+                            echo '<i class="fa-regular fa-eye view-number"><span> 342</span></i>';
                             echo '</div>';
                         }
                 

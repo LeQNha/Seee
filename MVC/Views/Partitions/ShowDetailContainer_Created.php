@@ -85,8 +85,8 @@
                             <div class="sorted-com1">Sắp xếp theo</div>
                         </div>
                         <div class="nav-sorteds1">
-                            <div class="nav-sorted1" onclick="selectnav_sorted1(1, 'topComment')">Bình luận hàng đầu</div>
-                            <div class="nav-sorted1" onclick="selectnav_sorted1(2, 'newestComment')">Bình luận mới nhất</div>
+                            <div class="nav-sorted1 selected" onclick="selectnav_sorted1(1, 'newestComment')">Bình luận mới nhất </div>
+                            <div class="nav-sorted1" onclick="selectnav_sorted1(2, 'topComment')">Bình luận hàng đầu</div>
                             <div class="nav-sorted1" onclick="selectnav_sorted1(3, 'oldestComment')">Bình luận cũ nhất</div>
                         </div>
                         <div id="comment-container" class="comments">
@@ -127,7 +127,10 @@
                             <form class="comment-form" id="comment-form-created">
                             <input type="text" name="image-path" id="comment-image-path-created" value="" hidden>
                                 <textarea placeholder="Viết bình luận..." name="comment" class="comment-input" id="comment-input"></textarea>
-                                <i class="fa-solid fa-paper-plane" id="send"></i>
+                                <div class="icon-fav">
+                                    <i class="fa-solid fa-face-smile" id="smile"></i>
+                                    <i class="fa-solid fa-paper-plane" id="send"></i>
+                                </div>
                             </form>
                         </div>
                     </div>                    

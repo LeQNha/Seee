@@ -13,7 +13,7 @@ window.onload = function(){
 
         // showLikedListButton.click();
         showedList = showListTextContent.textContent;
-        if(showedList == 'liked'){
+        if(showedList == 'saved'){
             showLikedListButton.classList.add('showed-list-button');
         }else if(showedList == 'created'){
             showCreatedListButton.classList.add('showed-list-button');
@@ -34,7 +34,7 @@ window.onload = function(){
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onload = function(){
             if(xhr.status === 200){
-                if(listShowed == 'liked' || listShowed == 'created'){
+                if(listShowed == 'saved' || listShowed == 'created'){
                     listShowedContainer.innerHTML='<div class="container"></div>';
                     imagesContainer = document.querySelector('.container');
                     imagesContainer.innerHTML = '';
@@ -58,9 +58,9 @@ window.onload = function(){
     }
 
     function ToggleShowListButton(showedList){
-        if(showedList == 'liked'){
+        if(showedList == 'saved'){
             showLikedListButton.classList.add('showed-list-button');
-            history.pushState(null,null,'/index.php?controller=Imey&action=PersonalPage&listShowed=liked');
+            history.pushState(null,null,'/index.php?controller=Imey&action=PersonalPage&listShowed=saved');
 
             showCreatedListButton.classList.remove('showed-list-button');
             showFollowedListButton.classList.remove('showed-list-button');

@@ -82,11 +82,8 @@
                 <div class="add-delete-buttons">
                     <button class="add-button">Thêm</button>
                     <button class="delete-all-button btn btn-primary" id="delete-all-button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background: #e5dede; border: none; color:black;">Xóa tất cả</button>
-
                 </div>
-
                 <input type="text" value="<?= $data['List'] ?>" id="management-list" hidden>
-
                 <?php
                     if($data['List'] == 'UserList'){
                         include 'AdminPagePartitions/UserList.php';

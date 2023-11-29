@@ -8,7 +8,6 @@ var observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       // entry.target.classList.toggle("show", entry.isIntersecting);
       if(entry.isIntersecting){
-        console.log('lzl');
           preloadImage(entry.target);
           observer.unobserve(entry.target);
       }
@@ -22,7 +21,7 @@ var observer = new IntersectionObserver(entries => {
 function ObserseImges(images){
     images.forEach(img => {
         console.log('obsees');
-    observer.observe(img);
+        observer.observe(img);
     });
 }
 function preloadImage(img){
@@ -30,7 +29,9 @@ function preloadImage(img){
     if(!src){
         return;
     }
+    console.log('preloa');
     img.src = src;
+    observer.unobserve(img);
 }
 function LazyLoading(){
     images = document.querySelectorAll(".main-image");

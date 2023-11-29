@@ -166,6 +166,18 @@
             
         }
 
+        public function GetCommentNumber(){
+            if(isset($_GET['pid'])){
+                $pid = $_GET['pid'];
+                $sql = "SELECT comment_id FROM comments WHERE path = '$pid'";
+                $rs = $this->imageModel->DoQuery($sql);
+
+                echo $rs->num_rows;
+            }else{
+                echo 'Không nhận được';
+            }
+        }
+
         // public function GetComments(){
         //     if(isset($_POST['pid'])){
         //         $pid = $_POST['pid'];

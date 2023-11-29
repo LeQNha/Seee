@@ -13,7 +13,8 @@
                 <span>Yêu thích</span>
             </li>
             <li>
-                <i class="fa-regular fa-heart" id="save-button"></i>
+                <i class="fa-solid fa-heart" id="save-icon"></i>
+                <i class="fa-regular fa-heart" id="unsave-icon"></i>
                 <span>Lưu</span>
             </li>
             <li>
@@ -53,9 +54,9 @@
                     <div class="sorted-com">Sắp xếp theo</div>
                 </div>
                 <div class="nav-sorteds">
-                    <div class="nav-sorted" onclick="selectnav_sorted(2, 'newestComment')">Bình luận mới nhất</div>
-                    <div class="nav-sorted" onclick="selectnav_sorted(3, 'oldestComment')">Bình luận cũ nhất</div>
-                    <div class="nav-sorted" onclick="selectnav_sorted(1, 'topComment')">Bình luận hàng đầu</div>
+                    <div class="nav-sorted selected" onclick="selectnav_sorted(1, 'newestComment')">Bình luận mới nhất</div>
+                    <div class="nav-sorted" onclick="selectnav_sorted(2, 'oldestComment')">Bình luận cũ nhất</div>
+                    <div class="nav-sorted" onclick="selectnav_sorted(3, 'topComment')">Bình luận hàng đầu</div>
                 </div>
             </div>
             <form class="main-form" id="comment-form">

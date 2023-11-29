@@ -4,6 +4,10 @@ var likeIcon = document.getElementById('like-icon');
 var unlikeIcon = document.getElementById('unlike-icon');
 likeIcon.addEventListener('click', ToggleLike);
 unlikeIcon.addEventListener('click', ToggleLike);
+var saveIcon = document.getElementById('save-icon');
+var unsaveIcon = document.getElementById('unsave-icon');
+saveIcon.addEventListener('click', ToggleSave);
+unsaveIcon.addEventListener('click', ToggleSave);
 
 var behaviorFollowButton = document.getElementById('behavior-follow-button');
 behaviorFollowButton.addEventListener('click', ToggleFollow);
@@ -98,7 +102,7 @@ function ShowDetails(pid){
 
     imgId = receivedData.path;
     commentImagePath.value = imgId;
-    CheckLikeAndFollow(imgId, function() {
+    CheckLikeSaveFollow(imgId, function() {
       GetComments(imgId);
   });
   };
@@ -151,12 +155,48 @@ function ShowPublicUserPage(){
     };
 
     xhr.send("toggle=" + encodeURIComponent(toggle) + "&imgId=" + encodeURIComponent(imgId));
-    
   }
 
-  function CheckLikeAndFollow(imgId, callback){
+  //Toggle save
+  function ToggleSave(){
+  
+    toggle = "save";
+    if(saveIcon.style.display == "block"){
+      toggle = "unsave";
+    }
+    var displayStyle = window.getComputedStyle(saveIcon).display;
+    if(displayStyle === "none"){
+    
+    }else{
+      toggle = "unsave";
+    }
+    
+    xhr.open('POST', '/index.php?controller=ShowDetailContainer&action=ToggleSave');
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onload = function(){
+    if(xhr.status == 200){
+      console.log(xhr.responseText);
+        if(xhr.responseText.trim() === "save"){
+          saveIcon.style.display = "block";
+          unsaveIcon.style.display = "none";
+          // likeNumber.textContent = parseInt(likeNumber.textContent) +1;
+        }
+        if(xhr.responseText.trim() === 'unsave'){
+          saveIcon.style.display = "none";
+          unsaveIcon.style.display = "block";
+          // likeNumber.textContent = parseInt(likeNumber.textContent) -1;
+        } 
+    }else{
+        alert('Đã có lỗi xảy ra!');
+    }
+  };
+
+  xhr.send("toggle=" + encodeURIComponent(toggle) + "&imgId=" + encodeURIComponent(imgId));
+}
+
+  function CheckLikeSaveFollow(imgId, callback){
     console.log('check like n');
-    xhr.open('POST', '/index.php?controller=ShowDetailContainer&action=CheckLikeAndFollow');
+    xhr.open('POST', '/index.php?controller=ShowDetailContainer&action=CheckLikeSaveFollow');
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = function(){
       console.log(xhr.responseText);
@@ -169,6 +209,14 @@ function ShowPublicUserPage(){
         }else{
           likeIcon.style.display = "none";
           unlikeIcon.style.display = "block";
+        }
+
+        if(receivedData.Save === 'saved'){
+          saveIcon.style.display = "block";
+          unsaveIcon.style.display = "none";
+        }else{
+          saveIcon.style.display = "none";
+          unsaveIcon.style.display = "block";
         }
 
         if(receivedData.Follow === 'following'){

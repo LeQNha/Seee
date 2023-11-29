@@ -21,7 +21,7 @@
                                     $likeNumberFomatted = number_format($likeNumber,0,'',' ');
                                 ?>
                             <i class="fa-solid fa-thumbs-up like-number"><span> <?php if($likeNumber<100000){ echo ' '.$likeNumberFomatted; }else{ echo ' 100 000+'; } ?></span></i>
-                            <i class="fa-regular fa-eye view-number"><span> 135</span></i>
+                            <i class="fa-regular fa-eye view-number"><span> 342</span></i>
                         </div>
                 <?php } 
             }else{

@@ -107,6 +107,7 @@
                     echo '<tbody id="list-table-body">';
                     echo '<tr>';
                     echo '<th class="ordinal-number-column">#</th>';
+                    echo '<th>Ảnh</th>';
                     echo '<th>Tên</th>';
                     echo '<th>Tiêu đề</th>';
                     echo '<th>Mô tả</th>';
@@ -120,6 +121,7 @@
                         $pathParts = explode('.',$row['path']);
                         echo '<tr id="'.$pathParts[0].'">';
                         echo '<td class="ordinal-number-column">'.$count.'</td>';
+                        echo '<td class="image"><img src="/Public/img/'. $row['path'].'" alt=""></td>';
                         echo '<td>'.$row['path'].'</td>';
                         echo '<td class="image-title">'.$row['title'].'</td>';
                         echo '<td class="image-description">'.$row['description'].'</td>';

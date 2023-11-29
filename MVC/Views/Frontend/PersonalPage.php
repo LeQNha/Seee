@@ -44,7 +44,10 @@
                         <h4><?= $data['UserInformation']['Location'];?></h4>
                     </div>
                 </div>
-
+                <!-- <div id="introduction">
+                    <span>Giới thiệu: </span>
+                    <p><?= $data['UserInformation']['Introduction'];?></p>
+                </div> -->
                 <span id="joinning-date">Tham gia vào <?= $data['UserInformation']['JoinningDate']; ?></span>
             </div>
         </div>
@@ -55,7 +58,7 @@
     <div class="liked-created-list">
         <ul>
             <li><i class="fa-solid fa-layer-group"></i></li>
-            <li class="show-liked-list show-list-btn" onclick="ShowList('liked')">Yêu thích</li>
+            <li class="show-liked-list show-list-btn" onclick="ShowList('saved')">Đã lưu</li>
             <li class="show-created-list show-list-btn" onclick="ShowList('created')">Đã chia sẻ</li>
             <li class="show-followed-list show-list-btn" onclick="ShowList('following')">Theo dõi</li>
             <!-- <li class="show-list-btn">Blog</li> -->
@@ -73,7 +76,7 @@
         <div id="liked-created-images">
             <div id="show-list-text-content" hidden><?php echo $data['ListShowed'] ?></div>
             <?php 
-                if($data['ListShowed'] == 'liked'){ ?>
+                if($data['ListShowed'] == 'saved'){ ?>
                     <div class="container">
                         <?php
                             include './MVC/Views/Partitions/Paint.php'

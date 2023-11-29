@@ -28,7 +28,7 @@
                 <div class="button-container">
                     <a href="/index.php?controller=Imey&action=UploadImage" class="button button-createImg">Chia sẻ</a>
                     <!-- <a href="/Imey/UploadImage" class="button button-createImg">Chia sẻ</a> -->
-                    <a href="/index.php?controller=Imey&action=PersonalPage&listShowed=liked" class="button button-Info">Trang cá nhân</a>
+                    <a href="/index.php?controller=Imey&action=PersonalPage&listShowed=saved" class="button button-Info">Trang cá nhân</a>
                     <!-- <a href="/Header/PersonalPage?listShowed=liked" class="button button-Info">Trang cá nhân</a> -->
                 </div>
             </div>
@@ -53,7 +53,7 @@
                 </div>
                 <ul>
                     
-                    <a href="/index.php?controller=Imey&action=PersonalPage&listShowed=liked"><li>Trang cá nhân</li></a>
+                    <a href="/index.php?controller=Imey&action=PersonalPage&listShowed=saved"><li>Trang cá nhân</li></a>
                     <a href="#"><li>Điều khoản và dịch vụ</li></a>
                     <a href="#"><li>Trợ giúp</li></a>
                     <a href="#"><li>Liên hệ</li></a>
