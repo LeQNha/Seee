@@ -3,6 +3,8 @@
     {
         private $userModel;
         private $imageModel;
+        private $loadedImages = [];
+        private $loadedImagesNumber;
         function __construct()
         {
             $this->LoadModel('ImageModel');
@@ -58,6 +60,9 @@
             }
             if($listShowed == 'following'){
                 $sql = "SELECT followed, avatar FROM follow f INNER JOIN users u ON f.followed = u.username WHERE follower = '$username'";
+            }
+            if($listShowed == 'following' && isset($_GET['q'])){
+                $sql = "SELECT followed, avatar FROM follow f INNER JOIN users u ON f.followed = u.username WHERE follower = '$username' AND f.followed LIKE '%$q%'";
             }
 
             $result = $this->imageModel->DoQuery($sql);
@@ -145,8 +150,24 @@
 
         }
 
+        // public function LoadMoreImages(){
+        //     $this->loadedImagesNumber = $_GET['loadedImagesNumber'];
+        //     $listShowed = $_GET['listShowed'];
+        //     $username = $_SESSION['Login']['username'];
+        //     $result = $this->imageModel->DoQuery("SELECT * FROM imgupload i INNER JOIN users u  
+        //                                           ON i.username = u.username
+        //                                           WHERE i.username <> '$username'  
+        //                                           LIMIT $this->loadedImagesNumber , 2;");
+        //     if($result->num_rows>0){
+        //         switch($listShowed){
+        //             case 'saved':
+        //         }
+        //         // $this->EchoPaint($result);
+        //     }else{
+        //         echo 'het';
+        //     }
+        // }
 
-        
         
     }
 ?>

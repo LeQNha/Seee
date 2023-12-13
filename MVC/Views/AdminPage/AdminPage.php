@@ -60,7 +60,7 @@
                     </div>
                     <div class="separate"></div>
                 </li>
-                <li>
+                <!-- <li>
                     <div class="more_nav">
                         <i class='bx bx-circle' ></i>
                         <h3 class="title_nav">Quản lý danh mục</h3>
@@ -73,16 +73,16 @@
                         <h3 class="title_nav">Quản lý thành viên</h3>
                     </div>
                     <div class="separate"></div>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div id="list">
                 
             <div class="maintable" id="main-table">
-                <div class="add-delete-buttons">
+                <!-- <div class="add-delete-buttons">
                     <button class="add-button">Thêm</button>
                     <button class="delete-all-button btn btn-primary" id="delete-all-button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background: #e5dede; border: none; color:black;">Xóa tất cả</button>
-                </div>
+                </div> -->
                 <input type="text" value="<?= $data['List'] ?>" id="management-list" hidden>
                 <?php
                     if($data['List'] == 'UserList'){

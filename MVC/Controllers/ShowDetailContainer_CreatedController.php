@@ -65,6 +65,12 @@
                 $likeNumber = mysqli_num_rows($this->imageModel->DoQuery("SELECT path FROM liked_images WHERE path = '$imagePath'"));
                 $likeNumberFomatted = number_format($likeNumber,0,'',' ');
 
+                $commentNumber = mysqli_num_rows($this->imageModel->DoQuery("SELECT path FROM comments WHERE path = '$imagePath'"));
+                $commentNumberFomatted = number_format($commentNumber,0,'',' ');
+
+                $saveNumber = mysqli_num_rows($this->imageModel->DoQuery("SELECT path FROM saved_images WHERE path = '$imagePath'"));
+                $saveNumberFomatted = number_format($saveNumber,0,'',' ');
+
                 $message = array(
                     "title"=>$title, 
                     "path"=>$imagePath, 
@@ -73,7 +79,9 @@
                     "uploader"=>$uploader,
                     "category"=>$category,
                     "uploaderAvatar"=>$uploaderAvatar,
-                    "likeNumber"=>$likeNumberFomatted
+                    "likeNumber"=>$likeNumberFomatted,
+                    "commentNumber"=>$commentNumberFomatted,
+                    "saveNumber"=>$saveNumberFomatted
                 );
                 echo json_encode($message);
             }
@@ -104,11 +112,12 @@
             if(isset($_POST['comment'])){
                 $commentContent = trim($_POST['comment']);
                 $imagePath = trim($_POST['image-path']);
-                echo $commentContent;
                 $username = $_SESSION['Login']['username'];
 
-                $this->commentModel->AddComment($commentContent, $username, $imagePath);
-                echo 'comment success';
+                if(!empty($commentContent)){
+                    $this->commentModel->AddComment($commentContent, $username, $imagePath);
+                    echo 'comment success';
+                }
             }else{
                 echo 'ko nhan dc';
             }

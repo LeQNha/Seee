@@ -1,6 +1,5 @@
 window.onload = function(){
     document.querySelector('.scroll-up').style.zIndex = '4';
-    
 }
 
 //LAZY LOADING IMAGES
@@ -34,9 +33,9 @@ function preloadImage(img){
     observer.unobserve(img);
 }
 function LazyLoading(){
-    images = document.querySelectorAll(".main-image");
+    var images = document.querySelectorAll(".main-image");
     ObserseImges(images);
-
+    console.log('colacz');
     observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           // entry.target.classList.toggle("show", entry.isIntersecting);
@@ -53,6 +52,7 @@ function LazyLoading(){
       );
 }
 LazyLoading();
+
 
 
 

@@ -22,7 +22,8 @@
     <div class="category-introduction">
         <h1 class="category-title" id="category-title">Đề Xuất</h1>
         <p id="category-description">Dành cho bạn</p>
-        <button id="follow-category-button">Theo dõi <span class="category-title"></span></button>
+        <!-- <button id="follow-category-button">Theo dõi <span class="category-title"></span></button> -->
+        <div id="category-seperate"></div>
     </div>
     <div class="cover-div" id="cover-div"></div>
     <?php include "./MVC/Views/Partitions/ImagesContainer.php"; ?>

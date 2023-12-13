@@ -46,6 +46,12 @@
     background: rgba(81, 81, 228, 0.8) !important;
     transition: all ease 0.2s;
   }
+  #category-seperate{
+    height: 2px;
+    width: 50%;
+    background: brown;
+    margin-top: 15px;
+  }
 
   .swiper-slide img {
     display: block;

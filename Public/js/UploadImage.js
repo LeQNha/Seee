@@ -126,18 +126,18 @@ submitBtn.addEventListener('click', function(){
   xhr.send(formData);
 });
 //hiện thông báo
-function showAndHide(msg){
-  var notifyMessage = document.querySelector('.notify-message');
-  var message = document.querySelector('.notify-message p');
-  message.textContent = msg;
-  notifyMessage.style.top = "91vh";
-  notifyMessage.style.opacity = "0.9";
+// function showAndHide(msg){
+//   var notifyMessage = document.querySelector('.notify-message');
+//   var message = document.querySelector('.notify-message p');
+//   message.textContent = msg;
+//   notifyMessage.style.top = "91vh";
+//   notifyMessage.style.opacity = "0.9";
 
-   setTimeout(function () {
-       notifyMessage.style.top = "100vh"; // Ẩn thẻ div sau khoảng thời gian
-       notifyMessage.style.opacity = "0.3";
-     }, 2000); // Thời gian đếm ngược (đơn vị: mili giây)
-}
+//    setTimeout(function () {
+//        notifyMessage.style.top = "100vh"; // Ẩn thẻ div sau khoảng thời gian
+//        notifyMessage.style.opacity = "0.3";
+//      }, 2000); // Thời gian đếm ngược (đơn vị: mili giây)
+// }
 
 //drag and drop
 

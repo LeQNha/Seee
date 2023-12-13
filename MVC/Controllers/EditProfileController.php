@@ -7,14 +7,14 @@
             $this->loadModel('UserModel');
             $this->userModel = new UserModel();
         }
-        public function Save(){
+        public function SaveChangeProfile(){
        
                 $username = $_SESSION['Login']['username'];
 
                 $email = trim($_POST['email']);
-                $newUsername = trim($_POST['username']);
-                $password = trim($_POST['password']);
-                $confirmpassword = trim($_POST['confirmpassword']);
+                // $newUsername = trim($_POST['username']);
+                // $password = trim($_POST['password']);
+                // $confirmpassword = trim($_POST['confirmpassword']);
                 $firstname = trim($_POST['firstname']);
                 $lastname = trim($_POST['lastname']);
                 $ocupation = trim($_POST['ocupation']);
@@ -64,26 +64,61 @@
                 }
 
                 if($validImage == true){
-                    if($password != $confirmpassword){
-                        echo "Xác nhận lại mật khẩu!";
-                    }else if(empty($email)){
+                    if(empty($email)){
                         echo "Email không hợp lệ!";
-                    }else if(empty($newUsername)){
-                        echo "Tài khoản không hợp lệ!";
-                    }else if(empty($password)){
-                        echo "Mật khẩu không hợp lệ!";
+                    
                     }else{
                         $sql = "UPDATE users
-                            SET email = '$email', username = '$newUsername', password = '$password', firstname = '$firstname', lastname = '$lastname', ocupation = '$ocupation', location = '$location', introduction ='$introduction', avatar = '$avatar' 
+                            SET email = '$email', firstname = '$firstname', lastname = '$lastname', ocupation = '$ocupation', location = '$location', introduction ='$introduction', avatar = '$avatar' 
                             WHERE username = '$username';";
 
-                            $_SESSION['Login']['username'] = $newUsername;
-                            $username = $newUsername;
+                            $_SESSION['avatar'] = $avatar;
+                            // $_SESSION['Login']['username'] = $newUsername;
+                            // $username = $newUsername;
 
                         $result = $this->userModel->DoQuery($sql);
                         echo "success";
                     }
                 }
         }
+
+        public function SaveChangeAccount(){
+       
+            $username = $_SESSION['Login']['username'];
+
+            
+            $newUsername = trim($_POST['username']);
+            $password = trim($_POST['password']);
+            $confirmpassword = trim($_POST['confirmpassword']);
+            
+            
+                if($password != $confirmpassword){
+                    echo "Xác nhận lại mật khẩu!";
+                
+                }else{
+                    $sql = "UPDATE users
+                        SET username = '$newUsername', password = '$password' 
+                        WHERE username = '$username';";
+
+                        // $_SESSION['Login']['username'] = $newUsername;
+                        // $username = $newUsername;
+
+                    $result = $this->userModel->DoQuery($sql);
+                    $_SESSION['Login']['username'] = $newUsername;
+                    echo "success";
+                }
+            
+    }
+
+    public function ChangeHeaderAvatar(){
+        $username = $_SESSION['Login']['username'];
+        $rs = $this->userModel->GetUser($username);
+
+        if($rs->num_rows >0 ){
+            $row = $rs->fetch_assoc();
+            echo $row['avatar'];
+        }
+    }
+        
     }
 ?>

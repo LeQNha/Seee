@@ -1,74 +1,78 @@
 table {
-    margin-top: 25px;
-    border-collapse: collapse;
-    /* background: white; */
-    width: 100%;
-  }
-  
-tr{
-    background: whitesmoke;
-    border: 10px solid white !important;
-    border-radius: 15px;
-    height: auto;
+  margin-top: 25px;
+  border-collapse: collapse;
+  /* background: white; */
+  width: 100%;
+}
 
-  }
-  th{
-    background: black;
-    color: white;
-    border-bottom: 1px solid black;
-    padding: 15px 15px;
-    opacity: 0.7;
-    text-align: start;
-  }
-  th:not(.ordinal-number-column) {
-    
-    min-width: 180px;
-    
-  }
-  td:not(.ordinal-number-column){
-    /* border: 1px solid black; */
-    max-width: 280px;
-  }
-  .ordinal-number-column{
-    min-width: 40px;
-    max-width: 100px;
-  }
-  td{
-    padding: 8px 15px;
-    /* overflow-y: auto; */
-    height: auto;
-    margin-top: 5px;
-    /* border: 1px solid black; */
-  }
-  .image{
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .image img{
-    max-height: 60px;
-    max-width: 270px;
-  }
-  .action{
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    width: 180px;
-    /* display: flex; */
-  }
-  td.action button{
-    padding: 5px 6px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 4px;
-    display: inline-block;
-    margin: 5px;
-  }
-  button.edit-button{
-    background: rgb(12, 156, 156);
-  }
-  button.delete-button{
-    background: red;
-  }
+tr{
+  background: whitesmoke;
+  border: 10px solid white !important;
+  border-radius: 15px;
+  height: auto;
+
+}
+th{
+  background: black;
+  color: white;
+  border-bottom: 1px solid black;
+  padding: 15px 15px;
+  opacity: 0.7;
+  text-align: start;
+}
+th:not(.ordinal-number-column) {
+  
+  min-width: 180px;
+  
+}
+td:not(.ordinal-number-column){
+  /* border: 1px solid black; */
+  max-width: 280px;
+}
+.ordinal-number-column{
+  min-width: 40px;
+  max-width: 100px;
+}
+td{
+  padding: 8px 15px;
+  /* overflow-y: auto; */
+  height: auto;
+  margin-top: 5px;
+  /* border: 1px solid black; */
+}
+.image{
+  height: 100%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+td.image-description {
+  word-wrap: break-word;
+}
+.image img{
+  margin: 20px;
+  max-height: 60px;
+  max-width: 270px;
+}
+.action{
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  width: 180px;
+  /* display: flex; */
+}
+td.action button{
+  padding: 5px 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-block;
+  margin: 5px;
+}
+button.edit-button{
+  background: rgb(12, 156, 156);
+}
+button.delete-button{
+  background: red;
+}

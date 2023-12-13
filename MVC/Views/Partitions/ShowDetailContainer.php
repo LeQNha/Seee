@@ -56,7 +56,7 @@
                 <div class="nav-sorteds">
                     <div class="nav-sorted selected" onclick="selectnav_sorted(1, 'newestComment')">Bình luận mới nhất</div>
                     <div class="nav-sorted" onclick="selectnav_sorted(2, 'oldestComment')">Bình luận cũ nhất</div>
-                    <div class="nav-sorted" onclick="selectnav_sorted(3, 'topComment')">Bình luận hàng đầu</div>
+                    <!-- <div class="nav-sorted" onclick="selectnav_sorted(3, 'topComment')">Bình luận hàng đầu</div> -->
                 </div>
             </div>
             <form class="main-form" id="comment-form">

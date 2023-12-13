@@ -3,6 +3,8 @@
     {
         private $imageModel;
         private $categoryModel;
+        private $loadedImages = [];
+        private $loadedImagesNumber;
         function __construct()
         {
             $this->loadModel("ImageModel");
@@ -80,38 +82,83 @@
                 
                 $categoryName = $_GET['category'];
                 $result = $this->imageModel->GetImagesByCategory($categoryName);
-                echo '<link rel="stylesheet" href="/Public/css/Paint.css">';
+                // echo '<link rel="stylesheet" href="/Public/css/Paint.css">';
 
-                        foreach($result as $row){
+                        // foreach($result as $row){
 
-                            echo '<div class="paint" id="'.$row['path'].'" onclick="ShowDetails(\''. $row['path'] . '\')">'; 
-                            echo '<img class="main-image" data-src="/Public/img/'.$row["path"].'" width="350px" alt="" loading="lazy"> ';
-                            echo '<div class="image-uploader"> ';
-                            echo '<div class="image-uploader-avatar-container"> ';
-                            echo '<img src="/Public/profileimg/'.$row['avatar'].'" alt="">'; 
-                            echo '</div> ';
-                            echo '<span class="uploader-username">'.$row['username'].'</span>';
-                            echo '</div> ';
-                            echo '<h4 class="image-title">'.$row['title'].'</h4>';
+                        //     echo '<div class="paint" id="'.$row['path'].'" onclick="ShowDetails(\''. $row['path'] . '\')">'; 
+                        //     echo '<img class="main-image" data-src="/Public/img/'.$row["path"].'" width="350px" alt="" loading="lazy"> ';
+                        //     echo '<div class="image-uploader"> ';
+                        //     echo '<div class="image-uploader-avatar-container"> ';
+                        //     echo '<img src="/Public/profileimg/'.$row['avatar'].'" alt="">'; 
+                        //     echo '</div> ';
+                        //     echo '<span class="uploader-username">'.$row['username'].'</span>';
+                        //     echo '</div> ';
+                        //     echo '<h4 class="image-title">'.$row['title'].'</h4>';
 
-                            $path = $row['path'];
-                            $sqll = "SELECT path FROM liked_images WHERE path = '$path'";
-                            $likeNumber = mysqli_num_rows($this->imageModel->DoQuery($sqll));
-                            $likeNumberFomatted = number_format($likeNumber,0,'',' ');
+                        //     $path = $row['path'];
+                        //     $sqll = "SELECT path FROM liked_images WHERE path = '$path'";
+                        //     $likeNumber = mysqli_num_rows($this->imageModel->DoQuery($sqll));
+                        //     $likeNumberFomatted = number_format($likeNumber,0,'',' ');
 
-                            if($likeNumber<100000){
-                                $likeNumber = $likeNumberFomatted;
-                            }else{
-                                $likeNumber = '100 000+';
-                            }
+                        //     if($likeNumber<100000){
+                        //         $likeNumber = $likeNumberFomatted;
+                        //     }else{
+                        //         $likeNumber = '100 000+';
+                        //     }
                             
-                            echo '<i class="fa-solid fa-thumbs-up like-number"><span>'.' '.$likeNumber.'</span></i>';
-                            echo '<i class="fa-regular fa-eye view-number"><span> 342</span></i>';
-                            echo '</div>';
-                        }
+                        //     echo '<i class="fa-solid fa-thumbs-up like-number"><span>'.' '.$likeNumber.'</span></i>';
+                        //     echo '<i class="fa-regular fa-eye view-number"><span> 342</span></i>';
+                        //     echo '</div>';
+                        // }
+                        $this->EchoPaint($result);
 
             }else{
                 echo 'Không nhận được';
+            }
+        }
+
+        public function LoadMoreImages(){
+            $this->loadedImagesNumber = $_GET['loadedImagesNumber'];
+            $username = $_SESSION['Login']['username'];
+            $result = $this->imageModel->DoQuery("SELECT * FROM imgupload i INNER JOIN users u  
+                                                  ON i.username = u.username
+                                                  WHERE i.username <> '$username'  
+                                                  LIMIT $this->loadedImagesNumber , 2;");
+            if($result->num_rows>0){
+                $this->EchoPaint($result);
+            }else{
+                echo 'het';
+            }
+        }
+
+        public function EchoPaint($result){
+            foreach($result as $row){
+
+                echo '<div class="paint" id="'.$row['path'].'" onclick="ShowDetails(\''. $row['path'] . '\')">'; 
+                echo '<img class="main-image" data-src="/Public/img/'.$row["path"].'" width="350px" alt="" loading="lazy"> ';
+                echo '<div class="image-uploader"> ';
+                echo '<div class="image-uploader-avatar-container"> ';
+                echo '<img src="/Public/profileimg/'.$row['avatar'].'" alt="">'; 
+                echo '</div> ';
+                echo '<span class="uploader-username">'.$row['username'].'</span>';
+                echo '</div> ';
+                echo '<h4 class="image-title">'.$row['title'].'</h4>';
+
+                $path = $row['path'];
+                $sqll = "SELECT path FROM liked_images WHERE path = '$path'";
+                $likeNumber = mysqli_num_rows($this->imageModel->DoQuery($sqll));
+                $likeNumberFomatted = number_format($likeNumber,0,'',' ');
+
+                if($likeNumber<100000){
+                    $likeNumber = $likeNumberFomatted;
+                }else{
+                    $likeNumber = '100 000+';
+                }
+                
+                echo '<i class="fa-solid fa-thumbs-up like-number"><span>'.' '.$likeNumber.'</span></i>';
+                echo '<i class="fa-regular fa-eye view-number"><span> 342</span></i>';
+                echo '</div>';
             }
         }
 

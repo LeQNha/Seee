@@ -13,12 +13,12 @@
             <div class="header-bar bar-1">
                 <a href="/index.php?controller=Imey&action=MainPage" id="logo"><img src="/Public/webimg/Imey-logo-1.png" alt=""></a>
                 <!-- <a href="/Imey/MainPage" id="logo"><img src="/Public/webimg/Imey-logo-1.png" alt=""></a> -->
-                <div class="nav-bar">
+                <!-- <div class="nav-bar">
                     <a href="#">Nổi Bật</a>
                     <a href="#">Xếp Hạng</a>
                     <a href="#">Sự Kiện</a>
                     <a href="#">Cuộc Thi</a>
-                </div>
+                </div> -->
             </div>
             <div class="header-bar bar-2">
                 <form action="#" class="search-form">
@@ -36,9 +36,16 @@
                     
                     <li><i class="fa-solid fa-envelope"></i></li>
                     <li><i class="fa-solid fa-bell"></i></li>
-                    <li style="font-size: 22px; cursor: pointer;"> <?php echo $_SESSION['Login']['username']; ?> </li>
-                    <li class="user-avatar-container"><img src="/Public/profileimg/<?php echo $avatar; ?>" alt="aa" class="avatar" onclick="ShowSubmenu()"></li>
-                    <li class="show-submenu-button"><i class="fa-solid fa-angle-down"></i></li>
+                    <?php
+                        if($_SESSION['Login']['username']){ ?>
+                            <li id="header-username" style="font-size: 22px; cursor: pointer;"> <?php echo $_SESSION['Login']['username']; ?> </li>
+                            <li class="user-avatar-container"><img src="/Public/profileimg/<?php echo $avatar; ?>" alt="aa" class="avatar" onclick="ShowSubmenu()"></li>
+                            <li class="show-submenu-button"><i class="fa-solid fa-angle-down"></i></li>
+                        <?php }else{
+                            echo '<script> alert("Chua dang nhap!"); </script>';
+                            echo '<script> window.location.href = "/index.php?controller=HomePage"; </script>';
+                        } 
+                    ?>
                 
             </ul>
             <div class="sub-menu" id="submenu">

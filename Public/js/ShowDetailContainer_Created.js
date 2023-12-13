@@ -63,6 +63,8 @@ var dateUploadedCreated = document.querySelector('.detail-date-uploaded-created'
 var detailUploaderCreated = document.querySelector('.detail-uploader-created');
 var detailUploaderAvatarCreated = document.querySelector('.detail-avatar-created');
 var likeNumberCreated = document.querySelector('.like-number-created');
+var saveNumberCreated = document.querySelector('.save-number-created');
+var commentNumberCreated = document.querySelector('.comment-number-created');
 
 //CloseShowDetailsContainerCreated
 function CloseShowDetailsContainerCreated(){
@@ -101,11 +103,13 @@ function ShowDetails_Created(pid){
     categoryCreated.value = receivedData.category;
     detailTileCreated.value = receivedData.title;
     detailImgCreated.src = "./Public/img/"+receivedData.path;
-    detailDescriptionCreated.textContent = receivedData.description;
+    detailDescriptionCreated.value = receivedData.description;
     dateUploadedCreated.textContent = receivedData.dateuploaded
     detailUploaderCreated.textContent = receivedData.uploader;
     detailUploaderAvatarCreated.src = "./Public/profileimg/"+receivedData.uploaderAvatar;
-    likeNumberCreated.textContent = receivedData.likeNumber; 
+    likeNumberCreated.textContent = receivedData.likeNumber;
+    saveNumberCreated.textContent = receivedData.saveNumber; 
+    commentNumberCreated.textContent = receivedData.commentNumber;  
 
     imgId = receivedData.path;
     commentImagePathCreated.value = imgId;
@@ -186,44 +190,36 @@ function UpdateImage(){
   xhr.send(formData);
 }
 
-//comment
-
-// var currentDateParagraph = document.getElementById('currentDate');
-// var currentDate = new Date();
-
-// var day = currentDate.getDate();
-// var month = currentDate.getMonth() + 1; // Lưu ý rằng tháng bắt đầu từ 0
-// var year = currentDate.getFullYear();
-
-// var formattedDate = day + '/' + month + '/' + year;
-// currentDateParagraph.textContent = formattedDate;
-
-
+commenter.addEventListener('keypress', submitFeedback1);
 send11.addEventListener('click', submitFeedback1);
 function submitFeedback1(e){
-  AddComment();
-  const userForm1 = getUsernameCreated.value;
-  const userAvatar1 = getUserAvatarCreated.value
-  const commentForm1 = commenter.value;
-  const date1 = currentDateParagraph.textContent;
-  // if inputs are not empty
-  if(commentForm1 !== ''){
-      // create new feedback
-      newFeedback1 = {
-          "id": Math.floor((Math.random() * 1000)+ 1),
-          "userName": userForm1,
-          "userAvatar": userAvatar1,
-          "userComment": commentForm1,
-          "dated": date1
-      };
-      // add new feedback to array
-      feedbackArr1.push(newFeedback1);
-      // clear inputs 
-      resetForm1();
-      // add feedback to list
-      addFeedback1(newFeedback1);
+  if (e.keyCode === 13 || e.type === "click") { 
+    //tăng số hiển thị comment
+    commentNumberCreated.textContent = parseInt(commentNumberCreated.textContent)+1;
+    AddComment();
+    const userForm1 = getUsernameCreated.value;
+    const userAvatar1 = getUserAvatarCreated.value;
+    const commentForm1 = commenter.value;
+    const date1 = currentDateParagraph.textContent;
+    // if inputs are not empty
+    if(commentForm1 !== ''){
+        // create new feedback
+        newFeedback1 = {
+            "id": Math.floor((Math.random() * 1000)+ 1),
+            "userName": userForm1,
+            "userAvatar": userAvatar1,
+            "userComment": commentForm1,
+            "dated": date1
+        };
+        // add new feedback to array
+        feedbackArr1.push(newFeedback1);
+        // clear inputs 
+        resetForm1();
+        // add feedback to list
+        addFeedback1(newFeedback1);
+    }
+    e.preventDefault();
   }
-  e.preventDefault();
 };
 function resetForm1(){
   commenter.value = '';
@@ -375,6 +371,8 @@ function deleteDiv(comId) {
     if(xhr.status === 200){
       console.log(xhr.responseText);
       showAndHide('Đã xóa bình luận!');
+      //giảm số hiển thị comment
+      commentNumberCreated.textContent = parseInt(commentNumberCreated.textContent)-1;
     }else{
       alert('Đã có lỗi xảy ra!');
     }
@@ -416,24 +414,6 @@ function GetCommentsCreated(pid){
   xhr.send('pid='+encodeURIComponent(pid));
 }
 
-//NotifyMessage
-function showAndHide(msg){
-
-  if(message){
-    console.log('co ton tai');
-  }else{
-    console.log('ko ton');
-  }
-
-  message.textContent = msg;
-  notifyMessage.style.top = "91vh";
-  notifyMessage.style.opacity = "0.9";
-
-   setTimeout(function () {
-       notifyMessage.style.top = "100vh"; // Ẩn thẻ div sau khoảng thời gian
-       notifyMessage.style.opacity = "0.3";
-     }, 2000); // Thời gian đếm ngược (đơn vị: mili giây)
-}
 
 //FILTER JS
 

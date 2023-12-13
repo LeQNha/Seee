@@ -402,6 +402,7 @@ i.fa-solid.fa-caret-down.down-click10 {
 .detail-emotion, .detail-comment {
     display: flex;
     gap: 4px;
+    align-items: center;
 }
 h4 {
     color: grey;

@@ -39,11 +39,11 @@ body > :not(.show-details-container):not(header) {
     width: 100%;
     height: 100%;
 }   
-span {
+/* span {
     font-size: 15px;
     color: rgb(56, 56, 57);
     line-height: 1.5;
-}
+} */
 span.place {
     font-size: 20px;
     margin-top: 15px;

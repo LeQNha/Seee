@@ -257,6 +257,7 @@ function ShowPublicUserPage(){
           followButton.style.background = 'rgb(217, 222, 228)';
           followButton.style.color = 'rgb(80, 78, 103)';
           followButton.textContent = 'Hủy theo dõi';
+          
         }
         if(xhr.responseText.trim() === 'unfollow'){
           followStatus.textContent = 'Theo dõi';
@@ -299,32 +300,42 @@ comment.addEventListener("input", function(e) {
 feedbackArr = [];
 const commentsCont= document.querySelector('.comments__container');
 
+comment.addEventListener('keypress',submitFeedback);
+
 post1.addEventListener('click', submitFeedback);
 function submitFeedback(e){
-  AddComment();
+  if (e.keyCode === 13 || e.type === "click") {
+    console.log('addfeed');
+    AddComment();
+    console.log('addfeed2');
 
-  const userForm = getUsername.value;
-  const userAvatar = getUserAvatar.value
-  const commentForm = comment.value;
-  const date = currentDateParagraph.textContent;
-  // if inputs are not empty
-  if(commentForm !== ''){
-      // create new feedback
-      newFeedback = {
-          "id": Math.floor((Math.random() * 1000)+ 1),
-          "userName": userForm,
-          "userAvatar": userAvatar,
-          "userComment": commentForm,
-          "dated": date
-      };
-      // add new feedback to array
-      feedbackArr.push(newFeedback);
-      // clear inputs 
-      resetForm();
-      // add feedback to list
-      addFeedback(newFeedback);
+    post1.classList.remove("input-filled");
+        post1.classList.remove("hovered-button");
+        e.preventDefault();
+
+    const userForm = getUsername.value;
+    const userAvatar = getUserAvatar.value
+    const commentForm = comment.value;
+    const date = currentDateParagraph.textContent;
+    // if inputs are not empty
+    if(commentForm !== ''){
+        // create new feedback
+        newFeedback = {
+            "id": Math.floor((Math.random() * 1000)+ 1),
+            "userName": userForm,
+            "userAvatar": userAvatar,
+            "userComment": commentForm,
+            "dated": date
+        };
+        // add new feedback to array
+        feedbackArr.push(newFeedback);
+        // clear inputs 
+        resetForm();
+        // add feedback to list
+        addFeedback(newFeedback);
+    }
+    e.preventDefault();
   }
-  e.preventDefault();
 };
 function resetForm(){
   comment.value = '';
@@ -472,7 +483,7 @@ function addFeedback(item){
 
     //ADD COMMENT
     function AddComment(){
-      console.log('get com');
+      console.log('come');
       xhr.open('POST','/index.php?controller=ShowDetailContainer&action=Comment');
       var commentFormData = new FormData(document.getElementById('comment-form'));
       xhr.onload = function(){

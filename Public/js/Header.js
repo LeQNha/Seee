@@ -55,6 +55,6 @@
       var searchTerm = document.getElementById("search-box").value;
       // Ví dụ: chuyển đến trang kết quả tìm kiếm
       window.location.href = "/index.php?controller=Imey&action=MainPage&q=" + encodeURIComponent(searchTerm);
-  }
+    }
   }
 

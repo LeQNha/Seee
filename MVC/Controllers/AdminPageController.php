@@ -56,10 +56,10 @@
                 if($list == 'UsersManagement'){
                     $result = $this->userModel->GetAllUser();
          
-                    echo '<div class="add-delete-buttons">';
-                    echo '<button class="add-button">Thêm</button>';
-                    echo '<button class="delete-all-button btn btn-primary" id="delete-all-button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background: #e5dede; border: none; color:black;">Xóa tất cả</button>';
-                    echo '</div>';
+                    // echo '<div class="add-delete-buttons">';
+                    // echo '<button class="add-button">Thêm</button>';
+                    // echo '<button class="delete-all-button btn btn-primary" id="delete-all-button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background: #e5dede; border: none; color:black;">Xóa tất cả</button>';
+                    // echo '</div>';
 
                     echo '<div class="nametable">';
                     echo '<h3>Danh sách người dùng</h3>';
@@ -95,10 +95,10 @@
                 }else{
                     $result = $this->imageModel->GetAllImage();
 
-                    echo '<div class="add-delete-buttons">';
-                    echo '<button class="add-button">Thêm</button>';
-                    echo '<button class="delete-all-button btn btn-primary" id="delete-all-button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background: #e5dede; border: none; color:black;">Xóa tất cả</button>';
-                    echo '</div>';
+                    // echo '<div class="add-delete-buttons">';
+                    // echo '<button class="add-button">Thêm</button>';
+                    // echo '<button class="delete-all-button btn btn-primary" id="delete-all-button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background: #e5dede; border: none; color:black;">Xóa tất cả</button>';
+                    // echo '</div>';
 
                     echo '<div class="nametable">';
                     echo '<h3>Danh sách ảnh tải lên</h3>';

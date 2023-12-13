@@ -54,7 +54,7 @@
                 </div>
                 <div class="separate25"></div>
                 <div class="self-introduction">
-                    <?php echo $introduction; ?>
+                    <?php echo $data['UploaderData']['uploaderIntroduction']; ?>
                 </div>
             </div>
         </div>

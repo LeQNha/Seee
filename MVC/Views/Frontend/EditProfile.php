@@ -1,16 +1,16 @@
 
 <div class="alert-message"><p>Thay đổi thành công!</p></div>
     
-    <ul class="actions">
+    <!-- <ul class="actions">
         <li class="save" id="save">
             <i class="fa-solid fa-floppy-disk save-icon"></i>
             <span>Lưu</span>
         </li>
         <li class="set-back" id="set-back">
             <i class="fa-solid fa-arrow-rotate-left set-back-icon"></i>
-            <span> Thiết lập lại</span>
+            <a href="index.php?controller=Imey&action=EditProfile"><span style="color: black;">Thiết lập lại</span></a>
         </li>
-    </ul>
+    </ul> -->
         <div class="edit-navigation">
             <a class="edit-file" href="#">Chỉnh sửa hồ sơ</a>
             <a class="edit-acc" href="#edit-account">Quản lí tài khoản</a>
@@ -34,6 +34,11 @@
                         <label for="username" class="firstname">Tên tài khoản</label>
                         <input type="text" name="username" class="username" id="username" value="<?php echo $_SESSION['Login']['username'] ?>" hidden>
                     </div> -->
+                        <div>
+                            <label for="email">Email<span class="essential">*</span></label>
+                            <input type="email" name="email" id="email" value="<?php echo $data['UserData']['Email']; ?>" required
+                            >
+                        </div>
                     <div style="display: flex;">
                         <div>
                             <label for="firstname">Tên</label>
@@ -308,28 +313,35 @@
                         <label for="introduction">Giới thiệu</label>
                         <textarea name="introduction" class="introduction" id="introduction"> <?php echo $data['UserData']['Introduction']; ?></textarea>
                     </div>
-                   
-                </div>
+                    <button class="save-change-button" id="save-change-profile" type="submit">Lưu thay đổi</button>
+            </div>
+        </form>
+        <form action="#" id="edit-account-form">
                 <div class="edit-account" id="edit-account">
                     <h3>Quản lí tài khoản</h3>
                     <div>
-                        <label for="email">Email</label>
-                        <input type="text" name="email" id="email" value="<?php echo $data['UserData']['Email']; ?>">
+                        <label for="username">Tài khoản<span class="essential">*</span></label>
+                        <span class="alert username-alert"></span>
+                        <input id="edit-account-username" type="text" name="username" id="username" value="<?php echo $data['UserData']['Username']; ?>" required>
+                        
                     </div>
-                    <div>
-                        <label for="username">Tài khoản</label>
-                        <input type="text" name="username" id="username" value="<?php echo $data['UserData']['Username']; ?>">
+                    <div style="display: flex;">
+                        <div>
+                            <label for="password">Mật khẩu mới<span class="essential">*</span></label>
+                            <span class="alert password-alert"></span>
+                            <!-- <input type="password" name="password" id="password" value="<?php echo $data['UserData']['Password']; ?>"> -->
+                            <input id="edit-account-password" type="password" name="password" id="password" value="<?php echo $data['UserData']['Password']; ?>" required>
+                            
+                        </div>
+                        <div style="margin-left: 20px;">
+                            <label for="confirmpassword">Xác nhận mật khẩu mới<span class="essential">*</span></label>
+                            <span class="alert confirmpassword-alert"></span>
+                            <input id="edit-account-confirmpassword" type="password" name="confirmpassword" id="confirmpassword" value="<?php echo $data['UserData']['Password']; ?>" required>
+                        </div>
                     </div>
-                    <div>
-                        <label for="password">Mật khẩu</label>
-                        <input type="password" name="password" id="password" value="<?php echo $data['UserData']['Password']; ?>">
-                    </div>
-                    <div>
-                        <label for="confirmpassword">Xác nhận mật khẩu</label>
-                        <input type="password" name="confirmpassword" id="confirmpassword" value="<?php echo $data['UserData']['Password']; ?>">
-                    </div>
-                </div>
-            </form> 
+                    <button class="save-change-button" id="save-change-account" type="submit">Lưu thay đổi</button>
+                </div> 
+        </form>
             </div>
         </div>
 

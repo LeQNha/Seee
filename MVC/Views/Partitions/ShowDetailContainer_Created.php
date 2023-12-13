@@ -65,17 +65,17 @@
                         <div class="separate1"></div>
                         <div class="detail-infor">
                             <div class="detail-emotion">
-                                <h4><span class="like-number-created"></span> lượt like</h4>
+                                <h4><span class="like-number-created"></span> lượt yêu thích</h4>
                                 <i class="fa-solid fa-thumbs-up like-icon-created"></i>
                                 <h4>,</h4>&nbsp;
-                                <h4>50 lượt yêu thích</h4>
+                                <h4><span class="save-number-created">50</span> lượt lưu</h4>
                                 <i class="fa-solid fa-heart" id="icon-heart"></i>
                             </div>
                             <div class="detail-comment">
-                                <h4>54 bình luận</h4>
+                                <h4><span class="comment-number-created">54</span> bình luận</h4>
                                 <i class="fa-solid fa-comment" id="comment-button1"></i>
                                 <h4>,</h4>&nbsp;
-                                <h4>100 người đã xem</h4>
+                                <h4>342 người đã xem</h4>
                                 <i class="fa-solid fa-eye"></i>
                             </div>
                         </div>
@@ -86,8 +86,8 @@
                         </div>
                         <div class="nav-sorteds1">
                             <div class="nav-sorted1 selected" onclick="selectnav_sorted1(1, 'newestComment')">Bình luận mới nhất </div>
-                            <div class="nav-sorted1" onclick="selectnav_sorted1(2, 'topComment')">Bình luận hàng đầu</div>
-                            <div class="nav-sorted1" onclick="selectnav_sorted1(3, 'oldestComment')">Bình luận cũ nhất</div>
+                            <!-- <div class="nav-sorted1" onclick="selectnav_sorted1(2, 'topComment')">Bình luận hàng đầu</div> -->
+                            <div class="nav-sorted1" onclick="selectnav_sorted1(2, 'oldestComment')">Bình luận cũ nhất</div>
                         </div>
                         <div id="comment-container" class="comments">
 
