@@ -27,7 +27,8 @@ th:not(.ordinal-number-column) {
 }
 td:not(.ordinal-number-column){
   /* border: 1px solid black; */
-  max-width: 280px;
+  max-width: 380px;
+  width: auto;
 }
 .ordinal-number-column{
   min-width: 40px;

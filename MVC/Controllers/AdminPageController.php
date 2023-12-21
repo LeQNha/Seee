@@ -62,7 +62,7 @@
                     // echo '</div>';
 
                     echo '<div class="nametable">';
-                    echo '<h3>Danh sách người dùng</h3>';
+                    echo '<h3><span class="list-row-number">'.$result->num_rows.'</span> người dùng</h3>';
                     echo '</div>';
                     echo '<table>';
                     echo '<tbody id="list-table-body">';
@@ -70,8 +70,9 @@
                     echo '<th class="ordinal-number-column">#</th>';
                     echo '<th>Email</th>';
                     echo '<th>Tên tài khoản</th>';
-                    echo '<th>Mật khẩu</th>';
+                    // echo '<th>Mật khẩu</th>';
                     echo '<th>Họ và tên</th>';
+                    echo '<th>Giới thiệu</th>';
                     echo '<th></th>';
                     echo '</tr>';
 
@@ -81,8 +82,9 @@
                         echo '<td class="ordinal-number-column">'.$count.'</td>';
                         echo '<td class="user-email">'.$row['email'].'</td>';
                         echo '<td class="user-username">'.$row['username'].'</td>';
-                        echo '<td class="user-password">'.$row['password'].'</td>';
+                        // echo '<td class="user-password">'.$row['password'].'</td>';
                         echo '<td class="user-fullname">'.$row['lastname'].' '.$row['firstname'].'</td>';
+                        echo '<td class="user-introduction">'.$row['introduction'].'</td>';
                         echo '<td class="action">';
                         echo '<span><button class="edit-button" data-bs-toggle="modal" data-bs-target="#editUserModal" onclick="GetUpdateUser(\''.$row['username'].'\')"><i class="fa-solid fa-pen"></i> Sửa</button></span>';
                         echo '<span><button class="delete-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete(\''.$row['username'].'\')"><i class="fa-solid fa-trash"></i> Xóa</button></span>';
@@ -101,14 +103,14 @@
                     // echo '</div>';
 
                     echo '<div class="nametable">';
-                    echo '<h3>Danh sách ảnh tải lên</h3>';
+                    echo '<h3><span class="list-row-number">'.$result->num_rows.'</span> ảnh chia sẻ</h3>';
                     echo '</div>';
                     echo '<table>';
                     echo '<tbody id="list-table-body">';
                     echo '<tr>';
                     echo '<th class="ordinal-number-column">#</th>';
                     echo '<th>Ảnh</th>';
-                    echo '<th>Tên</th>';
+                    // echo '<th>Tên</th>';
                     echo '<th>Tiêu đề</th>';
                     echo '<th>Mô tả</th>';
                     echo '<th>Ngày tải lên</th>';
@@ -122,7 +124,7 @@
                         echo '<tr id="'.$pathParts[0].'">';
                         echo '<td class="ordinal-number-column">'.$count.'</td>';
                         echo '<td class="image"><img src="/Public/img/'. $row['path'].'" alt=""></td>';
-                        echo '<td>'.$row['path'].'</td>';
+                        // echo '<td>'.$row['path'].'</td>';
                         echo '<td class="image-title">'.$row['title'].'</td>';
                         echo '<td class="image-description">'.$row['description'].'</td>';
                         echo '<td>'.$row['dateuploaded'].'</td>';
@@ -173,6 +175,7 @@
                 $imageTitle = trim($_POST['image-title']);
                 $imageCategory = trim($_POST['image-category']);
                 $imageDescription = trim($_POST['image-description']);
+                
 
                 if(strlen($imageTitle) < 3){
                     echo 'title empty';
@@ -196,7 +199,8 @@
                         'Username' => $row['username'],
                         'Password' => $row['password'],
                         'Lastname' => $row['lastname'],
-                        'Firstname' => $row['firstname']
+                        'Firstname' => $row['firstname'],
+                        'Introduction' => $row['introduction']
                     ];
                     echo json_encode($data);
                 }else{
@@ -215,9 +219,12 @@
                 $password = trim($_POST['password']);
                 $lastname = trim($_POST['lastname']);
                 $firstname = trim($_POST['firstname']);
+                $introduction = trim($_POST['introduction']);
+
+                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
                     $sql = "UPDATE users 
-                            SET email = '$email', username ='$newUsername', password='$password', firstname = '$firstname', lastname = '$lastname'  
+                            SET email = '$email', username ='$newUsername', password='$hashedPassword', firstname = '$firstname', lastname = '$lastname', introduction = '$introduction'   
                             WHERE username = '$username'; ";
                     $this->userModel->DoQuery($sql);
                     echo "update success";

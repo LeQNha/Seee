@@ -1,6 +1,6 @@
 
                 <div class="nametable">
-                    <h3>Danh sách người dùng</h3>
+                    <h3><span class="list-row-number"><?= $data['Result']->num_rows; ?></span> người dùng</h3>
                 </div>
                 <table>
                   <tbody id="list-table-body">
@@ -8,12 +8,12 @@
                         <th class="ordinal-number-column">#</th>
                         <th>Email</th>
                         <th>Tên tài khoản</th>
-                        <th>Mật khẩu</th>
+                        <!-- <th>Mật khẩu</th> -->
                         <th>Họ và tên</th>
                         <!-- <th>Tên</th> -->
                         <!-- <th>Nghề nghiệp</th>
-                        <th>Vị trí</th>
-                        <th>Giới thiệu</th> -->
+                        <th>Vị trí</th> -->
+                        <th>Giới thiệu</th>
                         <th></th>
 
                     </tr>
@@ -28,9 +28,9 @@
                           <td class="ordinal-number-column"><?= $count; ?></td>
                           <td class="user-email"><?= $row['email']; ?></td>
                           <td class="user-username"><?= $row['username']; ?></td>
-                          <td class="user-password"><?= $row['password']; ?></td>
+                          <!-- <td class="user-password"><?= $row['password']; ?></td> -->
                           <td class="user-fullname"><?= $row['lastname'].' '.$row['firstname']; ; ?></td>
-
+                          <td class="user-introduction"><?= $row['introduction']; ?></td>
                           
                           <td class="action">
                               <span><button class="edit-button" data-bs-toggle="modal" data-bs-target="#editUserModal" onclick="GetUpdateUser('<?= $row['username']; ?>')"><i class="fa-solid fa-pen"></i> Sửa</button></span>

@@ -29,6 +29,7 @@ var userUsername = document.getElementById('username');
 var userPassword = document.getElementById('password');
 var userLastname = document.getElementById('lastname');
 var userFirstname = document.getElementById('firstname');
+var userIntroduction = document.getElementById('introduction');
 updateUserId = '';
 var modalUserCloseButton = document.getElementById('modal-user-close-button');
 var modalUserSaveChangeButton = document.getElementById('modal-user-save-change-button');
@@ -36,6 +37,8 @@ var modalUserSaveChangeButton = document.getElementById('modal-user-save-change-
 var ml = document.getElementById('management-list').value;
 
 var xhr = new XMLHttpRequest();
+
+var listRowNumber = document.querySelector('.list-row-number');
 
 window.onload = function(){
     console.log(ml);
@@ -54,6 +57,7 @@ usersManagementButton.addEventListener('click', function(){
     xhr.open('GET','/index.php?controller=AdminPage&action=SwitchManagement&list=UsersManagement');
     xhr.onload = function(){
         if(xhr.status === 200){
+            
             mainTable.innerHTML = xhr.responseText;
         }else{
             alert('Đã có lỗi xảy ra!');
@@ -71,6 +75,8 @@ imagesManagementButton.addEventListener('click', function(){
     xhr.open('GET','/index.php?controller=AdminPage&action=SwitchManagement&list=ImagesManagement');
     xhr.onload = function(){
         if(xhr.status === 200){
+            listRowNumber = document.querySelector('.list-row-number');
+            console.log(listRowNumber);
             mainTable.innerHTML = xhr.responseText;
         }else{
             alert('Đã có lỗi xảy ra!');
@@ -94,7 +100,9 @@ function DeleteImage(pid){
                 //lại lần nx vì sau khi ajax nó bị thay đổi
                 listTableBody = document.getElementById('list-table-body');
                 listTableBody.removeChild(document.getElementById(name));
-                console.log('name: '+name);
+
+                listRowNumber = document.querySelector('.list-row-number');
+                listRowNumber.textContent = parseInt(listRowNumber.textContent) - 1;
             }else{
                 alert(xhr.responseText.trim());
             }
@@ -113,6 +121,9 @@ function DeleteUser(uname){
             if(xhr.responseText.trim() == 'delete success'){
                 listTableBody = document.getElementById('list-table-body');
                 listTableBody.removeChild(document.getElementById(uname));
+
+                listRowNumber = document.querySelector('.list-row-number');
+                listRowNumber.textContent = parseInt(listRowNumber.textContent) - 1;
             }else{
                 alert(xhr.responseText.trim());
             }
@@ -216,6 +227,7 @@ function GetUpdateUser(uId){
            userPassword.value = receivedData.Password;
            userLastname.value = receivedData.Lastname;
            userFirstname.value = receivedData.Firstname;
+           userIntroduction.value = receivedData.Introduction;
         }else{
             alert('Đã có lỗi xảy ra!');
         }
@@ -255,8 +267,9 @@ function SaveChangeUser(){
                     parentElement = document.getElementById(updateUserId);
                     parentElement.querySelector('.user-email').textContent = userEmail.value;
                     parentElement.querySelector('.user-username').textContent = userUsername.value;
-                    parentElement.querySelector('.user-password').textContent = userPassword.value;
+                    // parentElement.querySelector('.user-password').textContent = userPassword.value;
                     parentElement.querySelector('.user-fullname').textContent = userLastname.value+' '+userFirstname.value;
+                    parentElement.querySelector('.user-introduction').textContent = userIntroduction.value;
                 }else{
                     
                 }

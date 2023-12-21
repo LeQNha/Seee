@@ -124,7 +124,7 @@
             $result = $this->imageModel->DoQuery("SELECT * FROM imgupload i INNER JOIN users u  
                                                   ON i.username = u.username
                                                   WHERE i.username <> '$username'  
-                                                  LIMIT $this->loadedImagesNumber , 2;");
+                                                  LIMIT $this->loadedImagesNumber , 5;");
             if($result->num_rows>0){
                 $this->EchoPaint($result);
             }else{

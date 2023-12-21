@@ -45,8 +45,7 @@
                 <h1 class="detail-title">tes</h1>
                 <p class="detail-description">ádadada</p>
             </div>
-        </div>
-        <div class="comment-form1">
+            <div class="comment-form1">
             <div class="comment-sta">
             <h2 class="num-com"><span id="comment-number">46</span> bình luận</h2>
                 <div class="sorted" onclick="togglenav_sorteds()">
@@ -103,5 +102,6 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>

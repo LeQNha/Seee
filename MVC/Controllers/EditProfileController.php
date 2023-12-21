@@ -83,9 +83,8 @@
         }
 
         public function SaveChangeAccount(){
-       
+            
             $username = $_SESSION['Login']['username'];
-
             
             $newUsername = trim($_POST['username']);
             $password = trim($_POST['password']);
@@ -96,8 +95,10 @@
                     echo "Xác nhận lại mật khẩu!";
                 
                 }else{
+                    //Mã hóa password
+                    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);   
                     $sql = "UPDATE users
-                        SET username = '$newUsername', password = '$password' 
+                        SET username = '$newUsername', password = '$hashedPassword' 
                         WHERE username = '$username';";
 
                         // $_SESSION['Login']['username'] = $newUsername;

@@ -260,6 +260,7 @@
   #editImageModal #image-description{
     resize: none;
     overflow: hidden;
+    height: 200px;
   }
 
   /* EDIT USER MODAL*/
@@ -279,6 +280,15 @@
     padding: 5px 10px;
     border-radius: 4px;
   }
+  #editUserModal textarea{
+    outline: 2px solid rgb(12, 156, 156);
+    width: 100%;
+    height: auto;
+    padding: 5px 10px;
+    border-radius: 4px;
+    resize: none;
+    height: 200px;
+  }
 
   /*Filter*/
 /* new-add */
@@ -291,7 +301,7 @@ i.fa-solid.fa-caret-down.down-click12{
   height: 45px;
   position: absolute;
   right: 38px;
-  top: 76%;
+  top: 67%;
   transform: translateY(-50%);
 }
 .sub-cate1 {

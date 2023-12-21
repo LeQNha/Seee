@@ -200,16 +200,20 @@
             </div>
             <div>
               <label for="password">Mật khẩu<span class="require">*</span></label>
-              <input type="text" name="password" id="password">
+              <input type="password" name="password" id="password">
               <span class="error-message" id="password-error-message"></span>
             </div>
             <div>
-              <label for="">Họ</label>
+              <label for="lastname">Họ</label>
               <input type="text" name="lastname" id="lastname">
             </div>
             <div>
-              <label for="">Tên</label>
+              <label for="firstname">Tên</label>
               <input type="text" name="firstname" id="firstname">
+            </div>
+            <div>
+              <label for="introduction">Giới thiệu</label>
+              <textarea name="introduction" id="introduction"></textarea>
             </div>
         </form>
       </div>

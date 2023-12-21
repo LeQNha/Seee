@@ -7,7 +7,7 @@ function submitRegisterData(){
         console.log(xhr.responseText);
         if(xhr.status === 200){
             if(xhr.responseText.trim() === 'success'){
-                window.location.href = '/index.php?controller=HomePage&action=MainPage';
+                window.location.href = '/index.php?controller=Imey&action=MainPage';
             }else{
                 // alert(xhr.responseText);
                 alertP.innerHTML = xhr.responseText;

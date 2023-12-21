@@ -171,6 +171,16 @@
     align-items: center;
     justify-content: start;
     background: white;
+    padding: 15px;
+}
+.detail-title{
+    max-width: 75%;
+    padding: 15px;
+    color: rgb(179, 120, 120);
+}
+.detail-description{
+    max-width: 75%;
+    font-size: 18px;
 }
 .num-like-love {
     gap: 5px;
@@ -192,12 +202,9 @@
 /* comment */
 /* comment */
 .comment-form1 {
-    position: absolute;
-    width: 86%;
     min-height: 500px;
-    left: 5%;
-    top: 108%;
     background-color: black;
+    padding: 15px;
 }
 .main-com-fo {
     display: flex;
