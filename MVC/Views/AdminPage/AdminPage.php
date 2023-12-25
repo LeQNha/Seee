@@ -198,10 +198,11 @@
               <input type="text" name="username" id="username">
               <span class="error-message" id="username-error-message"></span>
             </div>
-            <div>
-              <label for="password">Mật khẩu<span class="require">*</span></label>
+            <div class="change-password">Thay đổi mật khẩu <i class="fa-solid fa-angle-down"></i></div> 
+            <div class="change-password-input">
+              <!-- <label for="password">Mật khẩu<span class="require">*</span></label>
               <input type="password" name="password" id="password">
-              <span class="error-message" id="password-error-message"></span>
+              <span class="error-message" id="password-error-message"></span> -->
             </div>
             <div>
               <label for="lastname">Họ</label>

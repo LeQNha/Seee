@@ -43,7 +43,11 @@
         <script src="/Public/js/Header.js"></script>
         <script src="/Public/js/ScrollUp.js"></script>
         <script src="/Public/js/<?php echo $data['Page']; ?>.js"></script>
-        <script src="/Public/js/ShowDetailContainer.js"></script>
+        <?php
+            if($data['Page'] == 'PersonalPage' || $data['Page'] == 'MainPage' || $data['Page'] == 'PublicUserPage'){ ?>
+                <script src="/Public/js/ShowDetailContainer.js"></script>
+            <?php }
+        ?>
         <script src="/Public/js/NotifyMessage.js"></script>
         </script>
         <?php

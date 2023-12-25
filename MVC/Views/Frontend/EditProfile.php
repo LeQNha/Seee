@@ -319,25 +319,24 @@
         <form action="#" id="edit-account-form">
                 <div class="edit-account" id="edit-account">
                     <h3>Quản lí tài khoản</h3>
-                    <div>
-                        <label for="username">Tài khoản<span class="essential">*</span></label>
+                    <div class="change-username">Thay đổi tài khoản <i class="fa-solid fa-angle-down"></i></div>
+                    <div class="change-username-section">
+                        <!-- <label for="username">Tài khoản<span class="essential">*</span></label>
                         <span class="alert username-alert"></span>
-                        <input id="edit-account-username" type="text" name="username" id="username" value="<?php echo $data['UserData']['Username']; ?>" required>
-                        
+                        <input id="edit-account-username" type="text" name="username" id="username" value="<?php echo $data['UserData']['Username']; ?>" required> -->
                     </div>
-                    <div style="display: flex;">
-                        <div>
+                    <div class="change-password">Thay đổi mật khẩu <i class="fa-solid fa-angle-down"></i></div>
+                    <div style="display: flex;" class="change-password-section">
+                        <!-- <div>
                             <label for="password">Mật khẩu mới<span class="essential">*</span></label>
                             <span class="alert password-alert"></span>
-                            <!-- <input type="password" name="password" id="password" value="<?php echo $data['UserData']['Password']; ?>"> -->
                             <input id="edit-account-password" type="password" name="password" id="password" value="<?php echo $data['UserData']['Password']; ?>" required>
-                            
                         </div>
                         <div style="margin-left: 20px;">
                             <label for="confirmpassword">Xác nhận mật khẩu mới<span class="essential">*</span></label>
                             <span class="alert confirmpassword-alert"></span>
                             <input id="edit-account-confirmpassword" type="password" name="confirmpassword" id="confirmpassword" value="<?php echo $data['UserData']['Password']; ?>" required>
-                        </div>
+                        </div> -->
                     </div>
                     <button class="save-change-button" id="save-change-account" type="submit">Lưu thay đổi</button>
                 </div> 

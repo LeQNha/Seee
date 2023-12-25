@@ -8,6 +8,52 @@ var headerAvatars = document.querySelectorAll('.user-avatar-container img');
 var username = document.getElementById('username');
 var password = document.getElementById('password');
 var confirmpassword = document.getElementById('confirmpassword');
+var changeUsername = document.querySelector('.change-username');
+var changePassword = document.querySelector('.change-password');
+var changingUsername = false;
+var changingPassword = false;
+var changeUsernameSection = document.querySelector('.change-username-section');
+var changePasswordSection = document.querySelector('.change-password-section');
+
+changeUsername.addEventListener('click', function(){
+    if(changingUsername == true){
+        changeUsernameSection.innerHTML = '';
+        changingUsername = false;
+        document.querySelector('.change-username .fa-angle-down').classList.remove('rotate');
+    }else{
+        changeUsernameSection.innerHTML = `
+            <label for="username">Tài khoản<span class="essential">*</span></label>
+            <span class="alert username-alert"></span>
+            <input id="edit-account-username" type="text" name="username" id="username" required>
+        `;
+        changingUsername = true;
+        document.querySelector('.change-username .fa-angle-down').classList.add('rotate');
+    }
+    
+});
+
+changePassword.addEventListener('click', function(){
+    if(changingPassword == true){
+        changePasswordSection.innerHTML = '';
+        changingPassword = false;
+        document.querySelector('.change-password .fa-angle-down').classList.remove('rotate');
+    }else{
+        changePasswordSection.innerHTML = `
+            <div>
+                <label for="password">Mật khẩu mới<span class="essential">*</span></label>
+                <span class="alert password-alert"></span>
+                <input id="edit-account-password" type="password" name="password" id="password" required>
+            </div>
+            <div style="margin-left: 20px;">
+                <label for="confirmpassword">Xác nhận mật khẩu mới<span class="essential">*</span></label>
+                <span class="alert confirmpassword-alert"></span>
+                <input id="edit-account-confirmpassword" type="password" name="confirmpassword" id="confirmpassword" required>
+            </div>
+        `;
+        changingPassword = true;
+        document.querySelector('.change-password .fa-angle-down').classList.add('rotate');
+    }
+});
 
 //NAVIGATE
 var abc = document.querySelector('.edit-file');
@@ -57,6 +103,8 @@ editAccountForm.addEventListener('submit', function(){
                 showAndHide('Thay đổi thành công!');
                 // window.location.href = "/index.php?controller=Imey&action=EditProfile";
                 document.getElementById('header-username').textContent =  document.getElementById('edit-account-username').value;
+            }else if(xhr.responseText.trim() == "not change"){
+                
             }else{
                 // alert(xhr.responseText);
                 showAndHide(xhr.responseText);

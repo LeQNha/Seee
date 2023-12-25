@@ -6,7 +6,7 @@ function showAndHide(msg){
     var message = document.querySelector('.notify-message p');
   
     message.textContent = msg;
-    notifyMessage.style.top = "91vh";
+    notifyMessage.style.top = "89vh";
     notifyMessage.style.opacity = "0.9";
   
      setTimeout(function () {

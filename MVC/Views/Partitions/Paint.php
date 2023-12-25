@@ -26,7 +26,7 @@
                 <?php } 
             }else{
                 
-                    echo '<h2 class="not-found-image-notify" style="opacity: 0.7;">Không tìm thấy kết quả</h2>';
+                    // echo '<h2 class="not-found-image-notify" style="opacity: 0.7;">Không tìm thấy kết quả</h2>';
                 
             }
 

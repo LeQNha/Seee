@@ -5,6 +5,7 @@ var categoryTitles = document.querySelectorAll('.category-title');
 var categoryDescription = document.getElementById('category-description');
 var category = document.getElementById('Đề Xuất');
 var categoryNameSpan = category.querySelector('.category-name');
+
 // var category;
 // var categoryNameSpan;
 
@@ -123,11 +124,12 @@ function LoadMoreImages(){
         // var p = document.createElement("div");
         // p.innerHTML = xhr.responseText;
         // imagesContainer.appendChild(p);
+        console.log('trc '+ loadedImagesNumber);
         loadedImagesNumber = loadedImagesNumber + 5;
         LazyLoading();
-        console.log('lmore');
-        console.log(xhr.responseText);
-        console.log(loadedImagesNumber);
+        console.log('sau ' + loadedImagesNumber);
+       
+       
       }
     }else{
         alert('Đã có lỗi xảy ra!');

@@ -42,7 +42,7 @@
                                                       WHERE imgupload.username <> '$username' AND (keyword LIKE '%$q%' OR title LIKE '%$q%' OR imgupload.username LIKE '%$q%' OR imgupload.category LIKE '%$q%') 
                                                       GROUP BY imgupload.path 
                                                       ORDER BY RAND()
-                                                      LIMIT 6");
+                                                      ");
                                                       
             }else{
                 $result = $this->imageModel->DoQuery("SELECT * FROM imgupload i INNER JOIN users u  

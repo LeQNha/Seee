@@ -195,6 +195,7 @@ textarea:focus{
     width: 740px;
     margin-left: 30%;
     margin-top: 50px;
+    margin-bottom: 30px;
 }
 .edit-account div{
     margin-bottom: 10px;
@@ -264,7 +265,20 @@ textarea:focus{
     width: 320px;
     position: relative;
 }
-
+.change-username, .change-password{
+    background: rgb(225, 237, 237);
+    padding: 10px 15px;
+    width: 185px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.change-username:hover, .change-password:hover{
+    background: rgb(187, 203, 203);
+}
+.rotate {
+    transform: rotate(180deg); /* Áp dụng xoay ngược icon */
+    transition: transform 0.3s ease; /* Tạo hiệu ứng chuyển động mượt mà */
+  }
 .save-change-button{
     padding: 10px 15px;
     background: rgb(117, 117, 227);

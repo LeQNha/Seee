@@ -176,7 +176,6 @@
                 $imageCategory = trim($_POST['image-category']);
                 $imageDescription = trim($_POST['image-description']);
                 
-
                 if(strlen($imageTitle) < 3){
                     echo 'title empty';
                 }else{
@@ -216,17 +215,22 @@
                 $username = $_GET['uId'];
                 $email = trim($_POST['email']);
                 $newUsername = trim($_POST['username']);
-                $password = trim($_POST['password']);
                 $lastname = trim($_POST['lastname']);
                 $firstname = trim($_POST['firstname']);
                 $introduction = trim($_POST['introduction']);
 
-                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-
                     $sql = "UPDATE users 
-                            SET email = '$email', username ='$newUsername', password='$hashedPassword', firstname = '$firstname', lastname = '$lastname', introduction = '$introduction'   
+                            SET email = '$email', username ='$newUsername', firstname = '$firstname', lastname = '$lastname', introduction = '$introduction'   
                             WHERE username = '$username'; ";
                     $this->userModel->DoQuery($sql);
+                    if(isset($_POST['password'])){
+                        $password = trim($_POST['password']);
+                        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+                        $sql = "UPDATE users 
+                            SET password='$hashedPassword'   
+                            WHERE username = '$username'; ";
+                        $this->userModel->DoQuery($sql);
+                    }
                     echo "update success";
             }else{
                 echo 'Không tìm thấy ảnh!';

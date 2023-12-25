@@ -34,6 +34,29 @@ updateUserId = '';
 var modalUserCloseButton = document.getElementById('modal-user-close-button');
 var modalUserSaveChangeButton = document.getElementById('modal-user-save-change-button');
 
+var changePassword = document.querySelector('.change-password');
+var changingPassword = false;
+var changePasswordInput = document.querySelector('.change-password-input');
+changePassword.addEventListener('click', () =>{
+  ToggleChangePassword();
+});
+function ToggleChangePassword(){
+    if(changingPassword == true){
+        changePasswordInput.innerHTML = '';
+        changingPassword = false;
+        document.querySelector('.change-password .fa-angle-down').classList.remove('rotate');
+      }else{
+        changePasswordInput.innerHTML = `
+            <label for="password">Mật khẩu<span class="require">*</span></label>
+            <input type="password" name="password" id="password">
+            <span class="error-message" id="password-error-message"></span>
+        `;
+        userPassword = document.getElementById('password');
+        changingPassword = true;
+        document.querySelector('.change-password .fa-angle-down').classList.add('rotate');
+      }
+}
+
 var ml = document.getElementById('management-list').value;
 
 var xhr = new XMLHttpRequest();
@@ -52,6 +75,7 @@ window.onload = function(){
 }
 
 usersManagementButton.addEventListener('click', function(){
+
     imagesManagementButton.classList.remove('more_nav-clicked');
     usersManagementButton.classList.add('more_nav-clicked');
     xhr.open('GET','/index.php?controller=AdminPage&action=SwitchManagement&list=UsersManagement');
@@ -215,6 +239,11 @@ function SaveChangeImage(){
 
 //Update User
 function GetUpdateUser(uId){
+    if(changingPassword == true){
+        changePasswordInput.innerHTML = '';
+        changingPassword = false;
+        document.querySelector('.change-password .fa-angle-down').classList.remove('rotate');
+    }
     xhr.open('GET','/index.php?controller=AdminPage&action=GetUser&uId='+encodeURIComponent(uId));
     updateUserId = uId;
     console.log('tim '+updateUserId);
@@ -224,7 +253,7 @@ function GetUpdateUser(uId){
             receivedData = JSON.parse(xhr.responseText);
            userEmail.value = receivedData.Email;
            userUsername.value = receivedData.Username;
-           userPassword.value = receivedData.Password;
+        //    userPassword.value = receivedData.Password;
            userLastname.value = receivedData.Lastname;
            userFirstname.value = receivedData.Firstname;
            userIntroduction.value = receivedData.Introduction;
@@ -271,7 +300,7 @@ function SaveChangeUser(){
                     parentElement.querySelector('.user-fullname').textContent = userLastname.value+' '+userFirstname.value;
                     parentElement.querySelector('.user-introduction').textContent = userIntroduction.value;
                 }else{
-                    
+                    console.log(xhr.responseText.trim());
                 }
                 
             }else{

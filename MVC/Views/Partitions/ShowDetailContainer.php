@@ -64,7 +64,7 @@
                 </div>
                 <div class="part-com">
                     <input type="text" name="image-path" id="comment-image-path" value="" hidden>
-                    <input id="write-com" name="comment" type="text" placeholder="Viết bình luận...">
+                    <input id="write-com" name="comment" type="text" placeholder="Viết bình luận..." autocomplete="off">
                     <div id="btn-com" style="display: none">
                         <button class="close-com" id="close-com">Hủy</button>
                         <button class="post-com" id="post-com">Đăng</button>

@@ -83,31 +83,54 @@
         }
 
         public function SaveChangeAccount(){
-            
+            $changeSuccess = false;
             $username = $_SESSION['Login']['username'];
             
-            $newUsername = trim($_POST['username']);
-            $password = trim($_POST['password']);
-            $confirmpassword = trim($_POST['confirmpassword']);
-            
-            
-                if($password != $confirmpassword){
-                    echo "Xác nhận lại mật khẩu!";
-                
-                }else{
-                    //Mã hóa password
-                    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);   
+            if(isset($_POST['username']) || isset($_POST['password'])){
+                if(isset($_POST['username'])){
+                    $newUsername = trim($_POST['username']);
                     $sql = "UPDATE users
-                        SET username = '$newUsername', password = '$hashedPassword' 
-                        WHERE username = '$username';";
+                    SET username = '$newUsername'
+                    WHERE username = '$username';";
 
-                        // $_SESSION['Login']['username'] = $newUsername;
-                        // $username = $newUsername;
+                    // $_SESSION['Login']['username'] = $newUsername;
+                    // $username = $newUsername;
 
                     $result = $this->userModel->DoQuery($sql);
                     $_SESSION['Login']['username'] = $newUsername;
+                    $changeSuccess = true;
+                }
+
+                if(isset($_POST['password'])){
+                    $password = trim($_POST['password']);
+                    $confirmpassword = trim($_POST['confirmpassword']);
+                    if($password != $confirmpassword){
+                        echo "Xác nhận lại mật khẩu!";
+                        $changeSuccess = false;
+                    
+                    }else{
+                        //Mã hóa password
+                        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);   
+                        $sql = "UPDATE users
+                            SET password = '$hashedPassword' 
+                            WHERE username = '$username';";
+    
+                            // $_SESSION['Login']['username'] = $newUsername;
+                            // $username = $newUsername;
+    
+                        $result = $this->userModel->DoQuery($sql);
+                        $changeSuccess = true;
+                        
+                    }
+                }
+                if($changeSuccess == true){
                     echo "success";
                 }
+                
+            }else{
+                echo 'not change';
+            }
+
             
     }
 
