@@ -398,6 +398,7 @@ button.close-com:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 .sorted {
     display: flex;
@@ -425,6 +426,7 @@ i.fa-solid.fa-sort-down {
     right: 5px;
     top: 60px;
 }
+
 .nav-sorted {
     padding-left: 15px;
     height: 50px;

@@ -530,6 +530,12 @@ function addFeedback(item){
     //FILTER
     function togglenav_sorteds() {
       nav_sorteds.style.display = nav_sorteds.style.display === 'block' ? 'none' : 'block';
+      // if (nav_sorteds.style.display === 'block') {
+      //   nav_sorteds.style.display = 'none';
+      // } else {
+      //   nav_sorteds.style.display = 'block';
+      // }
+      console.log('aaaaa');
     }
     function selectnav_sorted(optionIndex, comFilter) {
       var nav_sorted = document.querySelectorAll('.nav-sorted');

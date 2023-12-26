@@ -23,7 +23,7 @@
             </li>
             <li class="other-behaviors"><span>...</span></li>
         </ul>
-        <div class="show-details">
+    <div class="show-details">
             <div class="uploader">
                 <div class="detail-avatar-container">
                     <a href="#" onclick="ShowPublicUserPage()"><img class="detail-avatar" src="/Public/webimg/defaultAvatar.png" alt=""></a>
@@ -45,7 +45,7 @@
                 <h1 class="detail-title">tes</h1>
                 <p class="detail-description">ádadada</p>
             </div>
-            <div class="comment-form1">
+        <div class="comment-form1">
             <div class="comment-sta">
             <h2 class="num-com"><span id="comment-number">46</span> bình luận</h2>
                 <div class="sorted" onclick="togglenav_sorteds()">
@@ -103,5 +103,5 @@
                 </div>
             </div>
         </div>
-        </div>
     </div>
+</div>

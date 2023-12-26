@@ -1,41 +1,21 @@
-
 <div class="footer">
             <div class="footer-wrapper">
                 <div class="colmain">
-                    <h1 class="title_colmain">
-                        Imey
-                    </h1>
                     <img src="./Public/webimg/Imey-logo-1.png" alt="" class="image_logo">
                 </div>
                 <div class="col">
                     <h3 class="title">Thông tin</h3>
-                    <p>
-                        <a class="support" href="#">Giới thiệu</a>       
-                    </p>
-                    <p>
-                        <a class="support" href="#">Tin tức</a>       
-                    </p>
-                    <p>
-                        <a class="support" href="#">Liên hệ</a>       
-                    </p>
-                    <p>
-                        <a class="support" href="#">Trung tâm trợ giúp</a>       
-                    </p>
-                    <p>
-                        <a class="support" href="#">Blog</a>       
-                    </p>
+                    <a class="support" href="#">Giới thiệu</a>      
+                    <a class="support" href="#">Tin tức</a>     
+                    <a class="support" href="#">Liên hệ</a>       
+                    <a class="support" href="#">Trung tâm trợ giúp</a>       
+                    <a class="support" href="#">Blog</a>       
                 </div>
                 <div class="col">
                     <h3 class="title">Chính sách</h3>
-                    <p>
-                        <a class="support" href="#">Điều khoản Dịch vụ</a>       
-                    </p>
-                    <p>
-                        <a class="support" href="#">Quyền riêng tư</a>       
-                    </p>
-                    <p>
-                        <a class="support" href="#">Bảo mật</a>       
-                    </p>
+                    <a class="support" href="#">Điều khoản Dịch vụ</a>       
+                    <a class="support" href="#">Quyền riêng tư</a>       
+                    <a class="support" href="#">Bảo mật</a>       
                 </div>
                 <div class="col">
                     <h3 class="title">Theo dõi</h3>
@@ -54,6 +34,6 @@
                 </div>
             </div>
             <div class="license">&copy
-                 Seee 2023
+                 Imey 2023
             </div>
         </div>
