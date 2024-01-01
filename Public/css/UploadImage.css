@@ -152,7 +152,7 @@ header{
 }
 .alertP{
     position: absolute;
-    top: 18vh;
+    top: 28vh;
     left: 47px;
     color: red;
     display: none;

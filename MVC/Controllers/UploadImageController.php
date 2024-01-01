@@ -29,7 +29,7 @@
                     $fileSize = $_FILES["myImage"]["size"];
                     $tmpName = $_FILES["myImage"]["tmp_name"];
     
-                    $validImageExtension = ['jpg','jpeg','png'];
+                    $validImageExtension = ['jpg','jpeg','png','webp'];
                     $imageExtension = explode('.', $fileName);
                     $imageExtension = strtolower(end($imageExtension));
                     if(!in_array($imageExtension, $validImageExtension)){

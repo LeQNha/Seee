@@ -18,6 +18,7 @@ function GetCategoryInformation(cId){
     categoryTitles[0].textContent = cId;
 
     //CSS alter
+    console.log(categoryNameSpan);
     categoryNameSpan.classList.remove('category-chosen');
     category = document.getElementById(cId);
     categoryNameSpan = category.querySelector('.category-name');
@@ -90,8 +91,7 @@ function ToggleFollow(){
 function kiemTraCuoiTrang() {
   // Kiểm tra xem vị trí hiện tại của thanh cuộn có bằng hoặc lớn hơn độ dài của trang - chiều cao cửa sổ không
   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-    console.log("Đã cuộn tới cuối trang!");
-          LoadMoreImages();
+          // LoadMoreImages();
           // Thực hiện các hành động khi cuộn tới cuối trang ở đây
     
   }
@@ -117,19 +117,16 @@ function LoadMoreImages(){
     xhr.onload = function(){
     if(xhr.status == 200){
       if(xhr.responseText.trim() === 'het'){
-        console.log('het');
+        
       }else{
         imagesContainer.innerHTML += xhr.responseText;
         // imagesContainer.insertAdjacentElement('beforeend',xhr.responseText);
         // var p = document.createElement("div");
         // p.innerHTML = xhr.responseText;
         // imagesContainer.appendChild(p);
-        console.log('trc '+ loadedImagesNumber);
+        
         loadedImagesNumber = loadedImagesNumber + 5;
         LazyLoading();
-        console.log('sau ' + loadedImagesNumber);
-       
-       
       }
     }else{
         alert('Đã có lỗi xảy ra!');

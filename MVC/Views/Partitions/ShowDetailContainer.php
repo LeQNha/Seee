@@ -47,7 +47,7 @@
             </div>
         <div class="comment-form1">
             <div class="comment-sta">
-            <h2 class="num-com"><span id="comment-number">46</span> bình luận</h2>
+            <h2 class="num-com"><span id="comment-number">0</span> bình luận</h2>
                 <div class="sorted" onclick="togglenav_sorteds()">
                     <i class="fa-solid fa-sort-down"></i>
                     <div class="sorted-com">Sắp xếp theo</div>

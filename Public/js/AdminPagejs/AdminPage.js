@@ -44,6 +44,7 @@ function ToggleChangePassword(){
     if(changingPassword == true){
         changePasswordInput.innerHTML = '';
         changingPassword = false;
+        userPassword = null;
         document.querySelector('.change-password .fa-angle-down').classList.remove('rotate');
       }else{
         changePasswordInput.innerHTML = `
@@ -280,9 +281,12 @@ function SaveChangeUser(){
         document.getElementById('username-error-message').textContent = 'Không được để trống!';
         checkEmpty = true;
     }
-    if(userPassword.value.length === 0){
-        document.getElementById('password-error-message').textContent = 'Không được để trống!';
-        checkEmpty = true;
+    if(userPassword){
+        console.log('co ton tại');
+        if(userPassword.value.length === 0){
+            document.getElementById('password-error-message').textContent = 'Không được để trống!';
+            checkEmpty = true;
+        }
     }
 
     if(!checkEmpty){

@@ -28,9 +28,8 @@ function preloadImage(img){
     if(!src){
         return;
     }
-    console.log('preloa');
     img.src = src;
-    observer.unobserve(img);
+    
 }
 function LazyLoading(){
     var images = document.querySelectorAll(".main-image");
@@ -52,6 +51,44 @@ function LazyLoading(){
       );
 }
 LazyLoading();
+
+// var observer;
+
+// function ObserveImages(images){
+//     images.forEach(img => {
+//         observer.observe(img);
+//     });
+// }
+
+// function preloadImage(img){
+//     const src = img.getAttribute("data-src");
+//     if(!src){
+//         return;
+//     }
+//     img.src = src;
+//     img.style.filter = "brightness(100%)"; // Đảm bảo hình ảnh được hiển thị đúng sau khi preload
+// }
+// function notInter(img){
+//   img.style.filter = "brightness(10%)";
+// }
+
+// function LazyLoading(){
+//     observer = new IntersectionObserver(entries => {
+//         entries.forEach(entry => {
+//             if(entry.isIntersecting){
+//                 preloadImage(entry.target);
+//                 observer.unobserve(entry.target); // Di chuyển unobserve sau khi preload hình ảnh
+//             }else{
+//               notInter(entry.target);
+//             }
+//         });
+//     }, { threshold: 1 });
+
+//     var images = document.querySelectorAll(".main-image");
+//     ObserveImages(images);
+// }
+
+// LazyLoading(); // Gọi hàm LazyLoading ban đầu
 
 
 

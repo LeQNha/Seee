@@ -121,6 +121,22 @@
         public function LoadMoreImages(){
             $this->loadedImagesNumber = $_GET['loadedImagesNumber'];
             $username = $_SESSION['Login']['username'];
+            $sql = '';
+            $q = '';
+            if(isset($_GET['q'])){
+                $q = $_GET['q'];
+                $sql = "SELECT * FROM imgupload INNER JOIN image_keywords  
+                ON imgupload.path = image_keywords.path 
+                INNER JOIN users
+                ON imgupload.username = users.username
+                INNER JOIN categories
+                ON imgupload.category = categories.category
+                WHERE imgupload.username <> '$username' AND (keyword LIKE '%$q%' OR title LIKE '%$q%' OR imgupload.username LIKE '%$q%' OR imgupload.category LIKE '%$q%') 
+                GROUP BY imgupload.path 
+                LIMIT $this->loadedImagesNumber , 5;
+                ";
+            }
+           
             $result = $this->imageModel->DoQuery("SELECT * FROM imgupload i INNER JOIN users u  
                                                   ON i.username = u.username
                                                   WHERE i.username <> '$username'  
